@@ -142,4 +142,13 @@
         app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
         app:srcCompat="@color/colorAccent" />
 
+    <ImageView
+        android:id="@+id/switch_image"
+        android:layout_width="226dp"
+        android:layout_height="267dp"
+        android:src="@drawable/switch_outline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

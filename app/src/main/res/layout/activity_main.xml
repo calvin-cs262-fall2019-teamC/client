@@ -63,7 +63,8 @@
                         android:id="@+id/activity_two_button"
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:contentDescription="@string/activity_button_description"
+                        android:contentDescription="@string/fidget_button_description"
+                        android:onClick="launchFidgetCubeActivity"
                         app:srcCompat="@color/colorPrimaryDark" />
 
                     <TextView
