@@ -27,7 +27,7 @@ public class BreatheActivity extends AppCompatActivity {
         MediaController mediaController = new MediaController(this);
         simpleVideoView.setMediaController(mediaController);
 
-        //start the video
+        //start video immediately
         simpleVideoView.start();
     }
 }
