@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FidgetCubeActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/circlebutton_bottomright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
-        app:layout_constraintStart_toEndOf="@+id/circlebutton_bottomleft"
-        app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
-        app:srcCompat="@color/colorAccent" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -87,6 +70,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="playButtonClick"
         app:layout_constraintEnd_toStartOf="@+id/circlebutton_topright"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
@@ -103,6 +87,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="playButtonClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toEndOf="@+id/circlebutton_topleft"
@@ -120,6 +105,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="playButtonClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,8 +123,27 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="playButtonClick"
         app:layout_constraintEnd_toStartOf="@+id/circlebutton_bottomright"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
+        app:srcCompat="@color/colorAccent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/circlebutton_bottomright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="playButtonClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.758"
+        app:layout_constraintStart_toEndOf="@+id/circlebutton_bottomleft"
         app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
         app:srcCompat="@color/colorAccent" />
 
@@ -147,6 +152,7 @@
         android:layout_width="226dp"
         android:layout_height="267dp"
         android:src="@drawable/switch_outline"
+        android:onClick="switchClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
