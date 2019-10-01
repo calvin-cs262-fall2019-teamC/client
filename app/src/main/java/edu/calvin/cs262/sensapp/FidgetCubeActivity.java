@@ -2,6 +2,7 @@ package edu.calvin.cs262.sensapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -47,5 +48,15 @@ public class FidgetCubeActivity extends AppCompatActivity {
             switchImage.setBackgroundResource(R.drawable.switch_animation_on);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
         }
+    }
+
+    /**
+     * Launches the joystick activity when the button is pressed.
+     *
+     * @param view The current View object (the fidget cube activity button).
+     */
+    public void launchJoystickActivity(View view) {
+        Intent intent = new Intent(this, JoystickActivity.class);
+        startActivity(intent);
     }
 }
