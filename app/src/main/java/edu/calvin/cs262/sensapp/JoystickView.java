@@ -48,19 +48,20 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
     private void drawJoystick(float newX, float newY) {
         if(getHolder().getSurface().isValid()) {
             Canvas myCanvas = this.getHolder().lockCanvas();
-            Paint colors = new Paint();
+            Paint basecolors = new Paint();
+            Paint hatcolors = new Paint();
 
             // Clear the Canvas before drawing
             myCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 
             // Draw the base first before shading
-            colors.setARGB(255, 50, 50, 50);  // light grey
-            myCanvas.drawCircle(centerX, centerY, baseRadius, colors);
+            basecolors.setARGB(255, 50, 50, 50);  // light grey
+            myCanvas.drawCircle(centerX, centerY, baseRadius, basecolors);
 
             // Draw the "hat" (the movable part)
-            colors.setARGB(255, 0,255,157);  // TODO: change to colorAccent
-            myCanvas.drawCircle(centerX, centerY, baseRadius, colors);
-            myCanvas.drawCircle(newX, newY, hatRadius, colors);
+            hatcolors.setARGB(255, 0,255,157);  // TODO: change to colorAccent
+            myCanvas.drawCircle(centerX, centerY, baseRadius, basecolors);
+            myCanvas.drawCircle(newX, newY, hatRadius, hatcolors);
 
             getHolder().unlockCanvasAndPost(myCanvas);  // Write the new drawing to the SurfaceView
         }
