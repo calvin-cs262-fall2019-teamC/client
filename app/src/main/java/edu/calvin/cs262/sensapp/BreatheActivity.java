@@ -2,12 +2,16 @@ package edu.calvin.cs262.sensapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
 public class BreatheActivity extends AppCompatActivity {
+
+    //create mediaPlayer
+    public MediaPlayer mediaPlayer;
 
     /**
      * Creates the breathe activity in which the user will be guided to breathe deeply.
@@ -19,15 +23,28 @@ public class BreatheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breathe);
 
-        //initialize videoView
-        VideoView simpleVideoView = (VideoView) findViewById(R.id.videoView);
+        //initialize videoView and its mediaController
+        VideoView simpleVideoView = findViewById(R.id.videoView);
         simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.trees01));
 
-        //create mediaController
         MediaController mediaController = new MediaController(this);
         simpleVideoView.setMediaController(mediaController);
 
-        //start video immediately
+        //set mediaPlayer to light_waves
+        mediaPlayer = mediaPlayer.create(this, R.raw.light_waves);
+
+        //start video and run sound
         simpleVideoView.start();
+
+        mediaPlayer.start();
+    }
+
+
+    //figure out how to access protected mediaPlayer
+    //ry logging to see if we get into this function
+    @Override
+    public void onBackPressed(){
+        if(mediaPlayer.isPlaying())
+            mediaPlayer.stop();
     }
 }
