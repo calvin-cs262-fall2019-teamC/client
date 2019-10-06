@@ -33,24 +33,47 @@ public class MainActivity extends AppCompatActivity {
 
         // bottom nav bar, help mainly from:
         // https://medium.com/@hitherejoe/exploring-the-android-design-support-library-bottom-navigation-drawer-548de699e8e0
+        // https://www.truiton.com/2017/01/android-bottom-navigation-bar-example/
         navigation_bar = findViewById(R.id.navigation_bar);
         navigation_bar.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+                    /**
+                     * When a navigation bar item is selected, switch to the corresponding Fragment.
+                     *
+                     * @param item The selected MenuItem from the navigation bar.
+                     * @return true
+                     */
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                        // select the proper fragment
+                        Fragment selected_fragment = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_favorites:
-                                startActivity(new Intent(context, FavoritesActivity.class));
+                                selected_fragment = new FavoritesFragment();
                                 break;
                             case R.id.navigation_main:
+                                selected_fragment = MainFragment.newInstance(context);
                                 break;
                             case R.id.navigation_history:
-                                startActivity(new Intent(context, HistoryActivity.class));
+                                selected_fragment = new HistoryFragment();
                                 break;
                         }
+
+                        // switch to selected Fragment
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout, selected_fragment);
+                        transaction.commit();
                         return true;
                     }
-        });
+            }
+        );
+
+        // setup the main Fragment upon starting app (one time setup)
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, MainFragment.newInstance(context));
+        transaction.commit();
     }
 
     /**
