@@ -11,13 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".BreatheActivity"
-            android:label = "@string/activity_one_title"
+        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".FavoritesActivity" />
+        <activity
+            android:name=".BreatheActivity"
+            android:label="@string/activity_one_title"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=
-                    "edu.calvin.cs262.sensapp.MainActivity" />
+                android:value="edu.calvin.cs262.sensapp.MainActivity" />
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
