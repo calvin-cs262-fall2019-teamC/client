@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MusicActivity"></activity>
+        <activity android:name=".AnimalsActivity" />
+        <activity android:name=".StoriesActivity" />
+        <activity android:name=".BubblesActivity" />
         <activity
             android:name=".BreatheActivity"
             android:label="@string/activity_one_title"
