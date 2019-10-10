@@ -18,18 +18,6 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
     private Context context = null;
     public MediaPlayer buttonSoundPlayer;
 
-    /**
-     * Create a new ButtonFragment instance initializing the context for use in playing audio.
-     *
-     * @param ctxt The Context of the ButtonActivity.
-     * @return The new Fragment.
-     */
-    public static ButtonFragment newInstance(Context ctxt) {
-        ButtonFragment fragment = new ButtonFragment();
-        fragment.context = ctxt;
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
