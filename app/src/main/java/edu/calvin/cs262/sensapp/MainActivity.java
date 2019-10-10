@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                                 selected_fragment = new FavoritesFragment();
                                 break;
                             case R.id.navigation_main:
-                                selected_fragment = MainFragment.newInstance(context);
+                                selected_fragment = new MainFragment();
                                 break;
                             case R.id.navigation_history:
                                 selected_fragment = new HistoryFragment();
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         // setup the main Fragment upon starting app (one time setup)
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, MainFragment.newInstance(context));
+        transaction.replace(R.id.frame_layout, new MainFragment());
         transaction.commit();
     }
 
@@ -82,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the breathe activity button).
      */
     public void launchBreatheActivity(View view) {
-        Intent intent = new Intent(context, BreatheActivity.class);
+        Log.d("MainActivity", "activity launching BreatheActivity :)");
+        Intent intent = new Intent(this, BreatheActivity.class);
         startActivity(intent);
     }
 
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the bubbles activity button).
      */
     public void launchBubblesActivity(View view) {
-        Intent intent = new Intent(context, BubblesActivity.class);
+        Intent intent = new Intent(this, BubblesActivity.class);
         startActivity(intent);
     }
 
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the stories activity button).
      */
     public void launchStoriesActivity(View view) {
-        Intent intent = new Intent(context, StoriesActivity.class);
+        Intent intent = new Intent(this, StoriesActivity.class);
         startActivity(intent);
     }
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the animals activity button).
      */
     public void launchAnimalsActivity(View view) {
-        Intent intent = new Intent(context, AnimalsActivity.class);
+        Intent intent = new Intent(this, AnimalsActivity.class);
         startActivity(intent);
     }
 
@@ -122,7 +124,18 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the music activity button).
      */
     public void launchMusicActivity(View view) {
-        Intent intent = new Intent(context, MusicActivity.class);
+        Intent intent = new Intent(this, MusicActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the fidget cube activity when the button is pressed.
+     *
+     * @param view The current View object (the fidget cube activity button).
+     */
+    public void launchFidgetCubeActivity(View view) {
+        Log.d("MainActivity", "activity launching FidgetCubeActivity");
+        Intent intent = new Intent(this, FidgetCubeActivity.class);
         startActivity(intent);
     }
 }
