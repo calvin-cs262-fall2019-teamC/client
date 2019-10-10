@@ -7,6 +7,8 @@
     <string name="activity_five_title">Activity 5</string>
     <string name="activity_six_title">Activity 6</string>
     <string name="activity_button_description">Button leading to an activity</string>
-    <string name="fidget_button_description">Button leading to Fidget Cube Activity</string>
-    <string name="activity_fidget_title">Fidget Cube</string>
+    <string name="favorites">Favorites</string>
+    <string name="activities">Activities</string>
+    <string name="history">History</string>
+    <string name="activity_fidget_description">Fidget cube (buttons, switches, etc.)</string>
 </resources>

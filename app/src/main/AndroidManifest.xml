@@ -11,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".JoystickActivity"></activity>
         <activity
             android:name=".BreatheActivity"
             android:label="@string/activity_one_title"
@@ -22,7 +21,7 @@
         </activity>
         <activity
             android:name=".FidgetCubeActivity"
-            android:label="Fidget Cube"
+            android:label="@string/activity_two_title"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
