@@ -47,4 +47,64 @@ public class MainFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
+    /**
+     * Launches the breathing activity when the button is pressed.
+     *
+     * @param view The current View object (the breathe activity button).
+     */
+    public void launchBreatheActivity(View view) {
+        Intent intent = new Intent(context, BreatheActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the bubbles activity when the button is pressed.
+     *
+     * @param view The current View object (the bubbles activity button).
+     */
+    public void launchBubblesActivity(View view) {
+        Intent intent = new Intent(context, BubblesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the stories activity when the button is pressed.
+     *
+     * @param view The current View object (the stories activity button).
+     */
+    public void launchStoriesActivity(View view) {
+        Intent intent = new Intent(context, StoriesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the animals activity when the button is pressed.
+     *
+     * @param view The current View object (the animals activity button).
+     */
+    public void launchAnimalsActivity(View view) {
+        Intent intent = new Intent(context, AnimalsActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the music activity when the button is pressed.
+     *
+     * @param view The current View object (the music activity button).
+     */
+    public void launchMusicActivity(View view) {
+        Intent intent = new Intent(context, MusicActivity.class);
+        startActivity(intent);
+    }
+  
+    /**
+     * Launches the fidget cube activity when the button is pressed.
+     *
+     * @param view The current View object (the fidget cube activity button).
+     */
+    public void launchFidgetCubeActivity(View view) {
+        Log.d("MainActivity", "activity launching FidgetCubeActivity");
+        Intent intent = new Intent(context, FidgetCubeActivity.class);
+        startActivity(intent);
+    }
 }

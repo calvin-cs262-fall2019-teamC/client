@@ -89,6 +89,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Launches the bubbles activity when the button is pressed.
+     *
+     * @param view The current View object (the bubbles activity button).
+     */
+    public void launchBubblesActivity(View view) {
+        Intent intent = new Intent(this, BubblesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the stories activity when the button is pressed.
+     *
+     * @param view The current View object (the stories activity button).
+     */
+    public void launchStoriesActivity(View view) {
+        Intent intent = new Intent(this, StoriesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the animals activity when the button is pressed.
+     *
+     * @param view The current View object (the animals activity button).
+     */
+    public void launchAnimalsActivity(View view) {
+        Intent intent = new Intent(this, AnimalsActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the music activity when the button is pressed.
+     *
+     * @param view The current View object (the music activity button).
+     */
+    public void launchMusicActivity(View view) {
+        Intent intent = new Intent(this, MusicActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * Launches the fidget cube activity when the button is pressed.
      *
      * @param view The current View object (the fidget cube activity button).
