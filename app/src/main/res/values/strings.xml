@@ -11,4 +11,8 @@
     <string name="activities">Activities</string>
     <string name="history">History</string>
     <string name="activity_fidget_description">Fidget cube (buttons, switches, etc.)</string>
+    <string name="duration_label">Duration:</string>
+    <string name="time_activity_one">5mins</string>
+
+
 </resources>
