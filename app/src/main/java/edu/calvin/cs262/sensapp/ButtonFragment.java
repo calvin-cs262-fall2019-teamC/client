@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ButtonFragment extends Fragment implements View.OnClickListener {
-    // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
     private Context context = null;
     public MediaPlayer buttonSoundPlayer;
 
@@ -45,8 +44,5 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         buttonSoundPlayer.start();
-        if (buttonSoundPlayer.isPlaying()) {
-            Log.d("ButtonFragment", "button playing!");
-        }
     }
 }
