@@ -11,13 +11,6 @@
     <string name="activities">Activities</string>
     <string name="history">History</string>
     <string name="activity_fidget_description">Fidget cube (buttons, switches, etc.)</string>
-    <string name="breath_activity_label">Breath</string>
-    <string name="history_activity_label_one">Breath</string>
-    <string name="history_activity_one_label">Breath</string>
-    <string name="activity_one_label">Breath</string>
-    <string name="history_one_label">Breath</string>
-    <string name="history_image_one_description">Breath</string>
-    <string name="history_one_image_label">Breath</string>
     <string name="duration_label">Duration:</string>
     <string name="time_activity_one">5mins</string>
 

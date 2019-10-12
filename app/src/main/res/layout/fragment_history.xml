@@ -27,7 +27,7 @@
                 android:id="@+id/history_one_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:contentDescription="@string/history_image_one_description"
+                android:contentDescription="@string/activity_one_title"
                 android:src="@drawable/breathe"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginStart="-343dp"
                 android:layout_marginLeft="-343dp"
-                android:text="@string/history_one_image_label"
+                android:text="@string/activity_one_title"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
