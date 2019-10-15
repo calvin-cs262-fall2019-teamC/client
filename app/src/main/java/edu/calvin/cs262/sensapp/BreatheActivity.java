@@ -40,12 +40,9 @@ public class BreatheActivity extends AppCompatActivity {
         mediaPlayer.start();
     }
 
+    public void onPause(){
 
-    //figure out how to access protected mediaPlayer
-    //ry logging to see if we get into this function
-    @Override
-    public void onBackPressed(){
-        Log.v("test_onPressed","made it into the function!");
+        super.onPause();
         if(mediaPlayer.isPlaying())
             mediaPlayer.stop();
     }
