@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -44,6 +45,7 @@ public class BreatheActivity extends AppCompatActivity {
     //ry logging to see if we get into this function
     @Override
     public void onBackPressed(){
+        Log.v("test_onPressed","made it into the function!");
         if(mediaPlayer.isPlaying())
             mediaPlayer.stop();
     }
