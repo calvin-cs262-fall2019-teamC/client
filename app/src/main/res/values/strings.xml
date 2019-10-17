@@ -7,6 +7,7 @@
     <string name="activity_five_title">Animals</string>
     <string name="activity_six_title">Music</string>
     <string name="activity_button_description">Button leading to an activity</string>
+    <string name="favorite_button_description">Button to favorite an activity</string>
     <string name="favorites">Favorites</string>
     <string name="activities">Activities</string>
     <string name="history">History</string>
