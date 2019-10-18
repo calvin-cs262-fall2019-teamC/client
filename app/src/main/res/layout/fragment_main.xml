@@ -68,7 +68,8 @@
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/activity_fidget_description"
                     android:onClick="launchFidgetCubeActivity"
-                    app:srcCompat="@color/colorPrimaryDark" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/fidget_cube" />
 
                 <TextView
                     android:id="@+id/activity_two_title"
