@@ -2,13 +2,17 @@
     <string name="app_name">Sensapp</string>
     <string name="activity_one_title">Breathe</string>
     <string name="activity_two_title">Fidget Cube</string>
-    <string name="activity_three_title">Activity 3</string>
-    <string name="activity_four_title">Activity 4</string>
-    <string name="activity_five_title">Activity 5</string>
-    <string name="activity_six_title">Activity 6</string>
+    <string name="activity_three_title">Bubbles</string>
+    <string name="activity_four_title">Stories</string>
+    <string name="activity_five_title">Animals</string>
+    <string name="activity_six_title">Music</string>
     <string name="activity_button_description">Button leading to an activity</string>
     <string name="favorites">Favorites</string>
     <string name="activities">Activities</string>
     <string name="history">History</string>
     <string name="activity_fidget_description">Fidget cube (buttons, switches, etc.)</string>
+    <string name="duration_label">Duration:</string>
+    <string name="time_activity_one">5mins</string>
+
+
 </resources>
