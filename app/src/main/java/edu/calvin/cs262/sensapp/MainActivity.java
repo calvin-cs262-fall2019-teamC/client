@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
                         // select the proper fragment
                         Fragment selected_fragment = null;
                         switch (item.getItemId()) {
-                            case R.id.navigation_favorites:
-                                selected_fragment = new FavoritesFragment();
-                                break;
                             case R.id.navigation_main:
                                 selected_fragment = new MainFragment();
+                                break;
+                            case R.id.navigation_favorites:
+                                selected_fragment = new FavoritesFragment();
                                 break;
                             case R.id.navigation_history:
                                 selected_fragment = new HistoryFragment();
@@ -85,6 +85,46 @@ public class MainActivity extends AppCompatActivity {
     public void launchBreatheActivity(View view) {
         Log.d("MainActivity", "activity launching BreatheActivity :)");
         Intent intent = new Intent(this, BreatheActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the bubbles activity when the button is pressed.
+     *
+     * @param view The current View object (the bubbles activity button).
+     */
+    public void launchBubblesActivity(View view) {
+        Intent intent = new Intent(this, BubblesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the stories activity when the button is pressed.
+     *
+     * @param view The current View object (the stories activity button).
+     */
+    public void launchStoriesActivity(View view) {
+        Intent intent = new Intent(this, StoriesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the animals activity when the button is pressed.
+     *
+     * @param view The current View object (the animals activity button).
+     */
+    public void launchAnimalsActivity(View view) {
+        Intent intent = new Intent(this, AnimalsActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the music activity when the button is pressed.
+     *
+     * @param view The current View object (the music activity button).
+     */
+    public void launchMusicActivity(View view) {
+        Intent intent = new Intent(this, MusicActivity.class);
         startActivity(intent);
     }
 
