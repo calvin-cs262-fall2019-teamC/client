@@ -7,16 +7,25 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+/**
+ * A PagerAdapter for {@link MusicCategoryFragment}, so we can navigate to different pages of music categories
+ */
 public class MusicPagerAdapter extends FragmentStatePagerAdapter {
-    private int mNumOfTabs;
+    private int mNumTabs;
     private Context context;
 
     public MusicPagerAdapter(FragmentManager fm, int NumOfTabs, Context app_context) {
         super(fm);
-        this.mNumOfTabs = NumOfTabs;
+        this.mNumTabs = NumOfTabs;
         context = app_context;
     }
 
+    /**
+     * set up the various tabs for music categories
+     * @param position indicates which tab to open
+     * @return the Fragment that contains the music buttons, labels, etc.
+     * @author cmd16
+     */
     @NonNull
     @Override
     public MusicCategoryFragment getItem(int position) {
@@ -51,6 +60,6 @@ public class MusicPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return mNumOfTabs;
+        return mNumTabs;
     }
 }

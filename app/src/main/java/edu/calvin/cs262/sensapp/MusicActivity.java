@@ -1,7 +1,6 @@
 package edu.calvin.cs262.sensapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -9,6 +8,9 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * An Activity for playing various sounds
+ */
 public class MusicActivity extends AppCompatActivity {
     private Context context;
 
@@ -18,13 +20,16 @@ public class MusicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_music);
         context = getApplicationContext();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         buildTabs(tabLayout);
         buildPagerAdapter(tabLayout);
     }
 
     /**
+     * Build the tabs for predefined sound categories
      * @author cmd16
+     *
+     * @param tabs the TabLayout that holds tabs for each music category
      */
     private void buildTabs(TabLayout tabs) {
         tabs.addTab(tabs.newTab().setText(R.string.all_sounds_label));
@@ -33,11 +38,15 @@ public class MusicActivity extends AppCompatActivity {
         tabs.addTab(tabs.newTab().setText(R.string.water_sounds_label));
         tabs.addTab(tabs.newTab().setText(R.string.music_sounds_label));
         tabs.addTab(tabs.newTab().setText(R.string.city_sounds_label));
-//        tabs.setTabGravity(TabLayout.GRAVITY_FILL);
     }
 
+    /**
+     * Build the PagerAdapter so that we can actually use our TabLayout
+     *
+     * @param tabs the TabLayout that holds tabs for each music category
+     */
     private void buildPagerAdapter(TabLayout tabs) {
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = findViewById(R.id.pager);
         final MusicPagerAdapter adapter = new MusicPagerAdapter(
                 getSupportFragmentManager(), tabs.getTabCount(), context);
         viewPager.setAdapter(adapter);
