@@ -45,13 +45,19 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <!--
+                    Tag used to store activity title associated with this favorite button
+                    Idea: https://stackoverflow.com/questions/34528116/get-view-name-programmatically-in-android
+                    -->
                     <ImageButton
                         android:id="@+id/activity_one_favorite"
+                        android:tag="@string/activity_one_title"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
-                        android:src="@drawable/ic_favorite" />
+                        android:src="@drawable/ic_favorite"
+                        android:onClick="favoriteActivity" />
 
                     <TextView
                         android:id="@+id/activity_one_title"
@@ -99,12 +105,14 @@
 
                     <ImageButton
                         android:id="@+id/activity_two_favorite"
+                        android:tag="@string/activity_two_title"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
-                        android:src="@drawable/ic_favorite" />
+                        android:src="@drawable/ic_favorite"
+                        android:onClick="favoriteActivity" />
 
                     <TextView
                         android:id="@+id/activity_two_title"
@@ -160,12 +168,14 @@
 
                     <ImageButton
                         android:id="@+id/activity_three_favorite"
+                        android:tag="@string/activity_three_title"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
-                        android:src="@drawable/ic_favorite" />
+                        android:src="@drawable/ic_favorite"
+                        android:onClick="favoriteActivity" />
 
                     <TextView
                         android:id="@+id/activity_three_title"
@@ -213,12 +223,14 @@
 
                     <ImageButton
                         android:id="@+id/activity_four_favorite"
+                        android:tag="@string/activity_four_title"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
-                        android:src="@drawable/ic_favorite" />
+                        android:src="@drawable/ic_favorite"
+                        android:onClick="favoriteActivity" />
 
                     <TextView
                         android:id="@+id/activity_four_title"
@@ -274,12 +286,14 @@
 
                     <ImageButton
                         android:id="@+id/activity_five_favorite"
+                        android:tag="@string/activity_five_title"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
-                        android:src="@drawable/ic_favorite" />
+                        android:src="@drawable/ic_favorite"
+                        android:onClick="favoriteActivity" />
 
                     <TextView
                         android:id="@+id/activity_five_title"
@@ -327,12 +341,14 @@
 
                     <ImageButton
                         android:id="@+id/activity_six_favorite"
+                        android:tag="@string/activity_six_title"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
-                        android:src="@drawable/ic_favorite" />
+                        android:src="@drawable/ic_favorite"
+                        android:onClick="favoriteActivity" />
 
                     <TextView
                         android:id="@+id/activity_six_title"

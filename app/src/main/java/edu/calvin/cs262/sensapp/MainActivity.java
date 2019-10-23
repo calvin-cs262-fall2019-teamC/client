@@ -19,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
     private Context context = this;
+    private String favorite = "Breathe";
     protected BottomNavigationView navigation_bar;
 
     /**
@@ -137,5 +138,16 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "activity launching FidgetCubeActivity");
         Intent intent = new Intent(this, FidgetCubeActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * Records the current activity as favorited.
+     *
+     * @param view The current View object (the favorite heart button).
+     */
+    public void favoriteActivity(View view) {
+        Toast toast = Toast.makeText(context, view.getTag().toString() + " Favorited", Toast.LENGTH_SHORT);
+        toast.show();
+        favorite = view.getTag().toString();
     }
 }
