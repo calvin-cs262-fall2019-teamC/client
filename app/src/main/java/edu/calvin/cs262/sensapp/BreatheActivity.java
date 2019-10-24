@@ -13,10 +13,13 @@ import java.util.Random;
 public class BreatheActivity extends AppCompatActivity {
 
     //create mediaPlayer for the audio
-    public MediaPlayer musicPlayer;
+    public MediaPlayer audioPlayer;
 
     //create list for audio
     public int[] audioList;
+
+    //keep track of previous audio
+    public int previousAudio;
 
     /**
      * Creates the breathe activity in which the user will be guided to breathe deeply.
@@ -43,38 +46,43 @@ public class BreatheActivity extends AppCompatActivity {
 
         //start video and music
         simpleVideoView.start();
-        musicPlayer.start();
-
-        musicPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            //when the current audio is finished, start playing a new audio
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                musicPlayer.reset();
-                chooseAudio();
-                musicPlayer.start();
-            }
-        });
+        audioPlayer.start();
     }
 
     public void chooseAudio(){
-        //choose next audio to play
 
         //TODO: get different audio? make customizable/let user remember combinations they liked?
-        //TODO: make audio not choose same clip consecutively
-        //TODO: make audio resume rather than stop onPause?
+        //TODO: make an onResume instead of just stopping onPause?
 
+        //choose next audio to play...
         Random random = new Random();
         int randInt = random.nextInt(audioList.length);
 
-        musicPlayer = MediaPlayer.create(this, audioList[randInt]);
-//        musicPlayer = MediaPlayer.create(this, R.raw.breathe_audio_zymbel);
+        //...with no <U>consecutive</U> replays of one audio
+        while(randInt == previousAudio){
+            randInt = random.nextInt(audioList.length);
+        }
+
+        //set the selected audio and update previousAudio tracker
+        audioPlayer = MediaPlayer.create(this, audioList[randInt]);
+        previousAudio = randInt;
+
+        //when the current audio is finished, start playing a new audio
+        audioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                audioPlayer.reset();
+                chooseAudio();
+                audioPlayer.start();
+            }
+        });
     }
 
     public void onPause() {
         //stop the music if focus is lost
         super.onPause();
-        if (musicPlayer.isPlaying())
-            musicPlayer.stop();
+        if (audioPlayer.isPlaying())
+            audioPlayer.stop();
     }
 
 }
