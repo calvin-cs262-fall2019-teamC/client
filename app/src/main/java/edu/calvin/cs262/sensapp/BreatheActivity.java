@@ -8,10 +8,18 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import java.util.Random;
+
 public class BreatheActivity extends AppCompatActivity {
 
-    //create mediaPlayer
-    public MediaPlayer musicPlayer;
+    //create mediaPlayer for the audio
+    public MediaPlayer audioPlayer;
+
+    //create list for audio
+    public int[] audioList;
+
+    //keep track of previous audio
+    public int previousAudio;
 
     /**
      * Creates the breathe activity in which the user will be guided to breathe deeply.
@@ -23,41 +31,58 @@ public class BreatheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breathe);
 
-        //initialize videoView and its mediaController
+        //initialize the videoView and its mediaController
         VideoView simpleVideoView = findViewById(R.id.videoView);
         simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.breathe_video_trees01));
 
         MediaController mediaController = new MediaController(this);
         simpleVideoView.setMediaController(mediaController);
 
+        //initialize list of audio files (from raw)
+        audioList = new int[]{R.raw.breathe_audio_waves_short, R.raw.breathe_audio_zymbel_short, R.raw.breathe_audio_wind_short};
 
         //initialize the musicPlayer
+        chooseAudio();
 
-
-        //TODO: <initialize list of videos here, pick a random one
-
-        //set mediaPlayer to breathe_music_lightWaves
-        //make this random later
-        musicPlayer = musicPlayer.create(this, R.raw.breathe_music_waves);
-
-//        musicPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                //musicPlayer = musicPlayer.create(this, R.raw.breathe_music_waves);
-//            }
-//        });
-
-        //start video and run sound
+        //start video and music
         simpleVideoView.start();
-        musicPlayer.start();
+        audioPlayer.start();
     }
 
-    public void onPause(){
+    public void chooseAudio(){
+
+        //TODO: get different audio? make customizable/let user remember combinations they liked?
+        //TODO: make an onResume instead of just stopping onPause?
+
+        //choose next audio to play...
+        Random random = new Random();
+        int randInt = random.nextInt(audioList.length);
+
+        //...with no <U>consecutive</U> replays of one audio
+        while(randInt == previousAudio){
+            randInt = random.nextInt(audioList.length);
+        }
+
+        //set the selected audio and update previousAudio tracker
+        audioPlayer = MediaPlayer.create(this, audioList[randInt]);
+        previousAudio = randInt;
+
+        //when the current audio is finished, start playing a new audio
+        audioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                audioPlayer.reset();
+                chooseAudio();
+                audioPlayer.start();
+            }
+        });
+    }
+
+    public void onPause() {
         //stop the music if focus is lost
-
         super.onPause();
-        if(musicPlayer.isPlaying())
-            musicPlayer.stop();
+        if (audioPlayer.isPlaying())
+            audioPlayer.stop();
     }
+
 }
