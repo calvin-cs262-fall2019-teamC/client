@@ -39,7 +39,10 @@ public class BreatheActivity extends AppCompatActivity {
         simpleVideoView.setMediaController(mediaController);
 
         //initialize list of audio files (from raw)
-        audioList = new int[]{R.raw.breathe_audio_waves_short, R.raw.breathe_audio_zymbel_short, R.raw.breathe_audio_wind_short};
+        audioList = new int[]{R.raw.breathe_audio_waves_short,
+                              R.raw.breathe_audio_zymbel_short,
+                              R.raw.breathe_audio_wind_short
+                              };
 
         //initialize the musicPlayer
         chooseAudio();
