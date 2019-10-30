@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
                         // select the proper fragment
                         Fragment selected_fragment = null;
                         switch (item.getItemId()) {
-                            case R.id.navigation_favorites:
-                                selected_fragment = new FavoritesFragment();
-                                break;
                             case R.id.navigation_main:
                                 selected_fragment = new MainFragment();
+                                break;
+                            case R.id.navigation_favorites:
+                                selected_fragment = new FavoritesFragment();
                                 break;
                             case R.id.navigation_history:
                                 selected_fragment = new HistoryFragment();
