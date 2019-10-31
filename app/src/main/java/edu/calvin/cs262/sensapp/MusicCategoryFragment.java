@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,9 +12,9 @@ import androidx.fragment.app.Fragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MusicCategoryFragment extends Fragment {
+public class MusicCategoryFragment extends Fragment implements MusicButtonView.OnClickListener {
     private Context context;
-    private TextView textView;
+    private MusicButtonView musicButtonView;
 
     public MusicCategoryFragment() {
         // must have an empty public constructor, or else get the error "MusicCategoryFragment must be a public static class to be  properly recreated from instance state"
@@ -50,10 +49,22 @@ public class MusicCategoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View frag_layout = inflater.inflate(R.layout.fragment_music_category, container, false);
         //build the RecyclerView for this fragment and provide its adapter
-        textView = frag_layout.findViewById(R.id.textView);
+        musicButtonView = frag_layout.findViewById(R.id.textView);
         getData();
 
         return frag_layout;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        musicButtonView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        musicButtonView.setOnClickListener(null);  // stop listening for button clicks because the button can't be clicked
     }
 
     /**
@@ -67,20 +78,25 @@ public class MusicCategoryFragment extends Fragment {
         final String category_label = getArguments().getString("Sound_category");
 
         if (category_label.equals(context.getString(R.string.all_sounds_label))) {
-            textView.setText(category_label);
+            musicButtonView.setText(category_label);
         } else if (category_label.equals(context.getString(R.string.animal_sounds_label))) {
-            textView.setText(category_label);
+            musicButtonView.setText(category_label);
         } else if (category_label.equals(context.getString(R.string.nature_sounds_label))) {
-            textView.setText(category_label);
+            musicButtonView.setText(category_label);
         } else if (category_label.equals(context.getString(R.string.water_sounds_label))) {
-            textView.setText(category_label);
+            musicButtonView.setText(category_label);
         } else if (category_label.equals(context.getString(R.string.music_sounds_label))) {
-            textView.setText(category_label);
+            musicButtonView.setText(category_label);
         } else if (category_label.equals(context.getString(R.string.city_sounds_label))) {
-            textView.setText(category_label);
+            musicButtonView.setText(category_label);
         } else {
             //If I am being used for something else and haven't been informed of that, then I shouldn't be created at all!
             throw new RuntimeException("ERROR: tab fragment created for undetermined purpose.");
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        musicButtonView.playPause();
     }
 }
