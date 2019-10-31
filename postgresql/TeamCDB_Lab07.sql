@@ -55,8 +55,12 @@ INSERT INTO Favorite VALUES (1, 2);
 INSERT INTO History VALUES (1, 1, 1, '2019-10-17 19:01:54', '2019-10-17 19:02:32', 5);
 INSERT INTO History VALUES (2, 2, 2, '2019-10-18 23:59:01', '2019-10-19 00:05:13', 1);
 
-
-
+--Example queries
+--Newest history records first
+--SELECT * FROM History ORDER BY timeStart DESC;
+--SELECT count(*) FROM History;
+--SELECT * FROM Favorites;
+--SELECT count(*) FROM Favorites;
 
 
 
