@@ -56,6 +56,7 @@ public class BreatheActivity extends AppCompatActivity {
 
         //TODO: get different audio? make customizable/let user remember combinations they liked?
         //TODO: make an onResume instead of just stopping onPause?
+        //TODO: make videos only play once per cycle
 
         //choose next audio to play...
         Random random = new Random();
