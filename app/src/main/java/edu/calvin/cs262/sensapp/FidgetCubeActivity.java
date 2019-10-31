@@ -5,13 +5,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
 public class FidgetCubeActivity extends AppCompatActivity implements View.OnClickListener {
     private String[] face_names = {"buttons", "switch", "joystick"};
-    private int face_idx;
     private Context context;
     private PagerAdapter adapter;
     private ViewPager viewPager;
@@ -25,15 +23,15 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
 
         context = getApplicationContext();
 
-        face_idx = 0;
-
         viewPager = findViewById(R.id.pager);
         adapter = new PagerAdapter(getSupportFragmentManager(), face_names.length, context);
         viewPager.setAdapter(adapter);
 
         nextButton = findViewById(R.id.ButtonRight);
+        nextButton.bringToFront();
         nextButton.setOnClickListener(this);
         previousButton = findViewById(R.id.ButtonLeft);
+        previousButton.bringToFront();
         previousButton.setOnClickListener(this);
     }
 
@@ -43,13 +41,13 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
      */
     @Override
     public void onClick(View view) {
+        int idx = viewPager.getCurrentItem();
         if (view == nextButton) {
-            face_idx = (face_idx + 1) % face_names.length;
+            viewPager.setCurrentItem((idx + 1) % face_names.length);
         }
         else if (view == previousButton) {
-            face_idx = (face_idx - 1) % face_names.length;
+            // Add length to prevent negative indexes (because % can return a negative number)
+            viewPager.setCurrentItem((idx - 1 + face_names.length) % face_names.length);
         }
-        Log.d("FidgetCube", Integer.toString(face_idx));
-        viewPager.setCurrentItem(face_idx);
     }
 }

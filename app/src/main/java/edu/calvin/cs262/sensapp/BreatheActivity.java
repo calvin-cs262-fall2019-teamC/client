@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import java.util.List;
 import java.util.Random;
 
 public class BreatheActivity extends AppCompatActivity {
@@ -21,6 +22,15 @@ public class BreatheActivity extends AppCompatActivity {
     //keep track of previous audio
     public int previousAudio;
 
+    //create list for videos
+    public int[] videoList;
+
+    //keep track of previous video
+    public int previousVideo;
+
+    //initializes a videoView
+    public VideoView simpleVideoView;
+
     /**
      * Creates the breathe activity in which the user will be guided to breathe deeply.
      *
@@ -31,12 +41,7 @@ public class BreatheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breathe);
 
-        //initialize the videoView and its mediaController
-        VideoView simpleVideoView = findViewById(R.id.videoView);
-        simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.breathe_video_trees01));
 
-        MediaController mediaController = new MediaController(this);
-        simpleVideoView.setMediaController(mediaController);
 
         //initialize list of audio files (from raw)
         audioList = new int[]{R.raw.breathe_audio_waves_short,
@@ -44,8 +49,24 @@ public class BreatheActivity extends AppCompatActivity {
                               R.raw.breathe_audio_wind_short
                               };
 
+        //initialize list of video files (from raw)
+        videoList = new int[]{R.raw.breathe_video_trees01,
+                              R.raw.breathe_video_ducks06,
+                              R.raw.breathe_video_cars04
+                              };
+
+        //initialize the videoView and its mediaController
+        simpleVideoView = findViewById(R.id.videoView);
+        chooseVideo();
+        //MediaController mediaController = new MediaController(this);
+        //simpleVideoView.setMediaController(mediaController);
+
+
         //initialize the musicPlayer
         chooseAudio();
+
+        //initialize the videoPlayer
+        chooseVideo();
 
         //start video and music
         simpleVideoView.start();
@@ -78,6 +99,29 @@ public class BreatheActivity extends AppCompatActivity {
                 audioPlayer.reset();
                 chooseAudio();
                 audioPlayer.start();
+            }
+        });
+    }
+
+    public void chooseVideo(){
+        //choose next video to play...
+        Random random = new Random();
+        int randInt = random.nextInt(videoList.length);
+
+        //...with no <U>consecutive</U> replays of one video
+        while(randInt == previousVideo){
+            randInt = random.nextInt(videoList.length);
+        }
+        //simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.breathe_video_trees01));
+        simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + videoList[randInt]));
+        previousVideo = randInt;
+
+        //when the current video is finished, start playing a new video
+        simpleVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                chooseVideo();
+                simpleVideoView.start();
             }
         });
     }
