@@ -20,6 +20,7 @@
     <string name="water_sounds_label">Water</string>
     <string name="music_sounds_label">Music</string>
     <string name="city_sounds_label">City</string>
-
+    <string name="title_activity_settings">Settings</string>
+    <string name="history_header">History</string>
 
 </resources>
