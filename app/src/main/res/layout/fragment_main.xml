@@ -155,12 +155,16 @@
 
                 <ImageButton
                     android:id="@+id/activity_three_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="149dp"
+                    android:layout_height="114dp"
                     android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="false"
                     android:contentDescription="@string/activity_button_description"
+                    android:cropToPadding="false"
                     android:onClick="launchBubblesActivity"
-                    app:srcCompat="@color/colorPrimary" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bubbles"
+                    tools:src="@drawable/bubbles" />
 
                 <LinearLayout
                     android:id="@+id/title_favorite_three"

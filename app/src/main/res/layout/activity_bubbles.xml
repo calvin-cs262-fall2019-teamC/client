@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BubblesActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="@drawable/forest"
+    android:clickable="false"
+    android:hapticFeedbackEnabled="true"
+    tools:context=".BubblesActivity"/>
