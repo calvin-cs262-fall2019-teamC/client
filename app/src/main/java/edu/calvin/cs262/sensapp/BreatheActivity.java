@@ -84,7 +84,7 @@ public class BreatheActivity extends AppCompatActivity {
 
     public void chooseAudio(){
 
-
+        //TODO: add documentation and make it so no video plays twice consecutively
 
         //if all videos have been played, reset the list
         if(audioRecordCount == audioRecordList.length){
