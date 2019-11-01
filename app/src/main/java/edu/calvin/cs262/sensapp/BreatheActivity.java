@@ -19,8 +19,11 @@ public class BreatheActivity extends AppCompatActivity {
     //create list for audio
     public int[] audioList;
 
-    //keep track of previous audio
-    public int previousAudio;
+    //create companion history list to not allow the same audio file to be played twice
+    public int[] audioRecordList;
+
+    //count how full audioRecordList is
+    public int audioRecordCount = 0;
 
     //create list for videos
     public int[] videoList;
@@ -49,6 +52,12 @@ public class BreatheActivity extends AppCompatActivity {
                               R.raw.breathe_audio_wind_short
                               };
 
+        //initialize audioRecordList
+        audioRecordList = new int[audioList.length];
+        for(int i=0; i<audioList.length; i++){
+            audioRecordList[i] = 0;
+        }
+
         //initialize list of video files (from raw)
         videoList = new int[]{R.raw.breathe_video_trees01,
                               R.raw.breathe_video_ducks06,
@@ -75,22 +84,35 @@ public class BreatheActivity extends AppCompatActivity {
 
     public void chooseAudio(){
 
-        //TODO: get different audio? make customizable/let user remember combinations they liked?
-        //TODO: make an onResume instead of just stopping onPause?
-        //TODO: make videos only play once per cycle
+
+
+        //if all videos have been played, reset the list
+        if(audioRecordCount == audioRecordList.length){
+            for(int i=0; i<audioList.length; i++){
+                audioRecordList[i] = 0;
+            }
+        audioRecordCount = 0;
+        }
 
         //choose next audio to play...
+        //random.nextInt(xxx) limits to length of audioList
         Random random = new Random();
         int randInt = random.nextInt(audioList.length);
 
-        //...with no <U>consecutive</U> replays of one audio
-        while(randInt == previousAudio){
-            randInt = random.nextInt(audioList.length);
+        //get okay from other array (check if audio has been played already)
+        while(audioRecordList[randInt] == 1){
+            if(randInt != audioRecordList.length - 1) {
+                randInt += 1;
+            } else {randInt = 0;}
+            //randInt = random.nextInt(audioList.length);
         }
 
         //set the selected audio and update previousAudio tracker
         audioPlayer = MediaPlayer.create(this, audioList[randInt]);
-        previousAudio = randInt;
+
+        //make sure current video doesn't get played again
+        audioRecordList[randInt] = 1;
+        audioRecordCount += 1;
 
         //when the current audio is finished, start playing a new audio
         audioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
