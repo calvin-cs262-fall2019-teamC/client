@@ -124,7 +124,8 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_fidget_description"
                         android:onClick="launchFidgetCubeActivity"
-                        app:srcCompat="@color/colorPrimaryDark" />
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/fidget_cube" />
 
                     <ImageButton
                         android:id="@+id/info_two_button"
@@ -219,7 +220,8 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_button_description"
                         android:onClick="launchBubblesActivity"
-                        app:srcCompat="@color/colorPrimary" />
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/bubbles" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -282,7 +284,8 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_button_description"
                         android:onClick="launchStoriesActivity"
-                        app:srcCompat="@color/colorAccent" />
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/stories" />
 
                     <ImageButton
                         android:id="@+id/info_four_button"
@@ -377,7 +380,8 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_button_description"
                         android:onClick="launchAnimalsActivity"
-                        app:srcCompat="@android:color/holo_orange_dark" />
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/animals" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -440,7 +444,8 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_button_description"
                         android:onClick="launchMusicActivity"
-                        app:srcCompat="@android:color/holo_blue_bright" />
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/music" />
 
                     <ImageButton
                         android:id="@+id/info_six_button"
