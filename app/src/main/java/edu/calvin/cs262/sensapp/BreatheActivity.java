@@ -67,9 +67,14 @@ public class BreatheActivity extends AppCompatActivity {
         }
 
         //initialize list of video files (from raw)
-        videoList = new int[]{R.raw.breathe_video_trees01,
+        videoList = new int[]{R.raw.breathe_video_ducks04,
+                              R.raw.breathe_video_ducks05,
                               R.raw.breathe_video_ducks06,
-                              R.raw.breathe_video_cars04
+                              R.raw.breathe_video_ducks07,
+                              R.raw.breathe_video_trees03,
+                              R.raw.breathe_video_trees04,
+                              R.raw.breathe_video_trees06,
+                              R.raw.breathe_video_flowers01
                               };
 
         //initialize videoRecordList - remembers which videos have played already
