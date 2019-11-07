@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Context context = this;
     private String favorite = "Breathe";
     protected BottomNavigationView navigation_bar;
+    public static final String EXTRA_MESSAGE =
+            "edu.calvin.cs262.sensapp.extra.MESSAGE";
 
     /**
      * Creates the main activity from which other activities will be selected.
@@ -151,6 +152,18 @@ public class MainActivity extends AppCompatActivity {
     public void launchFidgetCubeActivity(View view) {
         Log.d("MainActivity", "activity launching FidgetCubeActivity");
         Intent intent = new Intent(this, FidgetCubeActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Launches the information page activity when the info button is pressed.
+     *
+     * @param view The current View object (the info button).
+     */
+    public void launchInformation(View view) {
+        Intent intent = new Intent(this, InformationActivity.class);
+        String message = view.getTag().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 
