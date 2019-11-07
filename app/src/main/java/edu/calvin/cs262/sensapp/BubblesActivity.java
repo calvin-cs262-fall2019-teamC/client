@@ -16,7 +16,7 @@ public class BubblesActivity extends AppCompatActivity {
 
     //TODO Initialize a function that counts how many bubbles are on the screen at any given time
     int countBubbles(){
-        
+        return bubbleCount;
     }
 
     //TODO This function will create bubbles, one bubble at a time, an will randomize trajectory
