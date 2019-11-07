@@ -6,8 +6,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
+/**
+ * Activity to display all settings of app.
+ */
 public class SettingsActivity extends AppCompatActivity {
 
+    /**
+     * Initialize the Settings Fragment in the Settings Activity.
+     *
+     * @param savedInstanceState The saved Bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +30,17 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * The Settings Fragment to display the necessary settings.
+     */
     public static class SettingsFragment extends PreferenceFragmentCompat {
+
+        /**
+         * Initialize the Settings Activity with the root preferences.
+         *
+         * @param savedInstanceState The saved Bundle.
+         * @param rootKey A String of where to set Settings.
+         */
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);

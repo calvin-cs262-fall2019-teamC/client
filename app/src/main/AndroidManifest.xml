@@ -13,7 +13,11 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings">
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.sensapp.MainActivity" />
         </activity>
         <activity
             android:name=".BreatheActivity"

@@ -17,13 +17,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/history_header">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="history_preference"
+        android:title="Log satisfaction after activity" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="history_preference"
-            android:title="Manual" />
-
-    </PreferenceCategory>
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="dark_preference"
+        android:title="Dark mode" />
 
 </PreferenceScreen>
