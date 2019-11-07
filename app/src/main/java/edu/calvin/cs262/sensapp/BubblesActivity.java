@@ -6,13 +6,18 @@ import android.os.Bundle;
 
 public class BubblesActivity extends AppCompatActivity {
 
+    public int bubbleCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bubbles);
     }
 
-    //TODO Initialize a count variable that counts how many bubbles are on the screen at any given time
+    //TODO Initialize a function that counts how many bubbles are on the screen at any given time
+    int countBubbles(){
+        
+    }
 
     //TODO This function will create bubbles, one bubble at a time, an will randomize trajectory
     void createBubbles(){
