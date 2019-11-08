@@ -78,17 +78,23 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
         final String category_label = getArguments().getString("Sound_category");
 
         if (category_label.equals(context.getString(R.string.all_sounds_label))) {
-            musicButtonView.setText(category_label);
+            musicButtonView.makeMusicButton(R.drawable.cat,
+                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
         } else if (category_label.equals(context.getString(R.string.animal_sounds_label))) {
-            musicButtonView.setText(category_label);
+            musicButtonView.makeMusicButton(R.drawable.cat,
+                    R.raw.cat_purring, context.getString(R.string.animal_sounds_label));
         } else if (category_label.equals(context.getString(R.string.nature_sounds_label))) {
-            musicButtonView.setText(category_label);
+            musicButtonView.makeMusicButton(R.drawable.forest,
+                    R.raw.forest, context.getString(R.string.nature_sounds_label));
         } else if (category_label.equals(context.getString(R.string.water_sounds_label))) {
-            musicButtonView.setText(category_label);
+            musicButtonView.makeMusicButton(R.drawable.cat,
+                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
         } else if (category_label.equals(context.getString(R.string.music_sounds_label))) {
-            musicButtonView.setText(category_label);
+            musicButtonView.makeMusicButton(R.drawable.cat,
+                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
         } else if (category_label.equals(context.getString(R.string.city_sounds_label))) {
-            musicButtonView.setText(category_label);
+            musicButtonView.makeMusicButton(R.drawable.cat,
+                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
         } else {
             //If I am being used for something else and haven't been informed of that, then I shouldn't be created at all!
             throw new RuntimeException("ERROR: tab fragment created for undetermined purpose.");

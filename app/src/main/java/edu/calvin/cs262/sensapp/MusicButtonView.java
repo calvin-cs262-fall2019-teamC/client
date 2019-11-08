@@ -3,7 +3,6 @@ package edu.calvin.cs262.sensapp;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 
 public class MusicButtonView extends Button {
@@ -12,23 +11,24 @@ public class MusicButtonView extends Button {
 
     public MusicButtonView(Context context) {
         super(context);
-        makeMusicButton(context);
+        my_context = context;
     }
 
     public MusicButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        makeMusicButton(context);
+        my_context = context;
     }
 
     public MusicButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        makeMusicButton(context);
+        my_context = context;
     }
 
-    private void makeMusicButton(Context context) {
-        my_context = context;
-        mediaPlayer = MediaPlayer.create(context, R.raw.forest);
+    public void makeMusicButton(int drawableID, int audioId, String label) {
+        mediaPlayer = MediaPlayer.create(my_context, audioId);
         mediaPlayer.setLooping(true);
+        this.setCompoundDrawablesWithIntrinsicBounds(0, drawableID, 0, 0);
+        this.setText(label);
     }
 
     public void playPause() {
@@ -37,5 +37,9 @@ public class MusicButtonView extends Button {
         } else {
             mediaPlayer.start();
         }
+    }
+
+    public void stopAudio() {
+        mediaPlayer.stop();
     }
 }
