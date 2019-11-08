@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 public class MusicCategoryFragment extends Fragment implements MusicButtonView.OnClickListener {
     private Context context;
     private MusicButtonView musicButtonView;
+    private RecyclerView recyclerView;
 
     public MusicCategoryFragment() {
         // must have an empty public constructor, or else get the error "MusicCategoryFragment must be a public static class to be  properly recreated from instance state"
@@ -50,6 +52,7 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
         View frag_layout = inflater.inflate(R.layout.fragment_music_category, container, false);
         //build the RecyclerView for this fragment and provide its adapter
         musicButtonView = frag_layout.findViewById(R.id.textView);
+        recyclerView = frag_layout.findViewById(R.id.musicButtonHolder);
         getData();
 
         return frag_layout;

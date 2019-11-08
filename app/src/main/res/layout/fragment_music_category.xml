@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.recyclerview.widget.RecyclerView-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:id="@+id/tab_recycler_view"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:scrollbars="vertical">-->
 
-<!--</androidx.recyclerview.widget.RecyclerView>-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
@@ -17,7 +10,11 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Hello World!"
-        android:drawableLeft="@drawable/forest"/>
+        android:layout_weight="1" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/musicButtonHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"/>
 </LinearLayout>
