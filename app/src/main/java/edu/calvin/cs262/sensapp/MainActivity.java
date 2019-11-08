@@ -9,12 +9,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * The Main Activity of the app which renders the activities, history, and favorites fragments.
+ */
 public class MainActivity extends AppCompatActivity {
     // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
     private Context context = this;
@@ -77,6 +81,42 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, new MainFragment());
         transaction.commit();
+    }
+
+    /**
+     * Setup the top menu bar.
+     *
+     * @param menu The Menu to inflate.
+     * @return true.
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    /**
+     * Handle selection from options menu. Likely only for settings.
+     *
+     * @param item The options MenuItem selected.
+     * @return A true boolean if terminated as expected.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this,
+                        SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                // Do nothing
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
