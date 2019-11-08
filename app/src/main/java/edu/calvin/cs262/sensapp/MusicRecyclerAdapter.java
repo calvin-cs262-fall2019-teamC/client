@@ -32,7 +32,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         final boolean shouldAttachtoParentImmediately = false;
         View view = inflater.inflate(layout, parent, shouldAttachtoParentImmediately);
-        return new MusicButtonHolder(view, );
+        return null;  // TODO: return new MusicButtonView
     }
 
     @Override
