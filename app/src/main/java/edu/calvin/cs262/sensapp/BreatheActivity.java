@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.MediaController;
 import android.widget.VideoView;
 
-import java.util.List;
 import java.util.Random;
 
 public class BreatheActivity extends AppCompatActivity {
@@ -55,9 +53,12 @@ public class BreatheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_breathe);
 
         //initialize list of audio files (from raw)
-        audioList = new int[]{R.raw.breathe_audio_waves_short,
-                              R.raw.breathe_audio_zymbel_short,
-                              R.raw.breathe_audio_wind_short
+        audioList = new int[]{R.raw.breathe_audio_oceanwaves,
+                              R.raw.breathe_audio_zymbel,
+                              R.raw.breathe_audio_wind,
+                              R.raw.breathe_audio_crickets,
+                              R.raw.breathe_audio_rainforest,
+                              R.raw.breathe_audio_waterfall
                               };
 
         //initialize audioRecordList - remembers which audios have played already
