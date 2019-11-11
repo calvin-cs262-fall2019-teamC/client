@@ -20,7 +20,6 @@
             android:layout_margin="30dp"
             android:contentDescription="@string/activity_button_description"
             android:onClick="launchBreatheActivity"
-            android:scaleType="fitCenter"
             app:srcCompat="@drawable/breathe" />
 
         <ImageButton
@@ -31,7 +30,7 @@
             android:layout_margin="30dp"
             android:contentDescription="@string/activity_button_description"
             android:onClick="launchBubblesActivity"
-            app:srcCompat="@color/colorPrimary" />
+            app:srcCompat="@drawable/bubbles" />
     </LinearLayout>
 
 </FrameLayout>
