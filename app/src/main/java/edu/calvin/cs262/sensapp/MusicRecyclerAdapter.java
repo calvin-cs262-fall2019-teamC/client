@@ -1,7 +1,6 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,42 +13,53 @@ import java.util.List;
 /**
  * A PagerAdapter for {@link MusicCategoryFragment}, so we can navigate to different pages of music categories
  */
-public class MusicRecyclerAdapter extends RecyclerView.Adapter {
+public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdapter.MusicButtonHolder> {
     private Context context;
-    private List<MusicButtonView> musicButtonViewList;
+    private List<MusicButtonData> musicButtonData;
 
-    public MusicRecyclerAdapter(@NonNull Context app_context, @NonNull List<MusicButtonView> musicbutton_list) {
+//    public interface MusicButtonClickInterface {
+//
+//    }
+
+    public MusicRecyclerAdapter(@NonNull Context app_context, @NonNull List<MusicButtonData> musicbuttondata_list) {
         super();
         context = app_context;
-        musicButtonViewList = musicbutton_list;
+        musicButtonData = musicbuttondata_list;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context parent_context = parent.getContext();
+    public MusicButtonHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout = R.layout.music_button;
         LayoutInflater inflater = LayoutInflater.from(context);
         final boolean shouldAttachtoParentImmediately = false;
         View view = inflater.inflate(layout, parent, shouldAttachtoParentImmediately);
-        return null;  // TODO: return new MusicButtonView
+        return new MusicButtonHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MusicButtonHolder holder, int position) {
+        MusicButtonData data = musicButtonData.get(position);
+        holder.makeMusicButton(data.getDrawableID(), data.getAudioID(), data.getLabel());
     }
 
-    private class MusicButtonHolder extends RecyclerView.ViewHolder {
+    public class MusicButtonHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private MusicButtonView musicButtonView;
 
-        public MusicButtonHolder(@NonNull View itemView, int drawableID, int audioID, String label) {
+        public MusicButtonHolder(@NonNull View itemView) {
             super(itemView);
             musicButtonView = new MusicButtonView(context);
+            musicButtonView.setOnClickListener(this);
+        }
+
+        public void makeMusicButton(int drawableID, int audioID, String label) {
             musicButtonView.makeMusicButton(drawableID, audioID, label);
         }
 
-        // TODO: onClick
+        @Override
+        public void onClick(View view) {
+            musicButtonView.playPause();
+        }
     }
 
     @Override
@@ -57,7 +67,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter {
         return 0;
     }
 
-    public void setMusicButtonViewList(List<MusicButtonView> musicbutton_list) {
-        musicButtonViewList = musicbutton_list;
+    public void setMusicButtonViewList(List<MusicButtonData> musicbuttondata_list) {
+        musicButtonData = musicbuttondata_list;
     }
 }
