@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -17,6 +19,7 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
     private Context context;
     private MusicButtonView musicButtonView;
     private RecyclerView recyclerView;
+    private MusicRecyclerAdapter musicRecyclerAdapter;
 
     public MusicCategoryFragment() {
         // must have an empty public constructor, or else get the error "MusicCategoryFragment must be a public static class to be  properly recreated from instance state"
@@ -58,50 +61,47 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
         return frag_layout;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        musicButtonView.setOnClickListener(this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        musicButtonView.setOnClickListener(null);  // stop listening for button clicks because the button can't be clicked
-    }
-
     /**
      * examine which instance of MusicCategoryFragment this is, and select which data to use.
      *
      * @author cmd16
      */
     private synchronized void getData() {
-        //check which tab I am based on the tab name and what PagerAdapter.java told me I am
+
+        List<MusicButtonData> list;
 
         final String category_label = getArguments().getString("Sound_category");
 
         if (category_label.equals(context.getString(R.string.all_sounds_label))) {
-            musicButtonView.makeMusicButton(R.drawable.cat,
-                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+//            musicButtonView.makeMusicButton(R.drawable.cat,
+//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+            // TODO: fetch MusicButtonData from a factory
         } else if (category_label.equals(context.getString(R.string.animal_sounds_label))) {
-            musicButtonView.makeMusicButton(R.drawable.cat,
-                    R.raw.cat_purring, context.getString(R.string.animal_sounds_label));
+//            musicButtonView.makeMusicButton(R.drawable.cat,
+//                    R.raw.cat_purring, context.getString(R.string.animal_sounds_label));
+            // TODO: fetch MusicButtonData from a factory
         } else if (category_label.equals(context.getString(R.string.nature_sounds_label))) {
-            musicButtonView.makeMusicButton(R.drawable.forest,
-                    R.raw.forest, context.getString(R.string.nature_sounds_label));
+//            musicButtonView.makeMusicButton(R.drawable.forest,
+//                    R.raw.forest, context.getString(R.string.nature_sounds_label));
+            // TODO: fetch MusicButtonData from a factory
         } else if (category_label.equals(context.getString(R.string.water_sounds_label))) {
-            musicButtonView.makeMusicButton(R.drawable.cat,
-                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+//            musicButtonView.makeMusicButton(R.drawable.cat,
+//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+            // TODO: fetch MusicButtonData from a factory
         } else if (category_label.equals(context.getString(R.string.music_sounds_label))) {
-            musicButtonView.makeMusicButton(R.drawable.cat,
-                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+//            musicButtonView.makeMusicButton(R.drawable.cat,
+//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+            // TODO: fetch MusicButtonData from a factory
         } else if (category_label.equals(context.getString(R.string.city_sounds_label))) {
-            musicButtonView.makeMusicButton(R.drawable.cat,
-                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+//            musicButtonView.makeMusicButton(R.drawable.cat,
+//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
+            // TODO: fetch MusicButtonData from a factory
         } else {
             //If I am being used for something else and haven't been informed of that, then I shouldn't be created at all!
             throw new RuntimeException("ERROR: tab fragment created for undetermined purpose.");
         }
+
+        musicRecyclerAdapter = MusicRecyclerAdapter(context, new List<MusicButtonData>);
     }
 
     @Override
