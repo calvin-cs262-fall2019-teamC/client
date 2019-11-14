@@ -55,6 +55,7 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
 
         buttonSoundPlayer.start();
 
+        // https://stackoverflow.com/questions/2614719/how-do-i-get-the-sharedpreferences-from-a-preferenceactivity-in-android
         // Vibrate if the setting is true
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         boolean vibrate = prefs.getBoolean("vibrate", true);
