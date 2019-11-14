@@ -1,10 +1,12 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +45,7 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     * onClick for the switch so we can play the sound and do the animation
+     * onClick for the switch so we can play the sound, vibrate, and do the animation
      * @param view
      */
     @Override
@@ -53,14 +55,22 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
 
         vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
 
+        // Vibrate only if the setting is true
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        boolean vibrate = prefs.getBoolean("vibrate", true);
+
         if (switchOn) {
-            vibrator.vibrate(200);
+            if (vibrate) {
+                vibrator.vibrate(200);
+            }
             switchDownPlayer.start();
             switchImage.setBackgroundResource(R.drawable.switch_animation_off);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
         }
         else {
-            vibrator.vibrate(400);
+            if (vibrate) {
+                vibrator.vibrate(400);
+            }
             switchUpPlayer.start();
             switchImage.setBackgroundResource(R.drawable.switch_animation_on);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
