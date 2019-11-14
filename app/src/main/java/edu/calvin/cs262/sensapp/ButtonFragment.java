@@ -3,6 +3,7 @@ package edu.calvin.cs262.sensapp;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +14,13 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import static android.content.Context.VIBRATOR_SERVICE;
+
 public class ButtonFragment extends Fragment implements View.OnClickListener {
     private Context context = null;
     public MediaPlayer buttonSoundPlayer;
+
+    Vibrator vibrator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,5 +49,8 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         buttonSoundPlayer.start();
+
+        vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.vibrate(300);
     }
 }

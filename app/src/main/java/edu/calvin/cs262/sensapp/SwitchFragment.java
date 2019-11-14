@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
     public MediaPlayer switchUpPlayer;
     public MediaPlayer switchDownPlayer;
     private Context context = null;
+
+    Vibrator vibrator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,12 +50,17 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         SwitchAnimation.start();
         switchOn = ! switchOn;
+
+        vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+
         if (switchOn) {
+            vibrator.vibrate(200);
             switchDownPlayer.start();
             switchImage.setBackgroundResource(R.drawable.switch_animation_off);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
         }
         else {
+            vibrator.vibrate(400);
             switchUpPlayer.start();
             switchImage.setBackgroundResource(R.drawable.switch_animation_on);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
