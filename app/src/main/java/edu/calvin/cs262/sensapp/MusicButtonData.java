@@ -11,6 +11,12 @@ public class MusicButtonData {
         label = "";
     }
 
+    public MusicButtonData(int draw, int audio, String lbl) {
+        drawableID = draw;
+        audioID = audio;
+        label = lbl;
+    }
+
     public int getDrawableID() {
         return drawableID;
     }

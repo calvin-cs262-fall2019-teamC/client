@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,9 +16,8 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MusicCategoryFragment extends Fragment implements MusicButtonView.OnClickListener {
+public class MusicCategoryFragment extends Fragment{
     private Context context;
-    private MusicButtonView musicButtonView;
     private RecyclerView recyclerView;
     private MusicRecyclerAdapter musicRecyclerAdapter;
 
@@ -35,9 +35,7 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
         super.onCreate(savedInstanceState);
         //get the necessary resources to check which tab I am.
         context = getContext();
-
-        //TODO: build the adapter for this fragment's recycler view
-
+        getData();
     }
 
     /**
@@ -54,9 +52,9 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
         // Inflate the layout for this fragment
         View frag_layout = inflater.inflate(R.layout.fragment_music_category, container, false);
         //build the RecyclerView for this fragment and provide its adapter
-        musicButtonView = frag_layout.findViewById(R.id.textView);
         recyclerView = frag_layout.findViewById(R.id.musicButtonHolder);
-        getData();
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(musicRecyclerAdapter);
 
         return frag_layout;
     }
@@ -68,44 +66,12 @@ public class MusicCategoryFragment extends Fragment implements MusicButtonView.O
      */
     private synchronized void getData() {
 
-        List<MusicButtonData> list;
-
         final String category_label = getArguments().getString("Sound_category");
 
-        if (category_label.equals(context.getString(R.string.all_sounds_label))) {
-//            musicButtonView.makeMusicButton(R.drawable.cat,
-//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
-            // TODO: fetch MusicButtonData from a factory
-        } else if (category_label.equals(context.getString(R.string.animal_sounds_label))) {
-//            musicButtonView.makeMusicButton(R.drawable.cat,
-//                    R.raw.cat_purring, context.getString(R.string.animal_sounds_label));
-            // TODO: fetch MusicButtonData from a factory
-        } else if (category_label.equals(context.getString(R.string.nature_sounds_label))) {
-//            musicButtonView.makeMusicButton(R.drawable.forest,
-//                    R.raw.forest, context.getString(R.string.nature_sounds_label));
-            // TODO: fetch MusicButtonData from a factory
-        } else if (category_label.equals(context.getString(R.string.water_sounds_label))) {
-//            musicButtonView.makeMusicButton(R.drawable.cat,
-//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
-            // TODO: fetch MusicButtonData from a factory
-        } else if (category_label.equals(context.getString(R.string.music_sounds_label))) {
-//            musicButtonView.makeMusicButton(R.drawable.cat,
-//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
-            // TODO: fetch MusicButtonData from a factory
-        } else if (category_label.equals(context.getString(R.string.city_sounds_label))) {
-//            musicButtonView.makeMusicButton(R.drawable.cat,
-//                    R.raw.cat_purring, context.getString(R.string.all_sounds_label));
-            // TODO: fetch MusicButtonData from a factory
-        } else {
-            //If I am being used for something else and haven't been informed of that, then I shouldn't be created at all!
-            throw new RuntimeException("ERROR: tab fragment created for undetermined purpose.");
+        List<MusicButtonData> list = MusicButtonFactory.getInstance().getMusicButtonData(category_label);
+
+        if (musicRecyclerAdapter == null) {
+            musicRecyclerAdapter = new MusicRecyclerAdapter(context, list);
         }
-
-        musicRecyclerAdapter = MusicRecyclerAdapter(context, new List<MusicButtonData>);
-    }
-
-    @Override
-    public void onClick(View view) {
-        musicButtonView.playPause();
     }
 }

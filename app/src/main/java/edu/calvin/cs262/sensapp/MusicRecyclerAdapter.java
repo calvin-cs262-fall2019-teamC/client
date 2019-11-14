@@ -43,17 +43,17 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
         holder.makeMusicButton(data.getDrawableID(), data.getAudioID(), data.getLabel());
     }
 
-    public class MusicButtonHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MusicButtonHolder extends RecyclerView.ViewHolder implements MusicButtonView.OnClickListener {
         private MusicButtonView musicButtonView;
 
         public MusicButtonHolder(@NonNull View itemView) {
             super(itemView);
-            musicButtonView = new MusicButtonView(context);
+            musicButtonView = itemView.findViewById(R.id.musicButton);
             musicButtonView.setOnClickListener(this);
         }
 
         public void makeMusicButton(int drawableID, int audioID, String label) {
-            musicButtonView.makeMusicButton(drawableID, audioID, label);
+            musicButtonView.makeMusicButton(drawableID, audioID, label, context);
         }
 
         @Override
@@ -64,7 +64,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return 0;
+        return musicButtonData.size();
     }
 
     public void setMusicButtonViewList(List<MusicButtonData> musicbuttondata_list) {

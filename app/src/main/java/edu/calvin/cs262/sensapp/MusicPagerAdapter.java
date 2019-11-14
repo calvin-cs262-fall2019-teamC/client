@@ -45,14 +45,11 @@ public class MusicPagerAdapter extends FragmentStatePagerAdapter {
             case 3:
                 fragment_data.putString("Sound_category", context.getString(R.string.water_sounds_label));
                 break;
-            case 4:
-                fragment_data.putString("Sound_category", context.getString(R.string.music_sounds_label));
-                break;
-            case 5:
-                fragment_data.putString("Sound_category", context.getString(R.string.city_sounds_label));
-                break;
+//            case 4:
+//                fragment_data.putString("Sound_category", context.getString(R.string.music_sounds_label));
+//                break;
             default:
-                throw new RuntimeException("ERROR: unknown tab clicked in Music Activity.");
+                throw new RuntimeException("ERROR: unknown tab clicked in Music Activity: " + position);
         }
         tabOfSounds.setArguments(fragment_data);
         return tabOfSounds;
