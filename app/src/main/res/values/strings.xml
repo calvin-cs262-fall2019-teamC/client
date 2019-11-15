@@ -24,6 +24,7 @@
     <string name="water_sounds_label">Water</string>
     <string name="music_sounds_label">Music</string>
     <string name="city_sounds_label">City</string>
+    
     <!-- Long strings -->
     <string name="activity_one_info">The Breathe activity allows you to watch calming videos (such as trees in the wind) with relaxing background noises (such as water flowing) in a random order.</string>
     <string name="activity_two_info">The Fidget Cube activity allows you to play with a virtual fidget cube that has a switch, buttons, and a joystick accompanied by vibrations and clicking sounds.</string>
