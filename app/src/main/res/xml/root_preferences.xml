@@ -27,4 +27,9 @@
         android:key="dark_preference"
         android:title="Dark mode" />
 
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="vibrate"
+        android:title="Vibration" />
+
 </PreferenceScreen>
