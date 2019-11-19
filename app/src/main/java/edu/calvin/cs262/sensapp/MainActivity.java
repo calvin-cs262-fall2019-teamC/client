@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.room.Database;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,13 +20,15 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.ref.WeakReference;
+
 /**
  * The Main Activity of the app which renders the activities, history, and favorites fragments.
  */
 public class MainActivity extends AppCompatActivity {
     // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
     private Context context = this;
-    private String favorite = "Breathe";
+    private SensappRoomDatabase mSensappRoomDatabase;
     protected BottomNavigationView navigation_bar;
     public static final String EXTRA_MESSAGE =
             "edu.calvin.cs262.sensapp.extra.MESSAGE";
@@ -81,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, new MainFragment());
         transaction.commit();
+
+        // Get the database
+        mSensappRoomDatabase = SensappRoomDatabase.getDatabase(this);
     }
 
     /**
@@ -198,9 +207,59 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view The current View object (the favorite heart button).
      */
-    public void favoriteActivity(View view) {
-        Toast toast = Toast.makeText(context, view.getTag().toString() + " Favorited", Toast.LENGTH_SHORT);
+    public void favoriteActivity(final View view) {
+        Toast toast = Toast.makeText(context, view.getTag().toString() +
+                " Toggled from Favorites", Toast.LENGTH_SHORT);
         toast.show();
-        favorite = view.getTag().toString();
+
+        // Insert and get data using Database Async way
+        // From https://stackoverflow.com/questions/44167111/
+        //          android-room-simple-select-query-cannot-access-database-on-the-main-thread
+        AsyncTask.execute(new Runnable() {
+            /**
+             * Insert or remove the selected Activity from Favorites
+             */
+            @Override
+            public void run() {
+                // Get the ID of the Activity selected
+                int id = SensappRoomDatabase.getDatabase(context).activityDao()
+                        .getActivityIdByName(view.getTag().toString());
+
+                if (SensappRoomDatabase.getDatabase(context)
+                        .favoriteDao().getFavoriteById(id) == null) {
+                    // Add Activity to Favorites
+                    SensappRoomDatabase.getDatabase(context).favoriteDao().insert(new Favorite(id));
+                } else {
+                    // Remove Activity to Favorites
+                    SensappRoomDatabase.getDatabase(context).favoriteDao().deleteFavorite(
+                            SensappRoomDatabase.getDatabase(context)
+                                    .favoriteDao().getFavoriteById(id));
+                }
+            }
+        });
+    }
+
+    /**
+     * Launches the Activity associated with the clicked ImageButton's Tag
+     *
+     * @param view The View clicked (an Activity ImageButton)
+     */
+    public void launcherHandler(View view) {
+        // Idea from https://stackoverflow.com/questions/40205847/
+        //               change-the-onclick-method-of-a-button-programmatically
+        String tag = (String) view.getTag();
+        if (tag.equals(getString(R.string.activity_one_title))) {
+            launchBreatheActivity(view);
+        } else if (tag.equals(getString(R.string.activity_two_title))) {
+            launchFidgetCubeActivity(view);
+        } else if (tag.equals(getString(R.string.activity_three_title))) {
+            launchBubblesActivity(view);
+        } else if (tag.equals(getString(R.string.activity_four_title))) {
+            launchStoriesActivity(view);
+        } else if (tag.equals(getString(R.string.activity_five_title))) {
+            launchAnimalsActivity(view);
+        } else if (tag.equals(getString(R.string.activity_six_title))) {
+            launchMusicActivity(view);
+        }
     }
 }

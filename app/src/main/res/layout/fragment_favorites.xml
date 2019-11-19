@@ -7,38 +7,11 @@
     tools:context=".FavoritesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        tools:listitem="@layout/favorites_items"
+        tools:listitem="@layout/favorite_recycler_item"
         />
-
-    <LinearLayout
-        android:id="@+id/favorites_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/activity_one_button"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="30dp"
-            android:contentDescription="@string/activity_button_description"
-            android:onClick="launchBreatheActivity"
-            app:srcCompat="@drawable/breathe" />
-
-        <ImageButton
-            android:id="@+id/activity_three_button"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="30dp"
-            android:contentDescription="@string/activity_button_description"
-            android:onClick="launchBubblesActivity"
-            app:srcCompat="@drawable/bubbles" />
-    </LinearLayout>
 
 </FrameLayout>

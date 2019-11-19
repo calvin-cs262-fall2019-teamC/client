@@ -56,7 +56,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
         private final FavoriteDao mFavoriteDao;
         private final HistoryDao mHistoryDao;
         int[] historyActivityIds = {1, 4, 6};
-        int[] favoriteActivityIds = {2, 6};
         String[] startTimes = {"2006-06-27 08:00:00", "2013-10-01 08:34:22", "2019-11-02 6:50:19"};
         String[] endTimes = {"2006-06-27 08:30:00", "2013-10-01 08:36:33", "2019-11-02 6:53:42"};
         Integer[] satisfactions = {2, null, 5};
@@ -89,14 +88,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
                 for (int i = 0; i <= activityTitles.length - 1; i++) {
                     Activity activity = new Activity(0, activityTitles[i]);
                     mActivityDao.insert(activity);
-                }
-            }
-
-            // If we have no favorites, then create the initial list of favorites
-            if (mFavoriteDao.getAnyFavorite().length < 1) {
-                for (int i = 0; i <= favoriteActivityIds.length - 1; i++) {
-                    Favorite favorite = new Favorite(favoriteActivityIds[i]);
-                    mFavoriteDao.insert(favorite);
                 }
             }
 

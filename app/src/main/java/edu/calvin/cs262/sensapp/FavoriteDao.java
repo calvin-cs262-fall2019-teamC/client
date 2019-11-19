@@ -31,12 +31,18 @@ public interface FavoriteDao {
     @Query("SELECT * from favorite_table LIMIT 1")
     Favorite[] getAnyFavorite();
 
+    // Get one Favorite based on a given activityID
+    @Query("SELECT * FROM favorite_table WHERE activityId = :id LIMIT 1")
+    Favorite getFavoriteById(int id);
+
     // Delete a Favorite
     @Delete
     void deleteFavorite(Favorite favorite);
 
+    /*  TODO: Necessary?
     // Get all Activities which a are referenced by Favorites
     @Query("SELECT * FROM activity_table INNER JOIN favorite_table ON " +
             "activity_table.id = favorite_table.activityId")
     List<Activity> getFavoritedActivites();
+     */
 }

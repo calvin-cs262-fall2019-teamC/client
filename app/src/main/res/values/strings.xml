@@ -33,4 +33,5 @@
     <string name="activity_four_info">The Stories activity allows you to listen to popular children\'s stories (such as Goldilocks and the Three Bears) read soothingly with appropriate background imagery.</string>
     <string name="activity_five_info">The Animals activity allows you to virtually pet animals (such as horses) who will respond with their respective animal call.</string>
     <string name="activity_six_info">The Music activity allows you to select and listen to relaxing minimal music on a loop.</string>
+    <string name="no_favorite">No favorites found</string>
 </resources>
