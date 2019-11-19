@@ -15,14 +15,13 @@ import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 
 public class SwitchFragment extends Fragment implements View.OnClickListener {
-    private boolean switchOn = false;
-    AnimationDrawable SwitchAnimation;
-    private ImageView switchImage;
     public MediaPlayer switchUpPlayer;
     public MediaPlayer switchDownPlayer;
-    private Context context = null;
-
+    AnimationDrawable SwitchAnimation;
     Vibrator vibrator;
+    private boolean switchOn = false;
+    private ImageView switchImage;
+    private Context context = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,12 +45,13 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
 
     /**
      * onClick for the switch so we can play the sound, vibrate, and do the animation
-     * @param view
+     *
+     * @param view The View clicked
      */
     @Override
     public void onClick(View view) {
         SwitchAnimation.start();
-        switchOn = ! switchOn;
+        switchOn = !switchOn;
 
         vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -67,8 +67,7 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
             switchDownPlayer.start();
             switchImage.setBackgroundResource(R.drawable.switch_animation_off);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
-        }
-        else {
+        } else {
             if (vibrate) {
                 vibrator.vibrate(400);
             }

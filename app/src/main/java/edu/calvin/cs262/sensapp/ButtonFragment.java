@@ -3,28 +3,21 @@ package edu.calvin.cs262.sensapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.media.audiofx.Equalizer;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.provider.Settings;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-import android.preference.PreferenceManager;
 
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static android.content.Context.VIBRATOR_SERVICE;
-
 public class ButtonFragment extends Fragment implements View.OnClickListener {
-    private Context context = null;
     public MediaPlayer buttonSoundPlayer;
-
     Vibrator vibrator;
+    private Context context = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +41,8 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
 
     /**
      * onClick for the buttons so we can play sound and vibrate when button is clicked.
-     * @param view
+     *
+     * @param view The View clicked
      */
     @Override
     public void onClick(View view) {
@@ -61,6 +55,7 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
         boolean vibrate = prefs.getBoolean("vibrate", true);
         if (vibrate) {
             vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+            assert vibrator != null;
             vibrator.vibrate(300);
         }
     }

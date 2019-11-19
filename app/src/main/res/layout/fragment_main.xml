@@ -46,7 +46,7 @@
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
                         android:src="@drawable/ic_info"
-                        android:tag="@string/activity_one_title"/>
+                        android:tag="@string/activity_one_title" />
 
                     <ImageButton
                         android:id="@+id/activity_one_button"
@@ -63,8 +63,8 @@
                     android:id="@+id/title_favorite_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="end">
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
                     <!--
                     Tag used to store activity title associated with this favorite button
@@ -137,15 +137,15 @@
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
                         android:src="@drawable/ic_info"
-                        android:tag="@string/activity_two_title"/>
+                        android:tag="@string/activity_two_title" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/title_favorite_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="start">
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/activity_two_title"
@@ -211,7 +211,7 @@
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
                         android:src="@drawable/ic_info"
-                        android:tag="@string/activity_three_title"/>
+                        android:tag="@string/activity_three_title" />
 
                     <ImageButton
                         android:id="@+id/activity_three_button"
@@ -228,8 +228,8 @@
                     android:id="@+id/title_favorite_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="end">
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/activity_three_title"
@@ -297,15 +297,15 @@
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
                         android:src="@drawable/ic_info"
-                        android:tag="@string/activity_four_title"/>
+                        android:tag="@string/activity_four_title" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/title_favorite_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="start">
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/activity_four_title"
@@ -360,7 +360,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:orientation="horizontal">
-                  
+
                     <ImageButton
                         android:id="@+id/info_five_button"
                         android:layout_width="wrap_content"
@@ -371,7 +371,7 @@
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
                         android:src="@drawable/ic_info"
-                        android:tag="@string/activity_five_title"/>
+                        android:tag="@string/activity_five_title" />
 
                     <ImageButton
                         android:id="@+id/activity_five_button"
@@ -388,8 +388,8 @@
                     android:id="@+id/title_favorite_five"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="end">
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/activity_five_title"
@@ -457,16 +457,16 @@
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
                         android:src="@drawable/ic_info"
-                        android:tag="@string/activity_six_title"/>
+                        android:tag="@string/activity_six_title" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/title_favorite_six"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="start">
-                  
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/activity_six_title"
                         android:layout_width="100dp"

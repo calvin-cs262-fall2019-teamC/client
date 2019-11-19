@@ -5,8 +5,8 @@
     tools:context="edu.calvin.cs262.sensapp.MainActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="10"
-        android:title="Settings"
         android:icon="@drawable/ic_settings"
+        android:orderInCategory="10"
+        android:title="@string/title_activity_settings"
         app:showAsAction="always" />
 </menu>
