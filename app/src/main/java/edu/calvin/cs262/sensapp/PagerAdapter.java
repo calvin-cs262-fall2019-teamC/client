@@ -9,12 +9,12 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     private int NumFaces;
-    private Context contex;
+    private Context context;
 
     public PagerAdapter(FragmentManager fm, int NumFaces, Context app_context) {
         super(fm);
         this.NumFaces = NumFaces;
-        contex = app_context;
+        context = app_context;
     }
 
     @NonNull

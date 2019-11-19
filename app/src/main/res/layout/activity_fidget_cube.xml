@@ -13,6 +13,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+        android:contentDescription="@string/left_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:contentDescription="@string/right_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,19 +34,17 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true">
-    </FrameLayout>
+        android:animateLayoutChanges="true"></FrameLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></androidx.viewpager.widget.ViewPager>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

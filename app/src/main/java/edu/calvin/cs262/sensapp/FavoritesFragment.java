@@ -18,7 +18,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,7 +28,7 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- *
+ * <p>
  * Modeled after https://www.truiton.com/2017/01/android-bottom-navigation-bar-example/.
  */
 public class FavoritesFragment extends Fragment {
@@ -48,8 +49,8 @@ public class FavoritesFragment extends Fragment {
     /**
      * When created populate and place the Favorites Layout in the MainActivity.
      *
-     * @param inflater The LayoutInflater to place the Layout in the MainActivity.
-     * @param container The ViewGroup in which to place the Layout.
+     * @param inflater           The LayoutInflater to place the Layout in the MainActivity.
+     * @param container          The ViewGroup in which to place the Layout.
      * @param savedInstanceState The Bundle of data to initialize.
      * @return The root View of the activity_main.xml.
      */

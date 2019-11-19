@@ -1,4 +1,12 @@
 <resources>
+    <!-- Long strings -->
+    <string name="activity_one_info">The Breathe activity allows you to watch calming videos (such as trees in the wind) with relaxing background noises (such as water flowing) in a random order.</string>
+    <string name="activity_two_info">The Fidget Cube activity allows you to play with a virtual fidget cube that has a switch, buttons, and a joystick accompanied by vibrations and clicking sounds.</string>
+    <string name="activity_three_info">The Bubbles activity allows you to pop colorful bubbles which slowly appear and move across the screen.</string>
+    <string name="activity_four_info">The Stories activity allows you to listen to popular children\'s stories (such as Goldilocks and the Three Bears) read soothingly with appropriate background imagery.</string>
+    <string name="activity_five_info">The Animals activity allows you to virtually pet animals (such as horses) who will respond with their respective animal call.</string>
+    <string name="activity_six_info">The Music activity allows you to select and listen to relaxing minimal music on a loop.</string>
+
     <!-- Short strings -->
     <string name="app_name">Sensapp</string>
     <string name="activity_one_title">Breathe</string>
@@ -25,6 +33,10 @@
     <string name="music_sounds_label">Music</string>
     <string name="city_sounds_label">City</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="left_button_description">Button leading to the left on fidget cube</string>
+    <string name="right_button_description">Button leading to the right on fidget cube</string>
+    <string name="switch_description">Switch to flip on and off</string>
+    <string name="no_favorite">No favorites found</string>
 
     <!-- Long strings -->
     <string name="activity_one_info">The Breathe activity allows you to watch calming videos (such as trees in the wind) with relaxing background noises (such as water flowing) in a random order.</string>
@@ -33,5 +45,4 @@
     <string name="activity_four_info">The Stories activity allows you to listen to popular children\'s stories (such as Goldilocks and the Three Bears) read soothingly with appropriate background imagery.</string>
     <string name="activity_five_info">The Animals activity allows you to virtually pet animals (such as horses) who will respond with their respective animal call.</string>
     <string name="activity_six_info">The Music activity allows you to select and listen to relaxing minimal music on a loop.</string>
-    <string name="no_favorite">No favorites found</string>
 </resources>
