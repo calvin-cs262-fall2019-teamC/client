@@ -13,6 +13,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+        android:contentDescription="@string/left_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:contentDescription="@string/right_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

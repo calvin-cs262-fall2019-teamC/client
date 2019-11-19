@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Page to display the information summary for each activity.
+ */
 public class InformationActivity extends AppCompatActivity {
 
     /**
@@ -24,7 +27,9 @@ public class InformationActivity extends AppCompatActivity {
 
         // determine which activity to display info about and set the text accordingly
         // uses getResources().getString(id) because id is an int by default
-        // idea from https://stackoverflow.com/questions/1983548/eclipse-java-values-in-r-string-return-int
+        // idea from https://stackoverflow.com/questions/1983548/
+        //               eclipse-java-values-in-r-string-return-int
+        assert message != null;
         if (message.equals(getResources().getString(R.string.activity_one_title))) {
             info.setText(R.string.activity_one_info);
         } else if (message.equals(getResources().getString(R.string.activity_two_title))) {

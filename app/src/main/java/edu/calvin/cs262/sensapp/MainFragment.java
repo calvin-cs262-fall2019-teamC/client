@@ -15,7 +15,8 @@ import androidx.fragment.app.Fragment;
  * Modeled after https://www.truiton.com/2017/01/android-bottom-navigation-bar-example/.
  */
 public class MainFragment extends Fragment {
-    // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
+    // idea to store context: https://stackoverflow.com/questions/17917968/
+    //                            get-context-in-non-activity-class
     private Context context = null;
 
     /**

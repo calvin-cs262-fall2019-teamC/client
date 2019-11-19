@@ -46,7 +46,7 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
     /**
      * onClick for the switch so we can play the sound, vibrate, and do the animation
      *
-     * @param view
+     * @param view The View clicked
      */
     @Override
     public void onClick(View view) {

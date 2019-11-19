@@ -42,7 +42,7 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
     /**
      * onClick for the buttons so we can play sound and vibrate when button is clicked.
      *
-     * @param view
+     * @param view The View clicked
      */
     @Override
     public void onClick(View view) {
@@ -55,6 +55,7 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
         boolean vibrate = prefs.getBoolean("vibrate", true);
         if (vibrate) {
             vibrator = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+            assert vibrator != null;
             vibrator.vibrate(300);
         }
     }

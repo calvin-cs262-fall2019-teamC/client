@@ -128,7 +128,7 @@ public class BreatheActivity extends AppCompatActivity {
         Random random = new Random();
         int randIndex = random.nextInt(audioList.length);
 
-        //between playthroughs, could play same song consecutively; make sure it doesn't
+        //between play throughs, could play same song consecutively; make sure it doesn't
         while (previousAudio == audioList[randIndex]) {
             randIndex = random.nextInt(audioList.length);
         }
@@ -187,7 +187,7 @@ public class BreatheActivity extends AppCompatActivity {
         Random random = new Random();
         int randIndex = random.nextInt(videoList.length);
 
-        //between playthroughs, could play same video consecutively; make sure it doesn't
+        //between play throughs, could play same video consecutively; make sure it doesn't
         while (previousVideo == videoList[randIndex]) {
             randIndex = random.nextInt(videoList.length);
         }

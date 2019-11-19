@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE =
             "edu.calvin.cs262.sensapp.extra.MESSAGE";
     protected BottomNavigationView navigation_bar;
-    // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
+    // idea to store context: https://stackoverflow.com/questions/17917968/
+    //                            get-context-in-non-activity-class
     private Context context = this;
     private String favorite = "Breathe";
 
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // switch to selected Fragment
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        assert selected_fragment != null;
                         transaction.replace(R.id.frame_layout, selected_fragment);
                         transaction.commit();
                         return true;

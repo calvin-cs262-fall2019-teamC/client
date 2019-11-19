@@ -38,7 +38,7 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
     /**
      * Navigate to the next face when the right button is clicked, or the previous face when the left button is clicked
      *
-     * @param view
+     * @param view The View clicked
      */
     @Override
     public void onClick(View view) {
