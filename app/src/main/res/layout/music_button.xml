@@ -6,6 +6,8 @@
     <edu.calvin.cs262.sensapp.MusicButtonView
         android:id="@+id/musicButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
 </RelativeLayout>

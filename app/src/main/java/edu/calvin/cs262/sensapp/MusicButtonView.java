@@ -1,9 +1,11 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,8 +32,9 @@ public class MusicButtonView extends Button {
     public void makeMusicButton(int drawableID, int audioId, String label, Context context) {
         mediaPlayer = MediaPlayer.create(context, audioId);
         mediaPlayer.setLooping(true);
-//        this.setBackgroundResource(drawableID);
-        this.setCompoundDrawablesWithIntrinsicBounds(0, drawableID, 0, 0);
+        Drawable drawable = getResources().getDrawable(drawableID);
+        drawable.setBounds(0, 0, 1000, 1000);
+        this.setCompoundDrawables(null, drawable, null, null);
         this.setText(label);
     }
 
