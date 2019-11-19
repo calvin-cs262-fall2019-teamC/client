@@ -1,12 +1,12 @@
 package edu.calvin.cs262.sensapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 public class FidgetCubeActivity extends AppCompatActivity implements View.OnClickListener {
     private String[] face_names = {"buttons", "switch", "joystick"};
@@ -37,6 +37,7 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
 
     /**
      * Navigate to the next face when the right button is clicked, or the previous face when the left button is clicked
+     *
      * @param view
      */
     @Override
@@ -44,8 +45,7 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
         int idx = viewPager.getCurrentItem();
         if (view == nextButton) {
             viewPager.setCurrentItem((idx + 1) % face_names.length);
-        }
-        else if (view == previousButton) {
+        } else if (view == previousButton) {
             // Add length to prevent negative indexes (because % can return a negative number)
             viewPager.setCurrentItem((idx - 1 + face_names.length) % face_names.length);
         }

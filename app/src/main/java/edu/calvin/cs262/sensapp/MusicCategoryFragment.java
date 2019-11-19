@@ -38,8 +38,9 @@ public class MusicCategoryFragment extends Fragment {
 
     /**
      * When the view is created, inflate the container and do other setup
-     * @param inflater inflates the layout
-     * @param container tells which viewgroup the fragment belongs to
+     *
+     * @param inflater           inflates the layout
+     * @param container          tells which viewgroup the fragment belongs to
      * @param savedInstanceState data bundle
      * @return the established layout
      */

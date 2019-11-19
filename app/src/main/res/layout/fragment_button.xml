@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ButtonFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,37 +61,37 @@
             app:srcCompat="@color/colorAccent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/circlebutton_bottomleft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintEnd_toStartOf="@+id/circlebutton_bottomright"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
-                app:srcCompat="@color/colorAccent" />
+            android:id="@+id/circlebutton_bottomleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toStartOf="@+id/circlebutton_bottomright"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
+            app:srcCompat="@color/colorAccent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/circlebutton_bottomright"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.758"
-                app:layout_constraintStart_toEndOf="@+id/circlebutton_bottomleft"
-                app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
-                app:srcCompat="@color/colorAccent" />
+            android:id="@+id/circlebutton_bottomright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.758"
+            app:layout_constraintStart_toEndOf="@+id/circlebutton_bottomleft"
+            app:layout_constraintTop_toBottomOf="@+id/circlebutton_center"
+            app:srcCompat="@color/colorAccent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

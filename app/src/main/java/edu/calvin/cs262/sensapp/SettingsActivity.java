@@ -39,7 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
          * Initialize the Settings Activity with the root preferences.
          *
          * @param savedInstanceState The saved Bundle.
-         * @param rootKey A String of where to set Settings.
+         * @param rootKey            A String of where to set Settings.
          */
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {

@@ -1,10 +1,5 @@
 package edu.calvin.cs262.sensapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +9,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * The Main Activity of the app which renders the activities, history, and favorites fragments.
  */
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE =
+            "edu.calvin.cs262.sensapp.extra.MESSAGE";
+    protected BottomNavigationView navigation_bar;
     // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
     private Context context = this;
     private String favorite = "Breathe";
-    protected BottomNavigationView navigation_bar;
-    public static final String EXTRA_MESSAGE =
-            "edu.calvin.cs262.sensapp.extra.MESSAGE";
 
     /**
      * Creates the main activity from which other activities will be selected.
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         transaction.commit();
                         return true;
                     }
-            }
+                }
         );
 
         // setup the main Fragment upon starting app (one time setup)
