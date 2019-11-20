@@ -58,41 +58,45 @@ public class FavoritesListAdapter
     public void onBindViewHolder(@NonNull FavoriteViewHolder holder, int position) {
         int activity_id;
         String activity_name;
-        if (mFavorites != null) {
+        Activity activity;
+        if (mFavorites != null && mActivities != null) {
             Favorite current = mFavorites.get(position);
             activity_id = current.getActivityId();
-            activity_name = getActivityAtPosition(activity_id - 1).getName();
-            // https://stackoverflow.com/questions/14233062/imagebutton-change-programmatically
-            if (activity_name.equals(
-                    mContext.getResources().getString(R.string.activity_one_title))) {
-                holder.favoriteItemView.setImageResource(R.drawable.breathe);
-                holder.favoriteItemView.setTag(
-                        mContext.getResources().getString(R.string.activity_one_title));
-            } else if (activity_name.equals(
-                    mContext.getResources().getString(R.string.activity_two_title))) {
-                holder.favoriteItemView.setImageResource(R.drawable.fidget_cube);
-                holder.favoriteItemView.setTag(
-                        mContext.getResources().getString(R.string.activity_two_title));
-            } else if (activity_name.equals(
-                    mContext.getResources().getString(R.string.activity_three_title))) {
-                holder.favoriteItemView.setImageResource(R.drawable.bubbles);
-                holder.favoriteItemView.setTag(
-                        mContext.getResources().getString(R.string.activity_three_title));
-            } else if (activity_name.equals(
-                    mContext.getResources().getString(R.string.activity_four_title))) {
-                holder.favoriteItemView.setImageResource(R.drawable.stories);
-                holder.favoriteItemView.setTag(
-                        mContext.getResources().getString(R.string.activity_four_title));
-            } else if (activity_name.equals(
-                    mContext.getResources().getString(R.string.activity_five_title))) {
-                holder.favoriteItemView.setImageResource(R.drawable.animals);
-                holder.favoriteItemView.setTag(
-                        mContext.getResources().getString(R.string.activity_five_title));
-            } else if (activity_name.equals(
-                    mContext.getResources().getString(R.string.activity_six_title))) {
-                holder.favoriteItemView.setImageResource(R.drawable.music);
-                holder.favoriteItemView.setTag(
-                        mContext.getResources().getString(R.string.activity_six_title));
+            activity = getActivityAtPosition(activity_id - 1);
+            if (activity != null) {
+                activity_name = activity.getName();
+                // https://stackoverflow.com/questions/14233062/imagebutton-change-programmatically
+                if (activity_name.equals(
+                        mContext.getResources().getString(R.string.activity_one_title))) {
+                    holder.favoriteItemView.setImageResource(R.drawable.breathe);
+                    holder.favoriteItemView.setTag(
+                            mContext.getResources().getString(R.string.activity_one_title));
+                } else if (activity_name.equals(
+                        mContext.getResources().getString(R.string.activity_two_title))) {
+                    holder.favoriteItemView.setImageResource(R.drawable.fidget_cube);
+                    holder.favoriteItemView.setTag(
+                            mContext.getResources().getString(R.string.activity_two_title));
+                } else if (activity_name.equals(
+                        mContext.getResources().getString(R.string.activity_three_title))) {
+                    holder.favoriteItemView.setImageResource(R.drawable.bubbles);
+                    holder.favoriteItemView.setTag(
+                            mContext.getResources().getString(R.string.activity_three_title));
+                } else if (activity_name.equals(
+                        mContext.getResources().getString(R.string.activity_four_title))) {
+                    holder.favoriteItemView.setImageResource(R.drawable.stories);
+                    holder.favoriteItemView.setTag(
+                            mContext.getResources().getString(R.string.activity_four_title));
+                } else if (activity_name.equals(
+                        mContext.getResources().getString(R.string.activity_five_title))) {
+                    holder.favoriteItemView.setImageResource(R.drawable.animals);
+                    holder.favoriteItemView.setTag(
+                            mContext.getResources().getString(R.string.activity_five_title));
+                } else if (activity_name.equals(
+                        mContext.getResources().getString(R.string.activity_six_title))) {
+                    holder.favoriteItemView.setImageResource(R.drawable.music);
+                    holder.favoriteItemView.setTag(
+                            mContext.getResources().getString(R.string.activity_six_title));
+                }
             }
         }
     }
@@ -160,7 +164,11 @@ public class FavoritesListAdapter
      * @return The Activity at position in the Activities list
      */
     public Activity getActivityAtPosition (int position) {
-        return mActivities.get(position);
+        if (position != -1) {
+            return mActivities.get(position);
+        } else {
+            return null;
+        }
     }
 }
 
