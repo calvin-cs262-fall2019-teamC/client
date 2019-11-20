@@ -10,7 +10,7 @@ public class MusicButtonFactory {
     private final MusicButtonData forest = new MusicButtonData(R.drawable.forest, R.raw.forest, "Forest");
     private final MusicButtonData rain = new MusicButtonData(R.drawable.rain, R.raw.rain_heavy_2_rural, "Rain");
     private final MusicButtonData river = new MusicButtonData(R.drawable.river, R.raw.small_river_1_slow_close, "River");
-    private final MusicButtonData birds = new MusicButtonData(R.drawable.birds, R.raw.spring_birds_new_jersey, "Birds");
+    private final MusicButtonData birds = new MusicButtonData(R.drawable.bird, R.raw.spring_birds_new_jersey, "Birds");
 
     public static synchronized MusicButtonFactory getInstance() {
         if (INSTANCE == null) {
