@@ -29,20 +29,32 @@ public class MusicButtonView extends Button {
         super(context, attrs, defStyleAttr);
     }
 
+    public float dp_to_px(int dp) {
+        // Get the screen's density scale
+        final float scale = getResources().getDisplayMetrics().density;
+        return dp * scale;
+    }
+
     public void makeMusicButton(int drawableID, int audioId, String label, Context context) {
         mediaPlayer = MediaPlayer.create(context, audioId);
         mediaPlayer.setLooping(true);
         Drawable drawable = getResources().getDrawable(drawableID);
-        drawable.setBounds(0, 0, 1000, 1000);
+        int dim = (int) dp_to_px(200);
+        drawable.setBounds(0, 0, dim, dim);
+        drawable.setAlpha(100);
         this.setCompoundDrawables(null, drawable, null, null);
         this.setText(label);
     }
 
     public void playPause() {
+        Drawable[] drawables = this.getCompoundDrawables();
+        Drawable drawable = drawables[1];
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
+            drawable.setAlpha(100);
         } else {
             mediaPlayer.start();
+            drawable.setAlpha(255);
         }
     }
 
