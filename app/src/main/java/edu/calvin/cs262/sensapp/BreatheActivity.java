@@ -9,41 +9,38 @@ import android.widget.VideoView;
 
 import java.util.Random;
 
+/**
+ * The Breathe activity plays calming audio over a video and will tell the user to breathe.
+ */
 public class BreatheActivity extends AppCompatActivity {
 
-    //create mediaPlayer for the audio
+    //create mediaPlayer to play the audio files
     public MediaPlayer audioPlayer;
-
-    //create list for audio
+    //create list to store audio files
     public int[] audioList;
-
-    //create companion history list to not allow the same audio file to be played twice
+    //create record list to ensure the same audio file isn't played twice
     public int[] audioRecordList;
-
-    //count how full audioRecordList is
+    //keep track of how full audioRecordList is
     public int audioRecordCount = 0;
-
+    //remember which audio played last
     public int previousAudio;
 
-    //create list for videos
+    //create VideoView to play the videos
+    public VideoView simpleVideoView;
+    //create list to store the videos
     public int[] videoList;
-
-    //create companion history list to not allow the same video file to be played twice
+    //create record list to ensure the same video isn't played twice
     public int[] videoRecordList;
-
-    //count how full videoRecordList is
+    //keep track of how full videoRecordList is
     public int videoRecordCount = 0;
-
-    //keep track of previous video
+    //remember which video played last
     public int previousVideo;
 
-    //initializes a videoView
-    public VideoView simpleVideoView;
 
     /**
      * Creates the breathe activity in which the user will be guided to breathe deeply.
      *
-     * video/audio lists must have more than 1 video for this to work
+     * NOTE: video/audio lists must have more than 1 video, or else they won't play anything.
      *
      * @param savedInstanceState The Bundle of information which initializes the breathe activity.
      */
@@ -52,7 +49,7 @@ public class BreatheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breathe);
 
-        //initialize list of audio files (from raw)
+        //initialize list of audio files (get audio files from raw)
         audioList = new int[]{R.raw.breathe_audio_oceanwaves,
                               R.raw.breathe_audio_zymbel,
                               R.raw.breathe_audio_wind,
@@ -67,7 +64,7 @@ public class BreatheActivity extends AppCompatActivity {
             audioRecordList[i] = 0;
         }
 
-        //initialize list of video files (from raw)
+        //initialize list of video files (get videos from raw)
         videoList = new int[]{R.raw.breathe_video_ducks04,
                               R.raw.breathe_video_ducks05,
                               R.raw.breathe_video_ducks06,
@@ -84,20 +81,12 @@ public class BreatheActivity extends AppCompatActivity {
             videoRecordList[i] = 0;
         }
 
-        //initialize the videoView and its mediaController
+        //initialize the videoView
         simpleVideoView = findViewById(R.id.videoView);
         chooseVideo();
 
-        //initialize mediaController (unused)
-        //MediaController mediaController = new MediaController(this);
-        //simpleVideoView.setMediaController(mediaController);
-
-
         //initialize the musicPlayer
         chooseAudio();
-
-        //initialize the videoPlayer
-        chooseVideo();
 
         //start video and music
         simpleVideoView.start();
@@ -107,14 +96,12 @@ public class BreatheActivity extends AppCompatActivity {
     /**
      * Chooses next audio from the list randomly
      * (will not play same audio twice until all audios have played or activity resets)
-     * (does this by putting a 1 into another 'companion' list whenever the corresponding song is played)
      *
-     * no parameters
      */
     public void chooseAudio(){
 
-        //if all audios have been played, reset the companion list
-        //(audioRecordCount counts number of times a 1 has been added to the companion list)
+        //if all audios have been played, reset the record list and counter
+        //(audioRecordCount counts number of times a 1 has been added to the record list)
         if(audioRecordCount == audioRecordList.length){
             for(int i=0; i<audioList.length; i++){
                 audioRecordList[i] = 0;
@@ -122,7 +109,7 @@ public class BreatheActivity extends AppCompatActivity {
         audioRecordCount = 0;
         }
 
-        //choose next audio to play
+        //choose next audio to play:
 
         //(random.nextInt(xxx) limits to length of audioList)
         Random random = new Random();
@@ -133,15 +120,12 @@ public class BreatheActivity extends AppCompatActivity {
             randIndex = random.nextInt(audioList.length);
         }
 
-        //get okay from companion array (check if audio has been played already)
+        //get okay from record list (check if audio has been played already)
         while(audioRecordList[randIndex] == 1){
 
                 if(randIndex != audioRecordList.length - 1) {
                     randIndex += 1;
                 } else {randIndex = 0;}
-
-            //could also just do this here below, but is O(n^2) :o veryBad
-            //randInt = random.nextInt(audioList.length);
         }
 
         //set the selected audio and update lastAudio
@@ -165,13 +149,11 @@ public class BreatheActivity extends AppCompatActivity {
 
     /**
      * Chooses next video from the list randomly, in the same fashion as the audio
-     *
-     * no parameters
      */
     public void chooseVideo(){
 
-        //if all videos have been played, reset the companion list
-        //(videoRecordCount counts number of times a 1 has been added to the companion list)
+        //if all videos have been played, reset the record list and counter
+        //(videoRecordCount counts number of times a 1 has been added to the record list)
         if(videoRecordCount == videoRecordList.length){
             for(int i=0; i<videoList.length; i++){
                 videoRecordList[i] = 0;
@@ -179,7 +161,7 @@ public class BreatheActivity extends AppCompatActivity {
             videoRecordCount = 0;
         }
 
-        //choose next video to play
+        //choose next video to play:
 
         //(random.nextInt(xxx) limits to length of videoList)
         Random random = new Random();
@@ -190,15 +172,12 @@ public class BreatheActivity extends AppCompatActivity {
             randIndex = random.nextInt(videoList.length);
         }
 
-        //get okay from companion array (check if video has been played already)
+        //get okay from record array (check if video has been played already)
         while(videoRecordList[randIndex] == 1){
 
                 if(randIndex != videoRecordList.length - 1) {
                     randIndex += 1;
                 } else {randIndex = 0;}
-
-            //could also just do this here below, but is O(n^2) :o veryBad
-            //randInt = random.nextInt(videoList.length);
         }
 
         //set the selected video and update lastVideo
@@ -209,7 +188,7 @@ public class BreatheActivity extends AppCompatActivity {
         videoRecordList[randIndex] = 1;
         videoRecordCount += 1;
 
-        //when the current audio is finished, start playing a new audio
+        //when the current video is finished, start playing a new video
         simpleVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -219,8 +198,11 @@ public class BreatheActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * When app is exited or focus is lost somehow, onPause() is called.
+     * When this happens, the music should stop.
+     */
     public void onPause() {
-        //stop the music if focus is lost
         super.onPause();
         if (audioPlayer.isPlaying())
             audioPlayer.stop();
