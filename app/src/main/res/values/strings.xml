@@ -33,4 +33,5 @@
     <string name="left_button_description">Button leading to the left on fidget cube</string>
     <string name="right_button_description">Button leading to the right on fidget cube</string>
     <string name="switch_description">Switch to flip on and off</string>
+    <string name="no_favorite">No favorites found</string>
 </resources>
