@@ -1,11 +1,11 @@
 package edu.calvin.cs262.sensapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.VideoView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
@@ -41,6 +41,7 @@ public class BreatheActivity extends AppCompatActivity {
      * Creates the breathe activity in which the user will be guided to breathe deeply.
      *
      * NOTE: video/audio lists must have more than 1 video, or else they won't play anything.
+
      *
      * @param savedInstanceState The Bundle of information which initializes the breathe activity.
      */
@@ -51,33 +52,33 @@ public class BreatheActivity extends AppCompatActivity {
 
         //initialize list of audio files (get audio files from raw)
         audioList = new int[]{R.raw.breathe_audio_oceanwaves,
-                              R.raw.breathe_audio_zymbel,
-                              R.raw.breathe_audio_wind,
-                              R.raw.breathe_audio_crickets,
-                              R.raw.breathe_audio_rainforest,
-                              R.raw.breathe_audio_waterfall
-                              };
+                R.raw.breathe_audio_zymbel,
+                R.raw.breathe_audio_wind,
+                R.raw.breathe_audio_crickets,
+                R.raw.breathe_audio_rainforest,
+                R.raw.breathe_audio_waterfall
+        };
 
         //initialize audioRecordList - remembers which audios have played already
         audioRecordList = new int[audioList.length];
-        for(int i=0; i<audioList.length; i++){
+        for (int i = 0; i < audioList.length; i++) {
             audioRecordList[i] = 0;
         }
 
         //initialize list of video files (get videos from raw)
         videoList = new int[]{R.raw.breathe_video_ducks04,
-                              R.raw.breathe_video_ducks05,
-                              R.raw.breathe_video_ducks06,
-                              R.raw.breathe_video_ducks07,
-                              R.raw.breathe_video_trees03,
-                              R.raw.breathe_video_trees04,
-                              R.raw.breathe_video_trees06,
-                              R.raw.breathe_video_flowers01
-                              };
+                R.raw.breathe_video_ducks05,
+                R.raw.breathe_video_ducks06,
+                R.raw.breathe_video_ducks07,
+                R.raw.breathe_video_trees03,
+                R.raw.breathe_video_trees04,
+                R.raw.breathe_video_trees06,
+                R.raw.breathe_video_flowers01
+        };
 
         //initialize videoRecordList - remembers which videos have played already
         videoRecordList = new int[videoList.length];
-        for(int i=0; i<videoList.length; i++){
+        for (int i = 0; i < videoList.length; i++) {
             videoRecordList[i] = 0;
         }
 
@@ -96,17 +97,18 @@ public class BreatheActivity extends AppCompatActivity {
     /**
      * Chooses next audio from the list randomly
      * (will not play same audio twice until all audios have played or activity resets)
-     *
      */
-    public void chooseAudio(){
+    public void chooseAudio() {
+
 
         //if all audios have been played, reset the record list and counter
         //(audioRecordCount counts number of times a 1 has been added to the record list)
         if(audioRecordCount == audioRecordList.length){
             for(int i=0; i<audioList.length; i++){
+
                 audioRecordList[i] = 0;
             }
-        audioRecordCount = 0;
+            audioRecordCount = 0;
         }
 
         //choose next audio to play:
@@ -115,10 +117,11 @@ public class BreatheActivity extends AppCompatActivity {
         Random random = new Random();
         int randIndex = random.nextInt(audioList.length);
 
-        //between playthroughs, could play same song consecutively; make sure it doesn't
-        while(previousAudio == audioList[randIndex]){
+        //between play throughs, could play same song consecutively; make sure it doesn't
+        while (previousAudio == audioList[randIndex]) {
             randIndex = random.nextInt(audioList.length);
         }
+
 
         //get okay from record list (check if audio has been played already)
         while(audioRecordList[randIndex] == 1){
@@ -126,6 +129,7 @@ public class BreatheActivity extends AppCompatActivity {
                 if(randIndex != audioRecordList.length - 1) {
                     randIndex += 1;
                 } else {randIndex = 0;}
+
         }
 
         //set the selected audio and update lastAudio
@@ -150,12 +154,14 @@ public class BreatheActivity extends AppCompatActivity {
     /**
      * Chooses next video from the list randomly, in the same fashion as the audio
      */
-    public void chooseVideo(){
+    public void chooseVideo() {
+
 
         //if all videos have been played, reset the record list and counter
         //(videoRecordCount counts number of times a 1 has been added to the record list)
         if(videoRecordCount == videoRecordList.length){
             for(int i=0; i<videoList.length; i++){
+
                 videoRecordList[i] = 0;
             }
             videoRecordCount = 0;
@@ -167,10 +173,11 @@ public class BreatheActivity extends AppCompatActivity {
         Random random = new Random();
         int randIndex = random.nextInt(videoList.length);
 
-        //between playthroughs, could play same video consecutively; make sure it doesn't
-        while(previousVideo == videoList[randIndex]){
+        //between play throughs, could play same video consecutively; make sure it doesn't
+        while (previousVideo == videoList[randIndex]) {
             randIndex = random.nextInt(videoList.length);
         }
+
 
         //get okay from record array (check if video has been played already)
         while(videoRecordList[randIndex] == 1){
@@ -178,6 +185,7 @@ public class BreatheActivity extends AppCompatActivity {
                 if(randIndex != videoRecordList.length - 1) {
                     randIndex += 1;
                 } else {randIndex = 0;}
+
         }
 
         //set the selected video and update lastVideo

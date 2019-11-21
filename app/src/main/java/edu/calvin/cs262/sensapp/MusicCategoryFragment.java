@@ -38,8 +38,9 @@ public class MusicCategoryFragment extends Fragment {
 
     /**
      * When the view is created, inflate the container and do other setup
-     * @param inflater inflates the layout
-     * @param container tells which viewgroup the fragment belongs to
+     *
+     * @param inflater           inflates the layout
+     * @param container          tells which ViewGroup the fragment belongs to
      * @param savedInstanceState data bundle
      * @return the established layout
      */
@@ -64,8 +65,10 @@ public class MusicCategoryFragment extends Fragment {
     private synchronized void getData() {
         //check which tab I am based on the tab name and what PagerAdapter.java told me I am
 
+        assert getArguments() != null;
         final String category_label = getArguments().getString("Sound_category");
 
+        assert category_label != null;
         if (category_label.equals(context.getString(R.string.all_sounds_label))) {
             textView.setText(category_label);
         } else if (category_label.equals(context.getString(R.string.animal_sounds_label))) {
