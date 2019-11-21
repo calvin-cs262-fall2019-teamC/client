@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 /**
- * A PagerAdapter for {@link MusicCategoryFragment}, so we can navigate to different pages of music categories
+ * A RecyclerAdapter for {@link MusicButtonView}
  */
 public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdapter.MusicButtonHolder> {
     private Context context;
