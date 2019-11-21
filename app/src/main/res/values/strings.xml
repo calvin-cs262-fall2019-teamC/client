@@ -23,7 +23,7 @@
     <string name="history">History</string>
     <string name="information">Information</string>
     <string name="activity_fidget_description">Fidget cube (buttons, switches, etc.)</string>
-    <string name="duration_label">Duration:</string>
+    <string name="duration_label">Duration: </string>
     <string name="time_activity_one">5mins</string>
     <string name="info_error">Error: Activity to display text for unknown!</string>
     <string name="all_sounds_label">All</string>
