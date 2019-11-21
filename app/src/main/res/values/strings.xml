@@ -13,12 +13,9 @@
     <string name="activity_fidget_description">Fidget cube (buttons, switches, etc.)</string>
     <string name="duration_label">Duration:</string>
     <string name="time_activity_one">5mins</string>
-    <string name="all_sounds_label">All</string>
     <string name="animal_sounds_label">Animal</string>
     <string name="nature_sounds_label">Nature</string>
     <string name="water_sounds_label">Water</string>
-    <string name="music_sounds_label">Music</string>
-    <string name="city_sounds_label">City</string>
 
 
 </resources>
