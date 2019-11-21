@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:id="@+id/activity_one"
-                android:layout_width="170dp"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:orientation="vertical"
                 android:paddingStart="20dp"
@@ -29,29 +29,78 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/activity_one_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/activity_button_description"
-                    android:onClick="launchBreatheActivity"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/breathe" />
+                <LinearLayout
+                    android:id="@+id/info_activity_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/activity_one_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/activity_one_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageButton
+                        android:id="@+id/info_one_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:src="@drawable/ic_info"
+                        android:tag="@string/activity_one_title" />
+
+                    <ImageButton
+                        android:id="@+id/activity_one_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:onClick="launchBreatheActivity"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/breathe" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <!--
+                    Tag used to store activity title associated with this favorite button
+                    Idea: https://stackoverflow.com/questions/34528116/get-view-name-programmatically-in-android
+                    -->
+
+                    <TextView
+                        android:id="@+id/activity_one_title"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_one_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_one_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:src="@drawable/ic_favorite"
+                        android:tag="@string/activity_one_title" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/activity_two"
-                android:layout_width="170dp"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:orientation="vertical"
                 android:paddingStart="20dp"
@@ -61,24 +110,68 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/activity_two_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/activity_fidget_description"
-                    android:onClick="launchFidgetCubeActivity"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/fidget_cube" />
+                <LinearLayout
+                    android:id="@+id/info_activity_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/activity_two_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/activity_two_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageButton
+                        android:id="@+id/activity_two_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_fidget_description"
+                        android:onClick="launchFidgetCubeActivity"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/fidget_cube" />
+
+                    <ImageButton
+                        android:id="@+id/info_two_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:src="@drawable/ic_info"
+                        android:tag="@string/activity_two_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_two_title"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_two_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_two_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:src="@drawable/ic_favorite"
+                        android:tag="@string/activity_two_title" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </TableRow>
@@ -101,23 +194,68 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/activity_three_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/activity_button_description"
-                    android:onClick="launchBubblesActivity"
-                    app:srcCompat="@color/colorPrimary" />
+                <LinearLayout
+                    android:id="@+id/info_activity_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/activity_three_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/activity_three_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageButton
+                        android:id="@+id/info_three_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:src="@drawable/ic_info"
+                        android:tag="@string/activity_three_title" />
+
+                    <ImageButton
+                        android:id="@+id/activity_three_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:onClick="launchBubblesActivity"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/bubbles" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_three_title"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_three_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_three_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:src="@drawable/ic_favorite"
+                        android:tag="@string/activity_three_title" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -132,23 +270,68 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/activity_four_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/activity_button_description"
-                    android:onClick="launchStoriesActivity"
-                    app:srcCompat="@color/colorAccent" />
+                <LinearLayout
+                    android:id="@+id/info_activity_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/activity_four_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/activity_four_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageButton
+                        android:id="@+id/activity_four_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:onClick="launchStoriesActivity"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/stories" />
+
+                    <ImageButton
+                        android:id="@+id/info_four_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:src="@drawable/ic_info"
+                        android:tag="@string/activity_four_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_four_title"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_four_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_four_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:src="@drawable/ic_favorite"
+                        android:tag="@string/activity_four_title" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </TableRow>
@@ -171,23 +354,68 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/activity_five_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/activity_button_description"
-                    android:onClick="launchAnimalsActivity"
-                    app:srcCompat="@android:color/holo_orange_dark" />
+                <LinearLayout
+                    android:id="@+id/info_activity_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/activity_five_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/activity_five_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageButton
+                        android:id="@+id/info_five_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:src="@drawable/ic_info"
+                        android:tag="@string/activity_five_title" />
+
+                    <ImageButton
+                        android:id="@+id/activity_five_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:onClick="launchAnimalsActivity"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/animals" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_five_title"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_five_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_five_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:src="@drawable/ic_favorite"
+                        android:tag="@string/activity_five_title" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -202,23 +430,68 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/activity_six_button"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/activity_button_description"
-                    android:onClick="launchMusicActivity"
-                    app:srcCompat="@android:color/holo_blue_bright" />
+                <LinearLayout
+                    android:id="@+id/info_activity_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/activity_six_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/activity_six_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageButton
+                        android:id="@+id/activity_six_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:onClick="launchMusicActivity"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/music" />
+
+                    <ImageButton
+                        android:id="@+id/info_six_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:src="@drawable/ic_info"
+                        android:tag="@string/activity_six_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_six_title"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_six_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_six_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:src="@drawable/ic_favorite"
+                        android:tag="@string/activity_six_title" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </TableRow>

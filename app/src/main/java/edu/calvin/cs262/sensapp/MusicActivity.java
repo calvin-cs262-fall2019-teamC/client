@@ -1,10 +1,10 @@
 package edu.calvin.cs262.sensapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,9 +27,9 @@ public class MusicActivity extends AppCompatActivity {
 
     /**
      * Build the tabs for predefined sound categories
-     * @author cmd16
      *
      * @param tabs the TabLayout that holds tabs for each music category
+     * @author cmd16
      */
     private void buildTabs(TabLayout tabs) {
         tabs.addTab(tabs.newTab().setText(R.string.animal_sounds_label));

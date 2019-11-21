@@ -1,25 +1,22 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
- *
+ * <p>
  * Modeled after https://www.truiton.com/2017/01/android-bottom-navigation-bar-example/.
  */
 public class MainFragment extends Fragment {
-    // idea to store context: https://stackoverflow.com/questions/17917968/get-context-in-non-activity-class
+    // idea to store context: https://stackoverflow.com/questions/17917968/
+    //                            get-context-in-non-activity-class
     private Context context = null;
 
     /**
@@ -36,8 +33,8 @@ public class MainFragment extends Fragment {
     /**
      * When created place the Main Layout in the MainActivity.
      *
-     * @param inflater The LayoutInflater to place the Layout in the MainActivity.
-     * @param container The ViewGroup in which to place the Layout.
+     * @param inflater           The LayoutInflater to place the Layout in the MainActivity.
+     * @param container          The ViewGroup in which to place the Layout.
      * @param savedInstanceState The Bundle of data to initialize.
      * @return The root View of the activity_main.xml.
      */
@@ -45,66 +42,5 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main, container, false);
-    }
-
-    /**
-     * Launches the breathing activity when the button is pressed.
-     *
-     * @param view The current View object (the breathe activity button).
-     */
-    public void launchBreatheActivity(View view) {
-        Intent intent = new Intent(context, BreatheActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Launches the bubbles activity when the button is pressed.
-     *
-     * @param view The current View object (the bubbles activity button).
-     */
-    public void launchBubblesActivity(View view) {
-        Intent intent = new Intent(context, BubblesActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Launches the stories activity when the button is pressed.
-     *
-     * @param view The current View object (the stories activity button).
-     */
-    public void launchStoriesActivity(View view) {
-        Intent intent = new Intent(context, StoriesActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Launches the animals activity when the button is pressed.
-     *
-     * @param view The current View object (the animals activity button).
-     */
-    public void launchAnimalsActivity(View view) {
-        Intent intent = new Intent(context, AnimalsActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Launches the music activity when the button is pressed.
-     *
-     * @param view The current View object (the music activity button).
-     */
-    public void launchMusicActivity(View view) {
-        Intent intent = new Intent(context, MusicActivity.class);
-        startActivity(intent);
-    }
-  
-    /**
-     * Launches the fidget cube activity when the button is pressed.
-     *
-     * @param view The current View object (the fidget cube activity button).
-     */
-    public void launchFidgetCubeActivity(View view) {
-        Log.d("MainActivity", "activity launching FidgetCubeActivity");
-        Intent intent = new Intent(context, FidgetCubeActivity.class);
-        startActivity(intent);
     }
 }

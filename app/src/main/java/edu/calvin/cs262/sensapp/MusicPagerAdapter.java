@@ -22,6 +22,7 @@ public class MusicPagerAdapter extends FragmentStatePagerAdapter {
 
     /**
      * set up the various tabs for music categories
+     *
      * @param position indicates which tab to open
      * @return the Fragment that contains the music buttons, labels, etc.
      * @author cmd16
