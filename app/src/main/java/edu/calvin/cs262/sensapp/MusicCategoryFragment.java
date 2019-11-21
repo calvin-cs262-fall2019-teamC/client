@@ -5,18 +5,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A {@link Fragment} subclass that holds a {@link RecyclerView} for {@link MusicButtonView}s
+ * for sounds in a certain category
  */
 public class MusicCategoryFragment extends Fragment{
     private Context context;
@@ -40,13 +39,6 @@ public class MusicCategoryFragment extends Fragment{
         getData();
     }
 
-//    public int dpToPx(int dp) {
-//        float density = Context.getResources()
-//                .getDisplayMetrics()
-//                .density;
-//        return Math.round((float) dp * density);
-//    }
-
     /**
      * When the view is created, inflate the container and do other setup
      * @param inflater inflates the layout
@@ -62,12 +54,6 @@ public class MusicCategoryFragment extends Fragment{
         View frag_layout = inflater.inflate(R.layout.fragment_music_category, container, false);
         //build the RecyclerView for this fragment and provide its adapter
         recyclerView = frag_layout.findViewById(R.id.musicButtonHolder);
-//        LinearLayout layout = new LinearLayout(context);
-//        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)layout.getLayoutParams();
-//        layoutParams.height = dpToPx(250);
-//        layoutParams.width = dpToPx(250);
-//        layout.setLayoutParams(layoutParams);
-        //itemView.setLayoutParams(new RecyclerView.LayoutParams(width/3, RecyclerView.LayoutParams.WRAP_CONTENT));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(musicRecyclerAdapter);

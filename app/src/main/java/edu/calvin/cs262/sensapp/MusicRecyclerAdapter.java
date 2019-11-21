@@ -15,16 +15,12 @@ import java.util.List;
  */
 public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdapter.MusicButtonHolder> {
     private Context context;
-    private List<MusicButtonData> musicButtonData;
-
-//    public interface MusicButtonClickInterface {
-//
-//    }
+    private List<MusicButtonData> musicButtonDataList;
 
     public MusicRecyclerAdapter(@NonNull Context app_context, @NonNull List<MusicButtonData> musicbuttondata_list) {
         super();
         context = app_context;
-        musicButtonData = musicbuttondata_list;
+        musicButtonDataList = musicbuttondata_list;
     }
 
     @NonNull
@@ -39,7 +35,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull MusicButtonHolder holder, int position) {
-        MusicButtonData data = musicButtonData.get(position);
+        MusicButtonData data = musicButtonDataList.get(position);
         holder.makeMusicButton(data.getDrawableID(), data.getAudioID(), data.getLabel());
     }
 
@@ -64,10 +60,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return musicButtonData.size();
+        return musicButtonDataList.size();
     }
 
-    public void setMusicButtonViewList(List<MusicButtonData> musicbuttondata_list) {
-        musicButtonData = musicbuttondata_list;
-    }
 }

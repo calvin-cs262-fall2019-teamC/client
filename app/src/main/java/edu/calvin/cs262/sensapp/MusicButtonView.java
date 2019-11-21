@@ -5,18 +5,14 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.widget.Button;
-import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+/**
+ * A subclass of {@link Button} that has a top drawable, a text label,
+ * and a {@link MediaPlayer} for playing its sound on a loop
+ */
 
 public class MusicButtonView extends Button {
     private MediaPlayer mediaPlayer;
-
-    public interface OnClick {
-        void onClick(MusicButtonView button);
-    }
-
     public MusicButtonView(Context context) {
         super(context);
     }
@@ -46,6 +42,10 @@ public class MusicButtonView extends Button {
         this.setText(label);
     }
 
+    /**
+     * If the audio isn't playing, play the audio and make the drawable more opaque
+     * Else, pause the audio and make the drawable less opaque
+     */
     public void playPause() {
         Drawable[] drawables = this.getCompoundDrawables();
         Drawable drawable = drawables[1];

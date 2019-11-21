@@ -1,5 +1,10 @@
 package edu.calvin.cs262.sensapp;
 
+/**
+ * A container class to hold the id of the drawable, id of the audio file, and String label for
+ * a {@link MusicButtonView}
+ */
+
 public class MusicButtonData {
     private int drawableID;
     private int audioID;
@@ -27,17 +32,5 @@ public class MusicButtonData {
 
     public String getLabel() {
         return label;
-    }
-
-    public void setDrawableID(int id) {
-        drawableID = id;
-    }
-
-    public void setAudioID(int id) {
-        audioID = id;
-    }
-
-    public void setLabel(String lbl) {
-        label = lbl;
     }
 }

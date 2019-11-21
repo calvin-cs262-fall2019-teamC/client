@@ -3,6 +3,11 @@ package edu.calvin.cs262.sensapp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Factory class for returning a list of {@link MusicButtonView}s for a given category
+ * from {@link MusicCategoryFragment}
+ */
+
 public class MusicButtonFactory {
     private static MusicButtonFactory INSTANCE;
     private final MusicButtonData catPurr = new MusicButtonData(R.drawable.cat, R.raw.cat_purring, "Purr");
@@ -35,14 +40,6 @@ public class MusicButtonFactory {
                 list.add(leafCrunch);
                 break;
             case "Water":
-                list.add(rain);
-                list.add(river);
-                break;
-            case "All":
-                list.add(birds);
-                list.add(catPurr);
-                list.add(forest);
-                list.add(leafCrunch);
                 list.add(rain);
                 list.add(river);
                 break;
