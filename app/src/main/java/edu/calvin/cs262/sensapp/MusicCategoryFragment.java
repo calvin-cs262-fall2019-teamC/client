@@ -22,8 +22,12 @@ public class MusicCategoryFragment extends Fragment{
     private RecyclerView recyclerView;
     private MusicRecyclerAdapter musicRecyclerAdapter;
 
+    /**
+     * Empty constructor
+     */
     public MusicCategoryFragment() {
-        // must have an empty public constructor, or else get the error "MusicCategoryFragment must be a public static class to be  properly recreated from instance state"
+        // must have an empty public constructor, or else get the error "MusicCategoryFragment
+        // must be a public static class to be  properly recreated from instance state"
     }
 
     /**

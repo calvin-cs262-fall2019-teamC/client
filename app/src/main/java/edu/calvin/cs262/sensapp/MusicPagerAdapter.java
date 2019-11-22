@@ -14,6 +14,13 @@ public class MusicPagerAdapter extends FragmentStatePagerAdapter {
     private int mNumTabs;
     private Context context;
 
+    /**
+     * Construct MusicPagerAdapter
+     *
+     * @param fm FragmentManager
+     * @param NumOfTabs int number of tabs
+     * @param app_context Current Context
+     */
     public MusicPagerAdapter(FragmentManager fm, int NumOfTabs, Context app_context) {
         super(fm);
         this.mNumTabs = NumOfTabs;
@@ -50,6 +57,9 @@ public class MusicPagerAdapter extends FragmentStatePagerAdapter {
         return tabOfSounds;
     }
 
+    /**
+     * Gets the count of tabs
+     */
     @Override
     public int getCount() {
         return mNumTabs;

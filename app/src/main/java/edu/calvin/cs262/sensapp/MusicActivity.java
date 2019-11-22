@@ -14,6 +14,11 @@ import com.google.android.material.tabs.TabLayout;
 public class MusicActivity extends AppCompatActivity {
     private Context context;
 
+    /**
+     * Create MusicActivity
+     *
+     * @param savedInstanceState Bundle to initialize
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

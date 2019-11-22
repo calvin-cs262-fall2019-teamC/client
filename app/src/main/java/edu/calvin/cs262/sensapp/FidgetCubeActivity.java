@@ -11,7 +11,6 @@ import androidx.viewpager.widget.ViewPager;
 /**
  * An Activity for a virtual fidget cube with buttons, a switch, and a joystick
  */
-
 public class FidgetCubeActivity extends AppCompatActivity implements View.OnClickListener {
     private String[] face_names = {"buttons", "switch", "joystick"};
     private Context context;
@@ -20,6 +19,11 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
     private ImageButton nextButton;
     private ImageButton previousButton;
 
+    /**
+     * Create FidgetCubeActivity setting up the buttons and pager.
+     *
+     * @param savedInstanceState Bundle to initialize
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

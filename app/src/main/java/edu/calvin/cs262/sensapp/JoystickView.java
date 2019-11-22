@@ -22,24 +22,45 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
     private float baseRadius;
     private float hatRadius;
 
+    /**
+     * Create JoystickView
+     *
+     * @param context Current Context
+     */
     public JoystickView(Context context) {
         super(context);
         getHolder().addCallback(this);
         setOnTouchListener(this);
     }
 
+    /**
+     * Create JoystickView
+     *
+     * @param context Current Context
+     * @param attrs AttributeSet to initialize
+     */
     public JoystickView(Context context, AttributeSet attrs) {
         super(context, attrs);
         getHolder().addCallback(this);
         setOnTouchListener(this);
     }
 
+    /**
+     * Create JoystickView
+     *
+     * @param context Current Context
+     * @param attrs AttributeSet to initialize
+     * @param defStyleAttr int of whether to def style attributes
+     */
     public JoystickView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         getHolder().addCallback(this);
         setOnTouchListener(this);
     }
 
+    /**
+     * Setup appropriate dimensions for joystick window
+     */
     private void setupDimensions() {
         centerX = getWidth() / 2;
         centerY = getHeight() / 2;
@@ -47,6 +68,12 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
         hatRadius = Math.min(getWidth(), getHeight()) / 5;
     }
 
+    /**
+     * Draw the joystick at new position
+     *
+     * @param newX float of new X coordinate
+     * @param newY float of new Y coordinate
+     */
     private void drawJoystick(float newX, float newY) {
         if (getHolder().getSurface().isValid()) {
             Canvas myCanvas = this.getHolder().lockCanvas();
@@ -81,19 +108,44 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
+    /**
+     * Create Surface for joystick
+     *
+     * @param holder SurfaceHolder
+     */
     public void surfaceCreated(SurfaceHolder holder) {
         setupDimensions();
         drawJoystick(centerX, centerY);
     }
 
+    /**
+     * Empty for when surface changed
+     *
+     * @param holder SurfaceHolder
+     * @param format int of surface format
+     * @param width int of surface width
+     * @param height int of surface height
+     */
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
     }
 
+    /**
+     * Empty for when surface destroyed
+     *
+     * @param holder SurfaceHolder
+     */
     public void surfaceDestroyed(SurfaceHolder holder) {
 
     }
 
+    /**
+     * On touching joystick animate
+     *
+     * @param view View touched
+     * @param motionEvent MotionEvent received in touch
+     * @return true
+     */
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (view.equals(this)) {
