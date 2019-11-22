@@ -31,6 +31,10 @@ public interface ActivityDao {
     @Query("SELECT * from activity_table LIMIT 1")
     Activity[] getAnyActivity();
 
+    // Get one Activity ID based on a given name
+    @Query("SELECT id FROM activity_table WHERE name = :activityName")
+    int getActivityIdByName(String activityName);
+  
     // Delete a Activity
     @Delete
     void deleteActivity(Activity activity);

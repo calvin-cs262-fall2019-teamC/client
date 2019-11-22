@@ -32,12 +32,9 @@ public class MusicActivity extends AppCompatActivity {
      * @author cmd16
      */
     private void buildTabs(TabLayout tabs) {
-        tabs.addTab(tabs.newTab().setText(R.string.all_sounds_label));
         tabs.addTab(tabs.newTab().setText(R.string.animal_sounds_label));
         tabs.addTab(tabs.newTab().setText(R.string.nature_sounds_label));
         tabs.addTab(tabs.newTab().setText(R.string.water_sounds_label));
-        tabs.addTab(tabs.newTab().setText(R.string.music_sounds_label));
-        tabs.addTab(tabs.newTab().setText(R.string.city_sounds_label));
     }
 
     /**

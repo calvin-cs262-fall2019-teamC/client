@@ -49,5 +49,5 @@ public class History {
     public int getActivityId(){return this.mActivityId;}
     public String getTimeStart(){return this.mTimeStart;}
     public String getTimeEnd(){return this.mTimeEnd;}
-    public int getSatisfaction(){return this.mSatisfaction;}
+    public Integer getSatisfaction(){return this.mSatisfaction;}
 }
