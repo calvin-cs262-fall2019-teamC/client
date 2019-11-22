@@ -11,7 +11,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-/*
+/**
  * JoystickView is from this tutorial: https://www.instructables.com/id/A-Simple-Android-UI-Joystick/
  */
 public class JoystickView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
