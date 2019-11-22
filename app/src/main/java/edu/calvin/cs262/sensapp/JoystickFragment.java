@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+/**
+ * A {@link Fragment} subclass that holds a {@link JoystickView}
+ */
+
 public class JoystickFragment extends Fragment {
 
     @Override

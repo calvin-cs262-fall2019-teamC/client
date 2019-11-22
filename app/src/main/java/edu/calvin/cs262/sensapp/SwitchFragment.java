@@ -14,6 +14,12 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
+/**
+ * A {@link Fragment} subclass that contains a switch. When clicked,
+ * the switch animates (from off to on or on to off) and makes a sound.
+ * If the setting is enabled, the device also vibrates.
+ */
+
 public class SwitchFragment extends Fragment implements View.OnClickListener {
     public MediaPlayer switchUpPlayer;
     public MediaPlayer switchDownPlayer;
