@@ -11,8 +11,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-/*
- * JoystickView is from this tutorial: https://www.instructables.com/id/A-Simple-Android-UI-Joystick/
+/**
+ * A {@link SurfaceView} subclass for creating a joystick on a canvas that the user can move with touch gestures
+ * Adapted from the tutorial at https://www.instructables.com/id/A-Simple-Android-UI-Joystick/
  */
 public class JoystickView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
     private final int RATIO = 5; //The smaller, the more shading will occur
@@ -72,7 +73,6 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
             for (int i = 1; i <= hatRadius / RATIO; i++) {
                 // Gradually decrease the shade of black drawn to create a nice shading effect
                 colors.setARGB(255, (int) (i * (255 * RATIO / hatRadius)), (int) (i * (255 * RATIO / hatRadius)), 255);
-//                colors.setARGB(255, 0,255,157);  // TODO: change to colorAccent
                 // gradually decrease the drawing radius of the shading, until it reaches its minimum of 1/3 the radius of the joystick hat
                 myCanvas.drawCircle(newX, newY, hatRadius - (float) i * (RATIO) / 3, colors);
             }

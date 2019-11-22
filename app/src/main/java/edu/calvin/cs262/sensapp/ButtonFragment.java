@@ -14,6 +14,11 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/**
+ * A {@link Fragment} subclass that holds 5 buttons ({@link FloatingActionButton})
+ * that can be clicked, triggering a sound (and, if enabled, vibration).
+ */
+
 public class ButtonFragment extends Fragment implements View.OnClickListener {
     public MediaPlayer buttonSoundPlayer;
     Vibrator vibrator;
