@@ -67,10 +67,21 @@ public class FavoriteRepository {
 
         private FavoriteDao mAsyncTaskDao;
 
+        /**
+         * Construct the AsyncTask
+         *
+         * @param dao FavoriteDao to access Favorite Table
+         */
         insertAsyncTask(FavoriteDao dao) {
             mAsyncTaskDao = dao;
         }
 
+        /**
+         * Perform Task Asynchronously
+         *
+         * @param params Favorite object to insert
+         * @return null
+         */
         @Override
         protected Void doInBackground(final Favorite... params) {
             mAsyncTaskDao.insert(params[0]);
@@ -84,10 +95,20 @@ public class FavoriteRepository {
     private static class deleteAllFavoritesAsyncTask extends AsyncTask<Void, Void, Void> {
         private FavoriteDao mAsyncTaskDao;
 
+        /**
+         * Construct the AsyncTask
+         *
+         * @param dao FavoriteDao to access Favorite Table
+         */
         deleteAllFavoritesAsyncTask(FavoriteDao dao) {
             mAsyncTaskDao = dao;
         }
 
+        /**
+         * Perform Task Asynchronously
+         *
+         * @return null
+         */
         @Override
         protected Void doInBackground(Void... voids) {
             mAsyncTaskDao.deleteAll();
@@ -101,10 +122,21 @@ public class FavoriteRepository {
     private static class deleteFavoriteAsyncTask extends AsyncTask<Favorite, Void, Void> {
         private FavoriteDao mAsyncTaskDao;
 
+        /**
+         * Construct the AsyncTask
+         *
+         * @param dao FavoriteDao to access Favorite Table
+         */
         deleteFavoriteAsyncTask(FavoriteDao dao) {
             mAsyncTaskDao = dao;
         }
 
+        /**
+         * Perform Task Asynchronously
+         *
+         * @param params Favorite object to delete
+         * @return null
+         */
         @Override
         protected Void doInBackground(final Favorite... params) {
             mAsyncTaskDao.deleteFavorite(params[0]);

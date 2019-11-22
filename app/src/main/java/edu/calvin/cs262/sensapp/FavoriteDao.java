@@ -39,7 +39,7 @@ public interface FavoriteDao {
     @Delete
     void deleteFavorite(Favorite favorite);
 
-    /*  TODO: Necessary?
+    /*
     // Get all Activities which a are referenced by Favorites
     @Query("SELECT * FROM activity_table INNER JOIN favorite_table ON " +
             "activity_table.id = favorite_table.activityId")

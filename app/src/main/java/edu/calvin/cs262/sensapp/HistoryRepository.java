@@ -67,10 +67,21 @@ public class HistoryRepository {
 
         private HistoryDao mAsyncTaskDao;
 
+        /**
+         * Construct the AsyncTask
+         *
+         * @param dao HistoryDao to access History Table
+         */
         insertAsyncTask(HistoryDao dao) {
             mAsyncTaskDao = dao;
         }
 
+        /**
+         * Perform Task Asynchronously
+         *
+         * @param params History object to insert
+         * @return null
+         */
         @Override
         protected Void doInBackground(final History... params) {
             mAsyncTaskDao.insert(params[0]);
@@ -84,10 +95,20 @@ public class HistoryRepository {
     private static class deleteAllHistoriesAsyncTask extends AsyncTask<Void, Void, Void> {
         private HistoryDao mAsyncTaskDao;
 
+        /**
+         * Construct the AsyncTask
+         *
+         * @param dao HistoryDao to access History Table
+         */
         deleteAllHistoriesAsyncTask(HistoryDao dao) {
             mAsyncTaskDao = dao;
         }
 
+        /**
+         * Perform Task Asynchronously
+         *
+         * @return null
+         */
         @Override
         protected Void doInBackground(Void... voids) {
             mAsyncTaskDao.deleteAll();
@@ -101,10 +122,21 @@ public class HistoryRepository {
     private static class deleteHistoryAsyncTask extends AsyncTask<History, Void, Void> {
         private HistoryDao mAsyncTaskDao;
 
+        /**
+         * Construct the AsyncTask
+         *
+         * @param dao HistoryDao to access History Table
+         */
         deleteHistoryAsyncTask(HistoryDao dao) {
             mAsyncTaskDao = dao;
         }
 
+        /**
+         * Perform Task Asynchronously
+         *
+         * @param params History object to delete
+         * @return null
+         */
         @Override
         protected Void doInBackground(final History... params) {
             mAsyncTaskDao.deleteHistory(params[0]);

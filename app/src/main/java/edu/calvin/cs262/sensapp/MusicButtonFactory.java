@@ -7,7 +7,6 @@ import java.util.List;
  * A Factory class for returning a list of {@link MusicButtonView}s for a given category
  * from {@link MusicCategoryFragment}
  */
-
 public class MusicButtonFactory {
     private static MusicButtonFactory INSTANCE;
     private final MusicButtonData catPurr = new MusicButtonData(R.drawable.cat, R.raw.cat_purring, "Purr");
@@ -17,6 +16,9 @@ public class MusicButtonFactory {
     private final MusicButtonData river = new MusicButtonData(R.drawable.river, R.raw.small_river_1_slow_close, "River");
     private final MusicButtonData birds = new MusicButtonData(R.drawable.bird, R.raw.spring_birds_new_jersey, "Birds");
 
+    /**
+     * Create (if needed) a MusicButtonFactory and return current instance
+     */
     public static synchronized MusicButtonFactory getInstance() {
         if (INSTANCE == null) {
             return new MusicButtonFactory();
@@ -24,10 +26,19 @@ public class MusicButtonFactory {
         return INSTANCE;
     }
 
+    /**
+     * Create MusicButtonFragment (blank)
+     */
     private MusicButtonFactory() {
 
     }
 
+    /**
+     * Get the MusicButtonData for a given category to display
+     *
+     * @param category String of category name
+     * @return List of MusicButtonData
+     */
     public List<MusicButtonData> getMusicButtonData(String category) {
         List<MusicButtonData> list = new ArrayList<MusicButtonData>();
         switch (category) {

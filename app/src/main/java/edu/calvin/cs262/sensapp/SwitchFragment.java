@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
  * the switch animates (from off to on or on to off) and makes a sound.
  * If the setting is enabled, the device also vibrates.
  */
-
 public class SwitchFragment extends Fragment implements View.OnClickListener {
     public MediaPlayer switchUpPlayer;
     public MediaPlayer switchDownPlayer;
@@ -29,12 +28,25 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
     private ImageView switchImage;
     private Context context = null;
 
+    /**
+     * Create SwitchFragment setting up Context
+     *
+     * @param savedInstanceState Bundle to initialize
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getContext();
     }
 
+    /**
+     * Setup the needed Views for the switch animation
+     *
+     * @param inflater LayoutInflater to inflate the Fragment
+     * @param container VewGroup in which to display Fragment
+     * @param savedInstanceState Bundle to initialize
+     * @return The inflated View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_switch, container, false);

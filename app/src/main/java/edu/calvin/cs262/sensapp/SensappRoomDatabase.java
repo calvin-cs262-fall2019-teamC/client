@@ -60,6 +60,10 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
         String[] endTimes = {"2006-06-27 08:30:00", "2013-10-01 08:36:33", "2019-11-02 6:53:42"};
         Integer[] satisfactions = {2, null, 5};
 
+        /**
+         * Construct PopulateDbAsync Task
+         * @param db SensappRoomDatabase to initialize
+         */
         PopulateDbAsync(SensappRoomDatabase db) {
             mActivityDao = db.activityDao();
             mFavoriteDao = db.favoriteDao();

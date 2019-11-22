@@ -18,12 +18,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * A {@link Fragment} subclass that holds 5 buttons ({@link FloatingActionButton})
  * that can be clicked, triggering a sound (and, if enabled, vibration).
  */
-
 public class ButtonFragment extends Fragment implements View.OnClickListener {
     public MediaPlayer buttonSoundPlayer;
     Vibrator vibrator;
     private Context context = null;
 
+    /**
+     * Create the Fragment.
+     *
+     * @param savedInstanceState Bundle to initialize
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,14 @@ public class ButtonFragment extends Fragment implements View.OnClickListener {
         buttonSoundPlayer = MediaPlayer.create(context, R.raw.button_click_short);
     }
 
+    /**
+     * Setup the Button Views
+     *
+     * @param inflater LayoutInflater to setup Layout
+     * @param container ViewGroup to display Views in
+     * @param savedInstanceState Bundle to initialize
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_button, container, false);

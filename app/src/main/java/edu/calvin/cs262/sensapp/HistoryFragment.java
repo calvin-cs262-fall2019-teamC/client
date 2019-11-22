@@ -62,6 +62,9 @@ public class HistoryFragment extends Fragment {
         return frag_layout;
     }
 
+    /**
+     * Get the data to display on history page
+     */
     private synchronized void getData() {
 
         assert getArguments() != null;
