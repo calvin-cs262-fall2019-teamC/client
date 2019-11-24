@@ -1,9 +1,13 @@
 package edu.calvin.cs262.sensapp;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -13,6 +17,17 @@ import com.google.android.material.tabs.TabLayout;
  */
 public class MusicActivity extends AppCompatActivity {
     private Context context;
+    private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
+    private final LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getApplicationContext());
+
+    private final BroadcastReceiver appBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() != null & intent.getAction().equals(SOUND_BUTTON_CLICKED)) {
+                // update buttons
+            }
+        }
+    };
 
     /**
      * Create MusicActivity
@@ -28,6 +43,7 @@ public class MusicActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         buildTabs(tabLayout);
         buildPagerAdapter(tabLayout);
+
     }
 
     /**
@@ -72,5 +88,17 @@ public class MusicActivity extends AppCompatActivity {
                 //do nothing because re-selecting a tab is the same as selecting a tab, here.
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
     }
 }

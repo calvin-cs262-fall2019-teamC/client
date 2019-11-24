@@ -11,7 +11,6 @@ import android.widget.Button;
  * and a {@link MediaPlayer} for playing its sound on a loop
  */
 public class MusicButtonView extends Button {
-    private MediaPlayer mediaPlayer;
 
     /**
      * Create MusicButtonView
@@ -64,8 +63,6 @@ public class MusicButtonView extends Button {
      * @param context Current Context
      */
     public void makeMusicButton(int drawableID, int audioId, String label, Context context) {
-        mediaPlayer = MediaPlayer.create(context, audioId);
-        mediaPlayer.setLooping(true);
         Drawable drawable = getResources().getDrawable(drawableID);
         int dim = (int) dp_to_px(200);
         drawable.setBounds(0, 0, dim, dim);
@@ -75,25 +72,21 @@ public class MusicButtonView extends Button {
     }
 
     /**
-     * If the audio isn't playing, play the audio and make the drawable more opaque
-     * Else, pause the audio and make the drawable less opaque
+     * Make the drawable translucent to show we aren't playing
      */
-    public void playPause() {
+    public void setPause() {
         Drawable[] drawables = this.getCompoundDrawables();
         Drawable drawable = drawables[1];
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            drawable.setAlpha(100);
-        } else {
-            mediaPlayer.start();
-            drawable.setAlpha(255);
-        }
+        drawable.setAlpha(100);
     }
 
     /**
-     * Stop audio
+     * Make the drawable opaque to show we are playing
      */
-    public void stopAudio() {
-        mediaPlayer.stop();
+    public void setPlay() {
+        Drawable[] drawables = this.getCompoundDrawables();
+        Drawable drawable = drawables[1];
+        drawable.setAlpha(255);
     }
+
 }

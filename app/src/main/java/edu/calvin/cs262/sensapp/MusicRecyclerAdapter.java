@@ -1,11 +1,13 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -63,6 +65,8 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
      */
     public class MusicButtonHolder extends RecyclerView.ViewHolder implements MusicButtonView.OnClickListener {
         private MusicButtonView musicButtonView;
+        private final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(context);
+        private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
 
         /**
          * Construct the MusicButtonHolder
@@ -93,7 +97,9 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
          */
         @Override
         public void onClick(View view) {
-            musicButtonView.playPause();
+            Intent intent = new Intent(SOUND_BUTTON_CLICKED);
+            intent.putExtra("button_clicked", musicButtonView.getText());
+            broadcastManager.sendBroadcast(intent);
         }
     }
 
