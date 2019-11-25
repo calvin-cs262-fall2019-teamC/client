@@ -4,7 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -12,19 +14,33 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An Activity for playing various sounds
  */
 public class MusicActivity extends AppCompatActivity {
     private Context context;
     private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
-    private final LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getApplicationContext());
+    private LocalBroadcastManager localBroadcastManager;
+    private Map<String, MediaPlayer> mediaPlayerMap = new HashMap<>();
 
     private final BroadcastReceiver appBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null & intent.getAction().equals(SOUND_BUTTON_CLICKED)) {
-                // update buttons
+                String button_clicked = intent.getStringExtra("button_clicked");
+                Log.d("MusicActivity", "button clicked: " + button_clicked);
+                if (mediaPlayerMap.get(button_clicked) != null) {
+                    MediaPlayer player = mediaPlayerMap.get(button_clicked);
+                    if (player.isPlaying()) {
+                        player.pause();
+                    }
+                    else {
+                        player.start();
+                    }
+                }
             }
         }
     };
@@ -39,6 +55,8 @@ public class MusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         context = getApplicationContext();
+
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         buildTabs(tabLayout);
@@ -90,15 +108,29 @@ public class MusicActivity extends AppCompatActivity {
         });
     }
 
+    public Map<String, MediaPlayer> getMediaPlayerMap() {
+        return mediaPlayerMap;
+    }
+
+    /**
+     * Register a receiver so the Activity knows to listen for the button clicked message
+     */
     @Override
     protected void onResume() {
         super.onResume();
         localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
     }
 
+    /**
+     * Release MediaPlayer resources so we aren't using up resources and so the sound will stop
+     */
     @Override
     protected void onPause() {
         super.onPause();
         localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
+        for (MediaPlayer player: mediaPlayerMap.values()) {
+            player.release();
+            Log.d("MusicActivity", "Released a MediaPlayer");
+        }
     }
 }
