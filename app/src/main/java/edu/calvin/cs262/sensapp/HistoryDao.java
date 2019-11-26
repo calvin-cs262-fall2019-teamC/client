@@ -24,7 +24,7 @@ public interface HistoryDao {
     void deleteAll();
 
     // Get all Activities ordered by ID
-    @Query("SELECT * from history_table ORDER BY timeStart ASC")
+    @Query("SELECT * from history_table ORDER BY timeStart DESC")
     LiveData<List<History>> getAllHistories();
 
     // Get one History

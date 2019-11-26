@@ -59,8 +59,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
         private final ActivityDao mActivityDao;
         private final FavoriteDao mFavoriteDao;
         private final HistoryDao mHistoryDao;
-        int[] historyActivityIds = {1, 4, 6};
-        int[] satisfactions = {2, 0, 5};
 
         /**
          * Construct PopulateDbAsync Task
@@ -81,18 +79,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
 
-            // Start times
-            String[] startTimes = new String[3];
-            startTimes[0] = "2007-12-03T10:15:30";
-            startTimes[1] = "2007-12-11T11:17:29";
-            startTimes[2] = "2007-12-03T07:04:55";
-
-            // End times
-            String[] endTimes = new String[3];
-            endTimes[0] = "2007-12-03T10:18:30";
-            endTimes[1] = "2007-12-11T11:17:59";
-            endTimes[2] = "2007-12-03T07:05:11";
-
             // Get Activity titles
             String[] activityTitles = new String[6];
             activityTitles[0] = mContext.getResources().getString(R.string.activity_one_title);
@@ -107,16 +93,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
                 for (int i = 0; i <= activityTitles.length - 1; i++) {
                     Activity activity = new Activity(0, activityTitles[i]);
                     mActivityDao.insert(activity);
-                }
-            }
-
-            // If we have no histories, then create the initial list of histories
-            if (mHistoryDao.getAnyHistory().length < 1) {
-                for (int i = 0; i <= historyActivityIds.length - 1; i++) {
-                    History history = new History(
-                            0, historyActivityIds[i], startTimes[i], endTimes[i], satisfactions[i]
-                    );
-                    mHistoryDao.insert(history);
                 }
             }
 

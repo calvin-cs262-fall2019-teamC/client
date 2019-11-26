@@ -1,7 +1,9 @@
 package edu.calvin.cs262.sensapp;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -10,13 +12,19 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class BubblesActivity extends AppCompatActivity {
 
+    // For creating History records once Activity is used for 5 or more seconds
+    private HistoryManager hist_manager;
+
     /**
      * Create the BubbleActivity
      *
      * @param savedInstanceState A Bundle of info to initialize
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hist_manager = new HistoryManager(getString(R.string.activity_three_title),
+                getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bubbles);
 
@@ -30,5 +38,13 @@ public class BubblesActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Creates a History record of this activity if it was open for 5 or more seconds
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onPause() {
+        super.onPause();
+        hist_manager.createRecord();
+    }
 }
