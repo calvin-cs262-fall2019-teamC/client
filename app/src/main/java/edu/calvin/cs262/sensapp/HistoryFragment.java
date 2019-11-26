@@ -25,8 +25,6 @@ import java.util.List;
  * and how they liked it
  */
 public class HistoryFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private HistoryRecyclerAdapter recyclerAdapter;
     private Context context;
     private DatabaseViewModel mDatabaseViewModel;
 
@@ -81,7 +79,7 @@ public class HistoryFragment extends Fragment {
         mDatabaseViewModel.getAllHistories().observe(this, new Observer<List<History>>() {
             @Override
             public void onChanged(@Nullable final List<History> histories) {
-                // Update the cached copy of the favorites in the adapter.
+                // Update the cached copy of the histories in the adapter.
                 adapter.setHistories(histories);
             }
         });
