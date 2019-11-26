@@ -2,7 +2,6 @@ package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +57,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull MusicButtonHolder holder, int position) {
         MusicButtonData data = musicButtonDataList.get(position);
-        holder.makeMusicButton(data.getDrawableID(), data.getAudioID(), data.getLabel());
+        holder.makeMusicButton(data.getDrawableID(), data.getStringID());
     }
 
     /**
@@ -82,17 +81,11 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
 
         /**
          * Make a MusicButton
-         *
-         * @param drawableID int ID of drawable image
-         * @param audioID int ID of audio to play
-         * @param label String of label text
+         *  @param drawableID int ID of drawable image
+         * @param stringID ID for String resource of text label
          */
-        public void makeMusicButton(int drawableID, int audioID, String label) {
-            musicButtonView.makeMusicButton(drawableID, label, context);
-            MediaPlayer player = MediaPlayer.create(context, audioID);
-            player.setLooping(true);
-            // idea to get Activity from context: https://stackoverflow.com/questions/12142255/call-activity-method-from-adapter
-            ((MusicActivity) context).getMediaPlayerMap().put(label, player);
+        public void makeMusicButton(int drawableID, int stringID) {
+            musicButtonView.makeMusicButton(drawableID, stringID);
         }
 
         /**

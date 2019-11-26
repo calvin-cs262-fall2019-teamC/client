@@ -34,4 +34,10 @@
     <string name="right_button_description">Button leading to the right on fidget cube</string>
     <string name="switch_description">Switch to flip on and off</string>
     <string name="no_favorite">No favorites found</string>
+    <string name="purr">Purr</string>
+    <string name="leaves">Leaves</string>
+    <string name="forest">Forest</string>
+    <string name="rain">Rain</string>
+    <string name="river">River</string>
+    <string name="birds">Birds</string>
 </resources>

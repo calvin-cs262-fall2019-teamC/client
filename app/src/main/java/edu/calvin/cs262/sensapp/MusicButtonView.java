@@ -56,18 +56,16 @@ public class MusicButtonView extends Button {
 
     /**
      * Create a MusicButton with given parameters
-     *
      * @param drawableID int ID of drawable image
-     * @param label String of text label
-     * @param context Current Context
+     * @param stringID String of text label
      */
-    public void makeMusicButton(int drawableID, String label, Context context) {
+    public void makeMusicButton(int drawableID, int stringID) {
         Drawable drawable = getResources().getDrawable(drawableID);
         int dim = (int) dp_to_px(200);
         drawable.setBounds(0, 0, dim, dim);
         drawable.setAlpha(100);
         this.setCompoundDrawables(null, drawable, null, null);
-        this.setText(label);
+        this.setText(stringID);
     }
 
     /**

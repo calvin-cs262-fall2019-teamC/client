@@ -1,7 +1,9 @@
 package edu.calvin.cs262.sensapp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A Factory class for returning a list of {@link MusicButtonView}s for a given category
@@ -9,12 +11,13 @@ import java.util.List;
  */
 public class MusicButtonFactory {
     private static MusicButtonFactory INSTANCE;
-    private final MusicButtonData catPurr = new MusicButtonData(R.drawable.cat, R.raw.cat_purring, "Purr");
-    private final MusicButtonData leafCrunch = new MusicButtonData(R.drawable.leaves_square, R.raw.footsteps_on_dry_leaves, "Leaves");
-    private final MusicButtonData forest = new MusicButtonData(R.drawable.forest, R.raw.forest, "Forest");
-    private final MusicButtonData rain = new MusicButtonData(R.drawable.rain, R.raw.rain_heavy_2_rural, "Rain");
-    private final MusicButtonData river = new MusicButtonData(R.drawable.river, R.raw.small_river_1_slow_close, "River");
-    private final MusicButtonData birds = new MusicButtonData(R.drawable.bird, R.raw.spring_birds_new_jersey, "Birds");
+    private static final MusicButtonData catPurr = new MusicButtonData(R.drawable.cat, R.raw.cat_purring, R.string.purr);
+    private static final MusicButtonData leafCrunch = new MusicButtonData(R.drawable.leaves_square, R.raw.footsteps_on_dry_leaves, R.string.leaves);
+    private static final MusicButtonData forest = new MusicButtonData(R.drawable.forest, R.raw.forest, R.string.forest);
+    private static final MusicButtonData rain = new MusicButtonData(R.drawable.rain, R.raw.rain_heavy_2_rural, R.string.rain);
+    private static final MusicButtonData river = new MusicButtonData(R.drawable.river, R.raw.small_river_1_slow_close, R.string.river);
+    private static final MusicButtonData birds = new MusicButtonData(R.drawable.bird, R.raw.spring_birds_new_jersey, R.string.birds);
+    private final ArrayList<MusicButtonData> dataList = new ArrayList<MusicButtonData>();
 
     /**
      * Create (if needed) a MusicButtonFactory and return current instance
@@ -30,7 +33,12 @@ public class MusicButtonFactory {
      * Create MusicButtonFragment (blank)
      */
     private MusicButtonFactory() {
-
+        dataList.add(catPurr);
+        dataList.add(leafCrunch);
+        dataList.add(forest);
+        dataList.add(rain);
+        dataList.add(river);
+        dataList.add(birds);
     }
 
     /**
@@ -39,7 +47,7 @@ public class MusicButtonFactory {
      * @param category String of category name
      * @return List of MusicButtonData
      */
-    public List<MusicButtonData> getMusicButtonData(String category) {
+    public static List<MusicButtonData> getMusicButtonData(String category) {
         List<MusicButtonData> list = new ArrayList<MusicButtonData>();
         switch (category) {
             case "Animal":
@@ -59,5 +67,9 @@ public class MusicButtonFactory {
         }
 
         return list;
+    }
+    
+    public ArrayList<MusicButtonData> getDataList() {
+        return dataList;
     }
 }

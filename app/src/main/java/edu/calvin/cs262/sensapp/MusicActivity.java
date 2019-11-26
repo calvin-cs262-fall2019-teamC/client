@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,8 @@ public class MusicActivity extends AppCompatActivity {
     private Context context;
     private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
     private LocalBroadcastManager localBroadcastManager;
-    private Map<String, MediaPlayer> mediaPlayerMap = new HashMap<>();
+    private Map<String, MediaPlayer> mediaPlayerMap;
+    private ArrayList<MusicButtonData> musicButtonDataList;
 
     private final BroadcastReceiver appBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -55,6 +57,13 @@ public class MusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         context = getApplicationContext();
+        musicButtonDataList = MusicButtonFactory.getInstance().getDataList();
+        mediaPlayerMap = new HashMap<>();
+        for (MusicButtonData data: musicButtonDataList) {
+            MediaPlayer player = MediaPlayer.create(context, data.getAudioID());
+            player.setLooping(true);
+            mediaPlayerMap.put(getString(data.getStringID()), player);
+        }
 
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
 
