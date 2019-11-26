@@ -6,13 +6,18 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.time.LocalDateTime;
+
 /**
  * History table from database
  */
 @Entity(tableName = "history_table")
 public class History {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    private int mId;
+
     @ForeignKey(entity = Activity.class, parentColumns = "id", childColumns = "activityId")
     @ColumnInfo(name = "activityId")
     private int mActivityId;
@@ -25,18 +30,20 @@ public class History {
 
     @Nullable
     @ColumnInfo(name = "satisfaction")
-    private Integer mSatisfaction;
+    private int mSatisfaction;
 
     /**
      * Constructor for History Table
      *
+     * @param id The id primary key field (auto generated)
      * @param activityId The activityId foreign key field
-     * @param timeStart The timeStart field (timestamp String)
-     * @param timeEnd The timeEnd field (timestamp String)
+     * @param timeStart The timeStart field (timestamp String like "2007-12-03T10:18:30")
+     * @param timeEnd The timeEnd field (timestamp String like "2007-12-03T10:18:30")
      * @param satisfaction The satisfaction field (int 1-5 or NULL)
      */
-    public History(int activityId, String timeStart,
-                   String timeEnd, @Nullable Integer satisfaction) {
+    public History(int id, int activityId, String timeStart,
+                   String timeEnd, @Nullable int satisfaction) {
+        this.mId = id;
         this.mActivityId = activityId;
         this.mTimeStart = timeStart;
         this.mTimeEnd = timeEnd;
@@ -46,8 +53,9 @@ public class History {
     /**
      * Getters for Column values
      */
+    public int getId() {return this.mId;}
     public int getActivityId(){return this.mActivityId;}
     public String getTimeStart(){return this.mTimeStart;}
     public String getTimeEnd(){return this.mTimeEnd;}
-    public Integer getSatisfaction(){return this.mSatisfaction;}
+    public int getSatisfaction(){return this.mSatisfaction;}
 }
