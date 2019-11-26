@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,6 +86,33 @@ public class HistoryFragment extends Fragment {
                 adapter.setHistories(histories);
             }
         });
+
+        // Add the functionality to swipe items in the
+        // recycler view to delete that item
+        // From lab 9 / hw 3
+        ItemTouchHelper helper = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(0,
+                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView,
+                                          @NonNull RecyclerView.ViewHolder viewHolder,
+                                          @NonNull RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+                                         int direction) {
+                        int position = viewHolder.getAdapterPosition();
+                        History myHistory = adapter.getHistoryAtPosition(position);
+                        Toast.makeText(context, "Deleting record " +
+                                myHistory.getId(), Toast.LENGTH_LONG).show();
+
+                        // Delete the player
+                        mDatabaseViewModel.deleteHistory(myHistory);
+                    }
+                });
+        helper.attachToRecyclerView(recyclerView);
 
         return view;
     }

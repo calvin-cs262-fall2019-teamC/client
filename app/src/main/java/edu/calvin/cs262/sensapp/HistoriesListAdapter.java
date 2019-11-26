@@ -71,7 +71,6 @@ public class HistoriesListAdapter
     @Override
     public void onBindViewHolder(@NonNull HistoryItemHolder holder, int position) {
         int id;
-        HistoryData histData;
         String time;
         String title;
         Drawable image;
@@ -79,12 +78,16 @@ public class HistoriesListAdapter
         int activity_id;
         String activity_name;
         Activity activity;
+
+        // Obtain the necessary History information
         if (mHistories != null && mActivities != null) {
             History current = mHistories.get(position);
             activity_id = current.getActivityId();
             id = current.getId();
             satisfaction = current.getSatisfaction();
             activity = getActivityAtPosition(activity_id - 1);
+
+            // Get the image and title of the Activity referenced by the History record
             if (activity != null) {
                 activity_name = activity.getName();
                 // https://stackoverflow.com/questions/14233062/imagebutton-change-programmatically
@@ -180,6 +183,7 @@ public class HistoriesListAdapter
             }
             durationView.setText(dur);
 
+            // Update the History record when a new satisfaction value is selected
             // From https://github.com/sujithkanna/SmileyRating
             smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
                 @Override

@@ -26,6 +26,7 @@ public class HistoryManager {
      * Construct a HistoryManager starting timing and setting the Activity title
      *
      * @param title String for the activityTitle
+     * @param ctx Current app Context
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public HistoryManager(String title, Context ctx) {
