@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.Button;
 
 /**
@@ -59,31 +60,27 @@ public class MusicButtonView extends Button {
      * @param drawableID int ID of drawable image
      * @param stringID String of text label
      */
-    public void makeMusicButton(int drawableID, int stringID) {
+    public void makeMusicButton(int drawableID, int stringID, boolean isPlaying) {
         Drawable drawable = getResources().getDrawable(drawableID);
         int dim = (int) dp_to_px(200);
         drawable.setBounds(0, 0, dim, dim);
-        drawable.setAlpha(100);
         this.setCompoundDrawables(null, drawable, null, null);
         this.setText(stringID);
+        setPlayPause(isPlaying);
     }
 
     /**
-     * Make the drawable translucent to show we aren't playing
+     * Change the drawable's opacity: translucent if we are paused, opaque if we are playing
      */
-    public void setPause() {
+    public void setPlayPause(boolean isPlaying) {
         Drawable[] drawables = this.getCompoundDrawables();
         Drawable drawable = drawables[1];
-        drawable.setAlpha(100);
-    }
 
-    /**
-     * Make the drawable opaque to show we are playing
-     */
-    public void setPlay() {
-        Drawable[] drawables = this.getCompoundDrawables();
-        Drawable drawable = drawables[1];
-        drawable.setAlpha(255);
+        if (isPlaying) {
+            drawable.setAlpha(255);
+        } else {
+            drawable.setAlpha(100);
+        }
     }
 
 }

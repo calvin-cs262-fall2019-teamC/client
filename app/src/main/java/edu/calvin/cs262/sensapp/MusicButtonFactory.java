@@ -11,12 +11,12 @@ import java.util.Map;
  */
 public class MusicButtonFactory {
     private static MusicButtonFactory INSTANCE;
-    private static final MusicButtonData catPurr = new MusicButtonData(R.drawable.cat, R.raw.cat_purring, R.string.purr);
-    private static final MusicButtonData leafCrunch = new MusicButtonData(R.drawable.leaves_square, R.raw.footsteps_on_dry_leaves, R.string.leaves);
-    private static final MusicButtonData forest = new MusicButtonData(R.drawable.forest, R.raw.forest, R.string.forest);
-    private static final MusicButtonData rain = new MusicButtonData(R.drawable.rain, R.raw.rain_heavy_2_rural, R.string.rain);
-    private static final MusicButtonData river = new MusicButtonData(R.drawable.river, R.raw.small_river_1_slow_close, R.string.river);
-    private static final MusicButtonData birds = new MusicButtonData(R.drawable.bird, R.raw.spring_birds_new_jersey, R.string.birds);
+    private static final MusicButtonData catPurr = new MusicButtonData(R.drawable.cat, R.raw.cat_purring, R.string.purr, false);
+    private static final MusicButtonData leafCrunch = new MusicButtonData(R.drawable.leaves_square, R.raw.footsteps_on_dry_leaves, R.string.leaves, false);
+    private static final MusicButtonData forest = new MusicButtonData(R.drawable.forest, R.raw.forest, R.string.forest, false);
+    private static final MusicButtonData rain = new MusicButtonData(R.drawable.rain, R.raw.rain_heavy_2_rural, R.string.rain, false);
+    private static final MusicButtonData river = new MusicButtonData(R.drawable.river, R.raw.small_river_1_slow_close, R.string.river, false);
+    private static final MusicButtonData birds = new MusicButtonData(R.drawable.bird, R.raw.spring_birds_new_jersey, R.string.birds, false);
     private final ArrayList<MusicButtonData> dataList = new ArrayList<MusicButtonData>();
 
     /**

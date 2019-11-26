@@ -8,6 +8,7 @@ public class MusicButtonData {
     private int drawableID;
     private int audioID;
     private int stringID;
+    private boolean isPlaying;
 
     /**
      * Default constructor for MusicButtonData
@@ -16,6 +17,7 @@ public class MusicButtonData {
         drawableID = 0;
         audioID = 0;
         stringID = 0;
+        isPlaying = false;
     }
 
     /**
@@ -25,10 +27,11 @@ public class MusicButtonData {
      * @param audio int of audioID
      * @param lbl int of string resource
      */
-    public MusicButtonData(int draw, int audio, int lbl) {
+    public MusicButtonData(int draw, int audio, int lbl, boolean play) {
         drawableID = draw;
         audioID = audio;
         stringID = lbl;
+        isPlaying = play;
     }
 
     /**
@@ -42,5 +45,13 @@ public class MusicButtonData {
     }
     public int getStringID() {
         return stringID;
+    }
+
+    public boolean getIsPlaying() {
+        return isPlaying;
+    }
+
+    public void setIsPlaying(boolean val) {
+        isPlaying = val;
     }
 }

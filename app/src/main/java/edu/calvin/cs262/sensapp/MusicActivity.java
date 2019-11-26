@@ -141,5 +141,9 @@ public class MusicActivity extends AppCompatActivity {
             player.release();
             Log.d("MusicActivity", "Released a MediaPlayer");
         }
+
+        for (MusicButtonData data: musicButtonDataList) {
+            data.setIsPlaying(false);
+        }
     }
 }

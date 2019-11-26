@@ -36,7 +36,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
      *
      * @param parent ViewGroup in which to display
      * @param viewType int of View type
-     * @return
+     * @return MusicButtonHolder (ViewHolder)
      */
     @NonNull
     @Override
@@ -57,6 +57,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull MusicButtonHolder holder, int position) {
         MusicButtonData data = musicButtonDataList.get(position);
+        holder.setData(data);
         holder.makeMusicButton(data.getDrawableID(), data.getStringID());
     }
 
@@ -67,6 +68,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
         private MusicButtonView musicButtonView;
         private final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(context);
         private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
+        private MusicButtonData data;
 
         /**
          * Construct the MusicButtonHolder
@@ -85,11 +87,11 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
          * @param stringID ID for String resource of text label
          */
         public void makeMusicButton(int drawableID, int stringID) {
-            musicButtonView.makeMusicButton(drawableID, stringID);
+            musicButtonView.makeMusicButton(drawableID, stringID, data.getIsPlaying());
         }
 
         /**
-         * Play or pause music upon click
+         * Play or pause music upon click and tell the musicButton to set its alpha appropriately
          *
          * @param view View clicked
          */
@@ -98,6 +100,17 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
             Intent intent = new Intent(SOUND_BUTTON_CLICKED);
             intent.putExtra("button_clicked", musicButtonView.getText());
             broadcastManager.sendBroadcast(intent);
+            data.setIsPlaying(!data.getIsPlaying());
+            musicButtonView.setPlayPause(data.getIsPlaying());
+        }
+
+        /**
+         * set MusicButtonData
+         *
+         * @param stuff MusicButtonData to set
+         */
+        public void setData(MusicButtonData stuff) {
+            data = stuff;
         }
     }
 
