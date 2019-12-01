@@ -1,11 +1,13 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -34,7 +36,7 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
      *
      * @param parent ViewGroup in which to display
      * @param viewType int of View type
-     * @return
+     * @return MusicButtonHolder (ViewHolder)
      */
     @NonNull
     @Override
@@ -55,7 +57,8 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull MusicButtonHolder holder, int position) {
         MusicButtonData data = musicButtonDataList.get(position);
-        holder.makeMusicButton(data.getDrawableID(), data.getAudioID(), data.getLabel());
+        holder.setData(data);
+        holder.makeMusicButton(data.getDrawableID(), data.getStringID());
     }
 
     /**
@@ -63,6 +66,9 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
      */
     public class MusicButtonHolder extends RecyclerView.ViewHolder implements MusicButtonView.OnClickListener {
         private MusicButtonView musicButtonView;
+        private final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(context);
+        private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
+        private MusicButtonData data;
 
         /**
          * Construct the MusicButtonHolder
@@ -77,23 +83,34 @@ public class MusicRecyclerAdapter extends RecyclerView.Adapter<MusicRecyclerAdap
 
         /**
          * Make a MusicButton
-         *
-         * @param drawableID int ID of drawable image
-         * @param audioID int ID of audio to play
-         * @param label String of label text
+         *  @param drawableID int ID of drawable image
+         * @param stringID ID for String resource of text label
          */
-        public void makeMusicButton(int drawableID, int audioID, String label) {
-            musicButtonView.makeMusicButton(drawableID, audioID, label, context);
+        public void makeMusicButton(int drawableID, int stringID) {
+            musicButtonView.makeMusicButton(drawableID, stringID, data.getIsPlaying());
         }
 
         /**
-         * Play or pause music upon click
+         * Play or pause music upon click and tell the musicButton to set its alpha appropriately
          *
          * @param view View clicked
          */
         @Override
         public void onClick(View view) {
-            musicButtonView.playPause();
+            Intent intent = new Intent(SOUND_BUTTON_CLICKED);
+            intent.putExtra("button_clicked", musicButtonView.getText());
+            broadcastManager.sendBroadcast(intent);
+            data.setIsPlaying(!data.getIsPlaying());
+            musicButtonView.setPlayPause(data.getIsPlaying());
+        }
+
+        /**
+         * set MusicButtonData
+         *
+         * @param stuff MusicButtonData to set
+         */
+        public void setData(MusicButtonData stuff) {
+            data = stuff;
         }
     }
 

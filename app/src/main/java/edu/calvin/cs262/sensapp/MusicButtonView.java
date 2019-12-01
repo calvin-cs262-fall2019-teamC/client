@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.Button;
 
 /**
@@ -11,7 +12,6 @@ import android.widget.Button;
  * and a {@link MediaPlayer} for playing its sound on a loop
  */
 public class MusicButtonView extends Button {
-    private MediaPlayer mediaPlayer;
 
     /**
      * Create MusicButtonView
@@ -57,43 +57,30 @@ public class MusicButtonView extends Button {
 
     /**
      * Create a MusicButton with given parameters
-     *
      * @param drawableID int ID of drawable image
-     * @param audioId int ID of audio to play
-     * @param label String of text label
-     * @param context Current Context
+     * @param stringID String of text label
      */
-    public void makeMusicButton(int drawableID, int audioId, String label, Context context) {
-        mediaPlayer = MediaPlayer.create(context, audioId);
-        mediaPlayer.setLooping(true);
+    public void makeMusicButton(int drawableID, int stringID, boolean isPlaying) {
         Drawable drawable = getResources().getDrawable(drawableID);
         int dim = (int) dp_to_px(200);
         drawable.setBounds(0, 0, dim, dim);
-        drawable.setAlpha(100);
         this.setCompoundDrawables(null, drawable, null, null);
-        this.setText(label);
+        this.setText(stringID);
+        setPlayPause(isPlaying);
     }
 
     /**
-     * If the audio isn't playing, play the audio and make the drawable more opaque
-     * Else, pause the audio and make the drawable less opaque
+     * Change the drawable's opacity: translucent if we are paused, opaque if we are playing
      */
-    public void playPause() {
+    public void setPlayPause(boolean isPlaying) {
         Drawable[] drawables = this.getCompoundDrawables();
         Drawable drawable = drawables[1];
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            drawable.setAlpha(100);
-        } else {
-            mediaPlayer.start();
+
+        if (isPlaying) {
             drawable.setAlpha(255);
+        } else {
+            drawable.setAlpha(100);
         }
     }
 
-    /**
-     * Stop audio
-     */
-    public void stopAudio() {
-        mediaPlayer.stop();
-    }
 }
