@@ -1,20 +1,53 @@
 package edu.calvin.cs262.sensapp;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.os.Build;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * An Activity for playing various sounds
  */
 public class MusicActivity extends AppCompatActivity {
     private Context context;
+    private static final String SOUND_BUTTON_CLICKED = "sound button clicked";
+    private LocalBroadcastManager localBroadcastManager;
+    private Map<String, MediaPlayer> mediaPlayerMap;
+    private ArrayList<MusicButtonData> musicButtonDataList;
+
+    private final BroadcastReceiver appBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() != null & intent.getAction().equals(SOUND_BUTTON_CLICKED)) {
+                String button_clicked = intent.getStringExtra("button_clicked");
+                Log.d("MusicActivity", "button clicked: " + button_clicked);
+                if (mediaPlayerMap.get(button_clicked) != null) {
+                    MediaPlayer player = mediaPlayerMap.get(button_clicked);
+                    if (player.isPlaying()) {
+                        player.pause();
+                    }
+                    else {
+                        player.start();
+                    }
+                }
+            }
+        }
+    };
 
     // For creating History records once Activity is used for 5 or more seconds
     private HistoryManager hist_manager;
@@ -32,10 +65,20 @@ public class MusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         context = getApplicationContext();
+        musicButtonDataList = MusicButtonFactory.getInstance().getDataList();
+        mediaPlayerMap = new HashMap<>();
+        for (MusicButtonData data: musicButtonDataList) {
+            MediaPlayer player = MediaPlayer.create(context, data.getAudioID());
+            player.setLooping(true);
+            mediaPlayerMap.put(getString(data.getStringID()), player);
+        }
+
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         buildTabs(tabLayout);
         buildPagerAdapter(tabLayout);
+
     }
 
     /**
@@ -83,12 +126,38 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates a History record of this activity if it was open for 5 or more seconds
+     * Gets the Map of the MediaPlayers with String titles
+     */
+    public Map<String, MediaPlayer> getMediaPlayerMap() {
+        return mediaPlayerMap;
+    }
+
+    /**
+     * Register a receiver so the Activity knows to listen for the button clicked message
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
+    }
+
+    /**
+     * Release MediaPlayer resources so we aren't using up resources and so the sound will stop
+     * and creates a History record of this activity if it was open for 5 or more seconds
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onPause() {
-        super.onPause();
         hist_manager.createRecord();
+        super.onPause();
+        localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
+        for (MediaPlayer player: mediaPlayerMap.values()) {
+            player.release();
+            Log.d("MusicActivity", "Released a MediaPlayer");
+        }
+
+        for (MusicButtonData data: musicButtonDataList) {
+            data.setIsPlaying(false);
+        }
     }
 }

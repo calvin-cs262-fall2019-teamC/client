@@ -1,13 +1,14 @@
 package edu.calvin.cs262.sensapp;
 
 /**
- * A container class to hold the id of the drawable, id of the audio file, and String label for
+ * A container class to hold the id of the drawable, id of the audio file, and String stringID for
  * a {@link MusicButtonView}
  */
 public class MusicButtonData {
     private int drawableID;
     private int audioID;
-    private String label;
+    private int stringID;
+    private boolean isPlaying;
 
     /**
      * Default constructor for MusicButtonData
@@ -15,7 +16,8 @@ public class MusicButtonData {
     public MusicButtonData() {
         drawableID = 0;
         audioID = 0;
-        label = "";
+        stringID = 0;
+        isPlaying = false;
     }
 
     /**
@@ -23,12 +25,13 @@ public class MusicButtonData {
      *
      * @param draw int of drawableID
      * @param audio int of audioID
-     * @param lbl String of label text
+     * @param lbl int of string resource
      */
-    public MusicButtonData(int draw, int audio, String lbl) {
+    public MusicButtonData(int draw, int audio, int lbl, boolean play) {
         drawableID = draw;
         audioID = audio;
-        label = lbl;
+        stringID = lbl;
+        isPlaying = play;
     }
 
     /**
@@ -40,7 +43,15 @@ public class MusicButtonData {
     public int getAudioID() {
         return audioID;
     }
-    public String getLabel() {
-        return label;
+    public int getStringID() {
+        return stringID;
+    }
+
+    public boolean getIsPlaying() {
+        return isPlaying;
+    }
+
+    public void setIsPlaying(boolean val) {
+        isPlaying = val;
     }
 }

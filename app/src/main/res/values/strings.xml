@@ -14,7 +14,7 @@
     <string name="activity_three_title">Bubbles</string>
     <string name="activity_four_title">Stories</string>
     <string name="activity_five_title">Animals</string>
-    <string name="activity_six_title">Music</string>
+    <string name="activity_six_title">Sounds</string>
     <string name="activity_button_description">Button leading to an activity</string>
     <string name="favorite_button_description">Button to favorite an activity</string>
     <string name="info_button_description">Button leading to the info page of activity</string>
@@ -34,4 +34,10 @@
     <string name="right_button_description">Button leading to the right on fidget cube</string>
     <string name="switch_description">Switch to flip on and off</string>
     <string name="no_favorite">No favorites found</string>
+    <string name="purr">Purr</string>
+    <string name="leaves">Leaves</string>
+    <string name="forest">Forest</string>
+    <string name="rain">Rain</string>
+    <string name="river">River</string>
+    <string name="birds">Birds</string>
 </resources>
