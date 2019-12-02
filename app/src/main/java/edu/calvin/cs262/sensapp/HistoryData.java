@@ -10,11 +10,13 @@ public class HistoryData {
     private Drawable drawable;
     private int rating;
     private String duration;
+    private int histId;
 
     /**
      * Default constructor for HistoryData to null state
      */
     public HistoryData() {
+        histId = 1;
         title = "";
         drawable = null;
         rating = 0;
@@ -24,12 +26,14 @@ public class HistoryData {
     /**
      * Explicit HistoryData constructor
      *
+     * @param id int of current History record id
      * @param ttl String of activity title
      * @param draw Drawable of activity icon
      * @param rate int of satisfaction
      * @param dur String of duration in seconds or minutes
      */
-    public HistoryData(String ttl, Drawable draw, int rate, String dur) {
+    public HistoryData(int id, String ttl, Drawable draw, int rate, String dur) {
+        histId = id;
         title = ttl;
         drawable = draw;
         rating = rate;
@@ -39,6 +43,7 @@ public class HistoryData {
     /**
      * Getters for instance variables
      */
+    public int getHistId() {return histId;}
     public String getTitle() {
         return title;
     }

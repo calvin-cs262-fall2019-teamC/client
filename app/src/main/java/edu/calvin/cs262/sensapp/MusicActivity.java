@@ -2,12 +2,14 @@ package edu.calvin.cs262.sensapp;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.os.Build;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
@@ -47,13 +49,19 @@ public class MusicActivity extends AppCompatActivity {
         }
     };
 
+    // For creating History records once Activity is used for 5 or more seconds
+    private HistoryManager hist_manager;
+
     /**
      * Create MusicActivity
      *
      * @param savedInstanceState Bundle to initialize
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hist_manager = new HistoryManager(getString(R.string.activity_six_title),
+                getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         context = getApplicationContext();
@@ -117,6 +125,9 @@ public class MusicActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets the Map of the MediaPlayers with String titles
+     */
     public Map<String, MediaPlayer> getMediaPlayerMap() {
         return mediaPlayerMap;
     }
@@ -132,9 +143,12 @@ public class MusicActivity extends AppCompatActivity {
 
     /**
      * Release MediaPlayer resources so we aren't using up resources and so the sound will stop
+     * and creates a History record of this activity if it was open for 5 or more seconds
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onPause() {
+        hist_manager.createRecord();
         super.onPause();
         localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
         for (MediaPlayer player: mediaPlayerMap.values()) {
