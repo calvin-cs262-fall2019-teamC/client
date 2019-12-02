@@ -66,7 +66,8 @@
         <activity
             android:name=".MusicActivity"
             android:label="@string/activity_six_title"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.calvin.cs262.sensapp.MainActivity" />

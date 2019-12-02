@@ -1,10 +1,12 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -19,13 +21,19 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
     private ImageButton nextButton;
     private ImageButton previousButton;
 
+    // For creating History records once Activity is used for 5 or more seconds
+    private HistoryManager hist_manager;
+
     /**
      * Create FidgetCubeActivity setting up the buttons and pager.
      *
      * @param savedInstanceState Bundle to initialize
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hist_manager = new HistoryManager(getString(R.string.activity_two_title),
+                getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fidget_cube);
 
@@ -57,5 +65,15 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
             // Add length to prevent negative indexes (because % can return a negative number)
             viewPager.setCurrentItem((idx - 1 + face_names.length) % face_names.length);
         }
+    }
+
+    /**
+     * Creates a History record of this activity if it was open for 5 or more seconds
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onPause() {
+        super.onPause();
+        hist_manager.createRecord();
     }
 }

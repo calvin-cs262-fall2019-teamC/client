@@ -70,9 +70,9 @@ public class DatabaseViewModel extends AndroidViewModel {
     /**
      * Inserts an Activity into the DB.
      *
-     * @param favorite Activity to be inserted.
+     * @param activity Activity to be inserted.
      */
-    public void insertActivities(Activity favorite) { mActivityRepository.insert(favorite); }
+    public void insertActivities(Activity activity) { mActivityRepository.insert(activity); }
 
     /**
      * Deletes all Activities in the DB.
@@ -82,23 +82,23 @@ public class DatabaseViewModel extends AndroidViewModel {
     /**
      * Delete an Activity from the DB.
      *
-     * @param favorite Activity to be deleted.
+     * @param activity Activity to be deleted.
      */
-    public void deleteActivity(Activity favorite) {mActivityRepository.deleteActivity(favorite);}
+    public void deleteActivity(Activity activity) {mActivityRepository.deleteActivity(activity);}
 
     /**
-     * Gets all Activities in the DB.
+     * Gets all Histories in the DB.
      *
-     * @return LiveData List of all Activities in the database.
+     * @return LiveData List of all Histories in the database.
      */
     public LiveData<List<History>> getAllHistories() { return mAllHistories; }
 
     /**
      * Inserts a History into the DB.
      *
-     * @param favorite History to be inserted.
+     * @param history History to be inserted.
      */
-    public void insertHistories(History favorite) { mHistoryRepository.insert(favorite); }
+    public void insertHistories(History history) { mHistoryRepository.insert(history); }
 
     /**
      * Deletes all Histories in the DB.
@@ -108,7 +108,7 @@ public class DatabaseViewModel extends AndroidViewModel {
     /**
      * Delete a History from the DB.
      *
-     * @param favorite History to be deleted.
+     * @param history History to be deleted.
      */
-    public void deleteHistory(History favorite) {mHistoryRepository.deleteHistory(favorite);}
+    public void deleteHistory(History history) {mHistoryRepository.deleteHistory(history);}
 }
