@@ -6,17 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".AnimalsActivity">
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/imageButton"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="250dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginLeft="16dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:scaleType="fitCenter"-->
-<!--        android:onClick="horseSound"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/animals_horse" />-->
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:onClick="horseSound"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/animals_horse" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:adjustViewBounds="true"
+        android:onClick="gooseSound"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/animals_goose" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:adjustViewBounds="true"
+        android:onClick="catSound"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:srcCompat="@drawable/animals_cat" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:adjustViewBounds="true"
+        android:onClick="chimpSound"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:srcCompat="@drawable/animals_chimp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

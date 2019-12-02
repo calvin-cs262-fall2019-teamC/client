@@ -16,14 +16,16 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class AnimalsActivity extends AppCompatActivity {
 
-//    //create mediaPlayer to play the sound files
-//    public MediaPlayer soundPlayer;
-//
-//    //remember which button got clicked last
-//    public String lastClicked;
+    //create mediaPlayer to play the sound files
+    public MediaPlayer soundPlayer;
 
     // For creating History records once Activity is used for 5 or more seconds
     private HistoryManager hist_manager;
+
+    //remember last sound played
+    public String lastSound;
+
+    public boolean isPlaying;
 
     /**
      * onCreate establishes the activity
@@ -39,20 +41,74 @@ public class AnimalsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animals);
     }
 
-//    /**
-//     * called when user presses horse button; plays "neigh" sound
-//     *
-//     * @param view
-//     */
-//    public void horseSound(View view){
-//        if(lastClicked != "horse") {
-//            soundPlayer.reset();
-//            soundPlayer = MediaPlayer.create(this, R.raw.animals_horseneigh);
-//        }
-//
-//        soundPlayer.start();
-//        lastClicked = "horse";
-//    }
+    /**
+     * called when user presses horse button; plays "neigh" sound
+     *
+     * @param view
+     */
+    public void horseSound(View view){
+        if(isPlaying != true){
+            isPlaying = true;
+            soundPlayer = MediaPlayer.create(this, R.raw.animals_horse_neigh);
+            soundPlayer.start();
+
+            soundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    soundPlayer.release();
+                    isPlaying = false;
+                }
+            });
+        }
+    }
+
+    public void gooseSound(View view){
+        if(isPlaying != true){
+            isPlaying = true;
+            soundPlayer = MediaPlayer.create(this, R.raw.animals_goose_honk);
+            soundPlayer.start();
+
+            soundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    soundPlayer.release();
+                    isPlaying = false;
+                }
+            });
+        }
+    }
+
+    public void catSound(View view){
+        if(isPlaying != true){
+            isPlaying = true;
+            soundPlayer = MediaPlayer.create(this, R.raw.animals_cat_meow);
+            soundPlayer.start();
+
+            soundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    soundPlayer.release();
+                    isPlaying = false;
+                }
+            });
+        }
+    }
+
+    public void chimpSound(View view){
+        if(isPlaying != true){
+            isPlaying = true;
+            soundPlayer = MediaPlayer.create(this, R.raw.animals_chimp_screech);
+            soundPlayer.start();
+
+            soundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    soundPlayer.release();
+                    isPlaying = false;
+                }
+            });
+        }
+    }
 
     /**
      * Creates a History record of this activity if it was open for 5 or more seconds
