@@ -2,12 +2,14 @@ package edu.calvin.cs262.sensapp;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.os.Build;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
@@ -48,13 +50,19 @@ public class MusicActivity extends AppCompatActivity {
         }
     };
 
+    // For creating History records once Activity is used for 5 or more seconds
+    private HistoryManager hist_manager;
+
     /**
      * Create MusicActivity
      *
      * @param savedInstanceState Bundle to initialize
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hist_manager = new HistoryManager(getString(R.string.activity_six_title),
+                getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         context = getApplicationContext();
@@ -120,10 +128,13 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     /**
-     * Pause MediaPlayers and reset the alphas (so sounds are shown as not playing)
+     * Pause MediaPlayers and reset the alphas of the drawables (so sounds are shown as not playing)
+     * and create a History record of this activity if it was open for 5 or more seconds
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onPause() {
+        hist_manager.createRecord();
         super.onPause();
         for (MediaPlayer player: mediaPlayerMap.values()) {
             if (player.isPlaying()) {
@@ -140,7 +151,7 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     /**
-     * Release MediaPlayer resources so we aren't using up resources and so the sound will stop
+     * Release MediaPlayer resources so we aren't using up resources
      */
     @Override
     protected void onDestroy() {
