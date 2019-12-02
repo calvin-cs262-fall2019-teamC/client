@@ -27,6 +27,7 @@ public class MusicActivity extends AppCompatActivity {
     private LocalBroadcastManager localBroadcastManager;
     private Map<String, MediaPlayer> mediaPlayerMap;
     private ArrayList<MusicButtonData> musicButtonDataList;
+    private MusicPagerAdapter adapter;
 
     private final BroadcastReceiver appBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -66,6 +67,7 @@ public class MusicActivity extends AppCompatActivity {
         }
 
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
+        localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         buildTabs(tabLayout);
@@ -92,7 +94,7 @@ public class MusicActivity extends AppCompatActivity {
      */
     private void buildPagerAdapter(TabLayout tabs) {
         final ViewPager viewPager = findViewById(R.id.pager);
-        final MusicPagerAdapter adapter = new MusicPagerAdapter(
+        adapter = new MusicPagerAdapter(
                 getSupportFragmentManager(), tabs.getTabCount(), context);
         viewPager.setAdapter(adapter);
 
@@ -117,33 +119,37 @@ public class MusicActivity extends AppCompatActivity {
         });
     }
 
-    public Map<String, MediaPlayer> getMediaPlayerMap() {
-        return mediaPlayerMap;
-    }
-
     /**
-     * Register a receiver so the Activity knows to listen for the button clicked message
+     * Pause MediaPlayers and reset the alphas (so sounds are shown as not playing)
      */
     @Override
-    protected void onResume() {
-        super.onResume();
-        localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
+    protected void onPause() {
+        super.onPause();
+        for (MediaPlayer player: mediaPlayerMap.values()) {
+            if (player.isPlaying()) {
+                player.pause();
+                Log.d("MusicActivity", "Paused a MediaPlayer");
+            }
+        }
+
+        for (MusicButtonData data: musicButtonDataList) {
+            data.setIsPlaying(false);
+        }
+
+        adapter.getCurrentItem().resetButtonAlphas();
     }
 
     /**
      * Release MediaPlayer resources so we aren't using up resources and so the sound will stop
      */
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
         localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
+
         for (MediaPlayer player: mediaPlayerMap.values()) {
             player.release();
             Log.d("MusicActivity", "Released a MediaPlayer");
-        }
-
-        for (MusicButtonData data: musicButtonDataList) {
-            data.setIsPlaying(false);
         }
     }
 }
