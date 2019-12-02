@@ -29,6 +29,7 @@ public class MusicActivity extends AppCompatActivity {
     private LocalBroadcastManager localBroadcastManager;
     private Map<String, MediaPlayer> mediaPlayerMap;
     private ArrayList<MusicButtonData> musicButtonDataList;
+    private MusicPagerAdapter adapter;
 
     private final BroadcastReceiver appBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -74,6 +75,7 @@ public class MusicActivity extends AppCompatActivity {
         }
 
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
+        localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         buildTabs(tabLayout);
@@ -100,7 +102,7 @@ public class MusicActivity extends AppCompatActivity {
      */
     private void buildPagerAdapter(TabLayout tabs) {
         final ViewPager viewPager = findViewById(R.id.pager);
-        final MusicPagerAdapter adapter = new MusicPagerAdapter(
+        adapter = new MusicPagerAdapter(
                 getSupportFragmentManager(), tabs.getTabCount(), context);
         viewPager.setAdapter(adapter);
 
@@ -126,38 +128,39 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets the Map of the MediaPlayers with String titles
-     */
-    public Map<String, MediaPlayer> getMediaPlayerMap() {
-        return mediaPlayerMap;
-    }
-
-    /**
-     * Register a receiver so the Activity knows to listen for the button clicked message
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        localBroadcastManager.registerReceiver(appBroadcastReceiver, new IntentFilter(SOUND_BUTTON_CLICKED));
-    }
-
-    /**
-     * Release MediaPlayer resources so we aren't using up resources and so the sound will stop
-     * and creates a History record of this activity if it was open for 5 or more seconds
+     * Pause MediaPlayers and reset the alphas of the drawables (so sounds are shown as not playing)
+     * and create a History record of this activity if it was open for 5 or more seconds
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onPause() {
         hist_manager.createRecord();
         super.onPause();
-        localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
         for (MediaPlayer player: mediaPlayerMap.values()) {
-            player.release();
-            Log.d("MusicActivity", "Released a MediaPlayer");
+            if (player.isPlaying()) {
+                player.pause();
+                Log.d("MusicActivity", "Paused a MediaPlayer");
+            }
         }
 
         for (MusicButtonData data: musicButtonDataList) {
             data.setIsPlaying(false);
+        }
+
+        adapter.getCurrentItem().resetButtonAlphas();
+    }
+
+    /**
+     * Release MediaPlayer resources so we aren't using up resources
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        localBroadcastManager.unregisterReceiver(appBroadcastReceiver);
+
+        for (MediaPlayer player: mediaPlayerMap.values()) {
+            player.release();
+            Log.d("MusicActivity", "Released a MediaPlayer");
         }
     }
 }

@@ -81,4 +81,11 @@ public class MusicCategoryFragment extends Fragment{
             musicRecyclerAdapter = new MusicRecyclerAdapter(context, list);
         }
     }
+
+    /**
+     * set the adapter again so that the drawables get redrawn and thus the alphas get reset
+     */
+    public void resetButtonAlphas() {
+        recyclerView.setAdapter(musicRecyclerAdapter);
+    }
 }
