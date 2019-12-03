@@ -10,6 +10,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import java.time.LocalDateTime;
+
 /**
  * An Activity for a virtual fidget cube with buttons, a switch, and a joystick
  */
@@ -75,5 +77,15 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
     protected void onPause() {
         super.onPause();
         hist_manager.createRecord();
+    }
+
+    /**
+     * Restart the timer when Activity is restarted
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        hist_manager.startTime = LocalDateTime.now();
     }
 }

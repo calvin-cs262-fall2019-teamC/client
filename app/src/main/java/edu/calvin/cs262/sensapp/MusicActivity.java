@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -134,8 +135,8 @@ public class MusicActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onPause() {
-        hist_manager.createRecord();
         super.onPause();
+        hist_manager.createRecord();
         for (MediaPlayer player: mediaPlayerMap.values()) {
             if (player.isPlaying()) {
                 player.pause();
@@ -162,5 +163,15 @@ public class MusicActivity extends AppCompatActivity {
             player.release();
             Log.d("MusicActivity", "Released a MediaPlayer");
         }
+    }
+
+    /**
+     * Restart the timer when Activity is restarted
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        hist_manager.startTime = LocalDateTime.now();
     }
 }

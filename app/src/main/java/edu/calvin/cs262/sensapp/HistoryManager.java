@@ -68,6 +68,7 @@ public class HistoryManager {
                             .insert(new History(0, id, startString, endString, 0));
                 }
             });
+
             return true;
 
         } else {
