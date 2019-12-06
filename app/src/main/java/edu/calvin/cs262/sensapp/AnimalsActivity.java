@@ -94,10 +94,10 @@ public class AnimalsActivity extends AppCompatActivity {
         }
     }
 
-    public void chimpSound(View view){
+    public void cowSound(View view){
         if(isPlaying != true){
             isPlaying = true;
-            soundPlayer = MediaPlayer.create(this, R.raw.animals_chimp_screech);
+            soundPlayer = MediaPlayer.create(this, R.raw.animals_cow_moo);
             soundPlayer.start();
 
             soundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
