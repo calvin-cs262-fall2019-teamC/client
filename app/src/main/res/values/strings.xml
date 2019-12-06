@@ -6,6 +6,26 @@
     <string name="activity_four_info">The Stories activity allows you to listen to popular children\'s stories (such as Goldilocks and the Three Bears) read soothingly with appropriate background imagery.</string>
     <string name="activity_five_info">The Animals activity allows you to virtually pet animals (such as horses) who will respond with their respective animal call.</string>
     <string name="activity_six_info">The Music activity allows you to select and listen to relaxing sounds on a loop.</string>
+    <string name="fidgetcube_tutorial1">Welcome to the Fidget Cube tutorial! This tutorial will guide you through how to use Fidget Cube.\
+        \nAt any time, you can click the \"Done\" button at the bottom to exit the tutorial and start the activity.\
+        \nThis tutorial will not show up again unless you re-enable it in the settings page.\
+        \nSwipe to the next page when you\'re ready.
+    </string>
+    <string name="fidgetcube_tutorial2">
+        Click on the buttons and enjoy the sound (and, if enabled, vibration).
+    </string>
+    <string name="fidgetcube_tutorial3">
+        Navigate to another face of the cube by swiping or using the navigation buttons.
+    </string>
+    <string name="fidgetcube_tutorial4">
+        Click on the switch to see the animation, hear the sound (and, if enabled, vibration).
+    </string>
+    <string name="fidgetcube_tutorial5">
+        Drag your finger around to move the joystick.
+    </string>
+    <string name="tutorial_to_history">
+        After you have left the activity, you can go to the History page to rate your satisfaction.
+    </string>
 
     <!-- Short strings -->
     <string name="app_name">Sensapp</string>

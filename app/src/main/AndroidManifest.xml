@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.calvin.cs262.sensapp">
 
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -14,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".FidgetCubeTutorial"></activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"

@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void launchFidgetCubeActivity(View view) {
         Log.d("MainActivity", "activity launching FidgetCubeActivity");
-        Intent intent = new Intent(this, FidgetCubeActivity.class);
+        Intent intent = new Intent(this, FidgetCubeTutorial.class);
         startActivity(intent);
     }
 

@@ -16,7 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 public class FidgetCubeActivity extends AppCompatActivity implements View.OnClickListener {
     private String[] face_names = {"buttons", "switch", "joystick"};
     private Context context;
-    private PagerAdapter adapter;
+    private FidgetCubePagerAdapter adapter;
     private ViewPager viewPager;
     private ImageButton nextButton;
     private ImageButton previousButton;
@@ -39,8 +39,8 @@ public class FidgetCubeActivity extends AppCompatActivity implements View.OnClic
 
         context = getApplicationContext();
 
-        viewPager = findViewById(R.id.pager);
-        adapter = new PagerAdapter(getSupportFragmentManager(), face_names.length, context);
+        viewPager = findViewById(R.id.fidget_cube_pager);
+        adapter = new FidgetCubePagerAdapter(getSupportFragmentManager(), face_names.length, context);
         viewPager.setAdapter(adapter);
 
         nextButton = findViewById(R.id.ButtonRight);
