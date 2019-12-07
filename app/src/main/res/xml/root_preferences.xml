@@ -18,16 +18,6 @@
 
     <CheckBoxPreference
         android:defaultValue="true"
-        android:key="history_preference"
-        android:title="Log satisfaction after activity" />
-
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="dark_preference"
-        android:title="Dark mode" />
-
-    <CheckBoxPreference
-        android:defaultValue="true"
         android:key="vibrate"
         android:title="Vibration" />
 

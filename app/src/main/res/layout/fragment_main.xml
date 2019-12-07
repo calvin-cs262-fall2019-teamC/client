@@ -84,14 +84,19 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+                    <!--
+                    Transparent color:
+                    https://stackoverflow.com/questions/1492554/set-transparent-background-of-an-imageview-on-android
+                    -->
+
                     <ImageButton
                         android:id="@+id/activity_one_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_one_title" />
 
                 </LinearLayout>
@@ -164,10 +169,10 @@
                         android:id="@+id/activity_two_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_two_title" />
 
                 </LinearLayout>
@@ -248,10 +253,10 @@
                         android:id="@+id/activity_three_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_three_title" />
 
                 </LinearLayout>
@@ -324,10 +329,10 @@
                         android:id="@+id/activity_four_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_four_title" />
 
                 </LinearLayout>
@@ -408,10 +413,10 @@
                         android:id="@+id/activity_five_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_five_title" />
 
                 </LinearLayout>
@@ -484,10 +489,10 @@
                         android:id="@+id/activity_six_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_six_title" />
 
                 </LinearLayout>
