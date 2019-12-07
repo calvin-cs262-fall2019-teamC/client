@@ -41,8 +41,10 @@ public class FidgetTutorialPagerAdapter extends FragmentStatePagerAdapter {
         TutorialItem tutorialItem = new TutorialItem();
         switch (position) {
             case 0:
-                fragment_data.putInt("textID", R.string.fidgetcube_tutorial1);
-                break;
+                Tutorial1 tutorial1 = new Tutorial1();
+                fragment_data.putInt("activity_name_id", R.string.activity_two_title);
+                tutorial1.setArguments(fragment_data);
+                return tutorial1;
             case 1:
                 fragment_data.putInt("textID", R.string.fidgetcube_tutorial2);
                 fragment_data.putInt("drawableID", R.drawable.fidgetcube_buttons);

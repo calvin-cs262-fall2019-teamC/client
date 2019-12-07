@@ -16,7 +16,6 @@ import java.util.List;
 import pl.droidsonroids.gif.GifImageView;
 
 public class TutorialItem extends Fragment {
-    private Context context;
     private int textID;
     private int drawableID;
 
@@ -36,7 +35,6 @@ public class TutorialItem extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getContext();
 
         assert getArguments() != null;
         textID = getArguments().getInt("textID");
