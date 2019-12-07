@@ -11,21 +11,17 @@
         \nThis tutorial will not show up again unless you re-enable it in the settings page.\
         \nSwipe to the next page when you\'re ready.
     </string>
-    <string name="fidgetcube_tutorial2">
-        Click on the buttons and enjoy the sound (and, if enabled, vibration).
-    </string>
-    <string name="fidgetcube_tutorial3">
-        Navigate to another face of the cube by swiping or using the navigation buttons.
-    </string>
-    <string name="fidgetcube_tutorial4">
-        Click on the switch to see the animation, hear the sound (and, if enabled, vibration).
-    </string>
-    <string name="fidgetcube_tutorial5">
-        Drag your finger around to move the joystick.
-    </string>
-    <string name="tutorial_to_history">
-        After you have left the activity, you can go to the History page to rate your satisfaction.
-    </string>
+    <string name="fidgetcube_tutorial2">Click on the buttons and enjoy the sound (and, if enabled, vibration).</string>
+    <string name="fidgetcube_tutorial3">Navigate to another face of the cube by swiping or using the navigation buttons.</string>
+    <string name="fidgetcube_tutorial4">Click on the switch to see the animation, hear the sound (and, if enabled, vibration).</string>
+    <string name="fidgetcube_tutorial5">Drag your finger around to move the joystick.</string>
+
+    <string name="tutorial_to_history">After you have left the activity, you can go to the History page to rate your satisfaction.</string>
+
+    <string name="sounds_tutorial2">Click on a button to hear the sound, and click again to turn it off.</string>
+    <string name="sounds_tutorial3">You can play multiple sounds at the same time.</string>
+    <string name="sounds_tutorial4">Use the tabs at the bottom to navigate to different categories of sounds.</string>
+    <string name="sounds_tutorial5">Sounds play on a loop. They continue playing when you move to another tab, but stop playing when you leave the activity.</string>
 
     <!-- Short strings -->
     <string name="app_name">Sensapp</string>
@@ -60,4 +56,5 @@
     <string name="rain">Rain</string>
     <string name="river">River</string>
     <string name="birds">Birds</string>
+    <string name="done">Done</string>
 </resources>

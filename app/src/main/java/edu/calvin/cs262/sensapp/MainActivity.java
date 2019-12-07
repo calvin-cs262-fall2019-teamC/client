@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the music activity button).
      */
     public void launchMusicActivity(View view) {
-        Intent intent = new Intent(this, MusicActivity.class);
+        Intent intent = new Intent(this, MusicTutorial.class);
         startActivity(intent);
     }
 
@@ -182,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the fidget cube activity button).
      */
     public void launchFidgetCubeActivity(View view) {
-        Log.d("MainActivity", "activity launching FidgetCubeActivity");
         Intent intent = new Intent(this, FidgetCubeTutorial.class);
         startActivity(intent);
     }
