@@ -21,7 +21,7 @@ public class FidgetCubeTutorial extends AppCompatActivity {
 
         context = getApplicationContext();
 
-        viewPager = findViewById(R.id.fidget_cube_tutorial_pager);
+        viewPager = findViewById(R.id.tutorial_pager);
         adapter = new FidgetTutorialPagerAdapter(getSupportFragmentManager(), 6, context);
         viewPager.setAdapter(adapter);
     }

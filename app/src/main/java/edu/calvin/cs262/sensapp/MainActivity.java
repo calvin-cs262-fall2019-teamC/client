@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void launchBreatheActivity(View view) {
         Log.d("MainActivity", "activity launching BreatheActivity :)");
-        Intent intent = new Intent(this, BreatheActivity.class);
+        Intent intent = new Intent(this, VideosTutorial.class);
         startActivity(intent);
     }
 

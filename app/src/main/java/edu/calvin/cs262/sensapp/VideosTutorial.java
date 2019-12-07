@@ -9,31 +9,31 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-public class MusicTutorial extends AppCompatActivity {
+public class VideosTutorial extends AppCompatActivity {
     private Context context;
-    private MusicTutorialPagerAdapter adapter;
+    private VideosTutorialPagerAdapter adapter;
     private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sounds_tutorial);
+        setContentView(R.layout.activity_videos_tutorial);
 
         context = getApplicationContext();
 
         viewPager = findViewById(R.id.tutorial_pager);
-        adapter = new MusicTutorialPagerAdapter(getSupportFragmentManager(), 6, context);
+        adapter = new VideosTutorialPagerAdapter(getSupportFragmentManager(), 3, context);
         viewPager.setAdapter(adapter);
     }
 
     /**
-     * Launches the music activity when the button is pressed.
+     * Launches the videos activity when the button is pressed.
      *
-     * @param view The current View object (the fidget cube activity button).
+     * @param view The current View object (the "Done" button).
      */
-    public void launchMusicActivity(View view) {
-        Log.d("MusicTutorial", "activity launching MusicActivity");
-        Intent intent = new Intent(context, MusicActivity.class);
+    public void launchVideosActivity(View view) {
+        Log.d("VideosTutorial", "activity launching VideosActivity");
+        Intent intent = new Intent(context, BreatheActivity.class);
         startActivity(intent);
     }
 
