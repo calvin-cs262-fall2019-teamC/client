@@ -17,7 +17,7 @@ public class FidgetCubeTutorial extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fidget_cube_tutorial);
+        setContentView(R.layout.activity_tutorial);
 
         context = getApplicationContext();
 
@@ -31,7 +31,7 @@ public class FidgetCubeTutorial extends AppCompatActivity {
      *
      * @param view The current View object (the fidget cube activity button).
      */
-    public void launchFidgetCubeActivity(View view) {
+    public void launchActivity(View view) {
         Log.d("FidgetCubeTutorial", "activity launching FidgetCubeActivity");
         Intent intent = new Intent(context, FidgetCubeActivity.class);
         startActivity(intent);

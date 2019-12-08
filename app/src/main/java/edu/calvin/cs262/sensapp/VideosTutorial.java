@@ -17,7 +17,7 @@ public class VideosTutorial extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_videos_tutorial);
+        setContentView(R.layout.activity_tutorial);
 
         context = getApplicationContext();
 
@@ -31,7 +31,7 @@ public class VideosTutorial extends AppCompatActivity {
      *
      * @param view The current View object (the "Done" button).
      */
-    public void launchVideosActivity(View view) {
+    public void launchActivity(View view) {
         Log.d("VideosTutorial", "activity launching VideosActivity");
         Intent intent = new Intent(context, BreatheActivity.class);
         startActivity(intent);

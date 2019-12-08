@@ -17,7 +17,7 @@ public class MusicTutorial extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sounds_tutorial);
+        setContentView(R.layout.activity_tutorial);
 
         context = getApplicationContext();
 
@@ -31,7 +31,7 @@ public class MusicTutorial extends AppCompatActivity {
      *
      * @param view The current View object (the fidget cube activity button).
      */
-    public void launchMusicActivity(View view) {
+    public void launchActivity(View view) {
         Log.d("MusicTutorial", "activity launching MusicActivity");
         Intent intent = new Intent(context, MusicActivity.class);
         startActivity(intent);
