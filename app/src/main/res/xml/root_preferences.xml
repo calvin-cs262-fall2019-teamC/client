@@ -57,6 +57,11 @@
             android:key="animals_tutorial"
             android:title="Show tutorial for Animals" />
 
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="history_tutorial"
+            android:title="Show tutorial for History" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -1,6 +1,5 @@
 package edu.calvin.cs262.sensapp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.List;
-
 import pl.droidsonroids.gif.GifImageView;
 
+/**
+ * Each TutorialItem is a page of a tutorial. It has a text description and may or may not have an image/gif
+ */
 public class TutorialItem extends Fragment {
     private int textID;
     private int drawableID;

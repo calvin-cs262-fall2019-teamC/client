@@ -1,9 +1,5 @@
 package edu.calvin.cs262.sensapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,12 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.viewpager.widget.ViewPager;
+
 /**
- * A tutorial explaining how to use Fidget Cube
+ * A tutorial explaining how to use History
  */
-public class FidgetCubeTutorial extends AppCompatActivity {
+public class HistoryTutorial extends AppCompatActivity {
     private Context context;
-    private FidgetTutorialPagerAdapter adapter;
+    private HistoryTutorialPagerAdapter adapter;
     private ViewPager viewPager;
 
     @Override
@@ -27,23 +27,24 @@ public class FidgetCubeTutorial extends AppCompatActivity {
         context = getApplicationContext();
 
         viewPager = findViewById(R.id.tutorial_pager);
-        adapter = new FidgetTutorialPagerAdapter(getSupportFragmentManager(), 6, context);
+        adapter = new HistoryTutorialPagerAdapter(getSupportFragmentManager(), 3, context);
         viewPager.setAdapter(adapter);
     }
 
     /**
-     * Launches the fidget cube activity when the button is pressed.
+     * Launches the main activity when the button is pressed.
      *
      * @param view The current View object (the fidget cube activity button).
      */
     public void launchActivity(View view) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("fidget_tutorial", false);
+        editor.putBoolean("history_tutorial", false);
         editor.apply();
 
-        Log.d("FidgetCubeTutorial", "activity launching FidgetCubeActivity");
-        Intent intent = new Intent(context, FidgetCubeActivity.class);
+        Log.d("HistoryTutorial", "activity launching HistoryFragment");
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("tab", R.id.navigation_history);
         startActivity(intent);
     }
 

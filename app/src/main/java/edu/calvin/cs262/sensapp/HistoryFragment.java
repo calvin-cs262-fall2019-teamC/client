@@ -1,7 +1,10 @@
 package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +48,7 @@ public class HistoryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getContext();
+        Log.d("HistoryFramgent", "onCreate");
     }
 
     /**
@@ -57,6 +62,14 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean history_tutorial = prefs.getBoolean("history_tutorial", true);
+        if (history_tutorial) {
+            startActivity(new Intent(context, HistoryTutorial.class));
+        }
+
+        Log.d("HistoryFragment", "onCreateView");
 
         // Inflate the View
         View view = inflater.inflate(R.layout.fragment_history, container, false);

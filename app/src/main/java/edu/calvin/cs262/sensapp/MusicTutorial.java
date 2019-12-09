@@ -11,11 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
+/**
+ * A tutorial explaining how to use Sounds
+ */
 public class MusicTutorial extends AppCompatActivity {
     private Context context;
     private MusicTutorialPagerAdapter adapter;
     private ViewPager viewPager;
 
+    /**
+     * Create the view
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

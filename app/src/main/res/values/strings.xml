@@ -23,6 +23,12 @@
     <string name="sounds_tutorial4">Use the tabs at the bottom to navigate to different categories of sounds.</string>
     <string name="sounds_tutorial5">Sounds play on a loop. They continue playing when you move to another tab, but stop playing when you leave the activity.</string>
 
+    <string name="history_tutorial1">
+        History contains records of your use of each activity. The records are listed from most recent to least recent.
+    </string>
+    <string name="history_tutorial2">Click on a smiley face to record your satisfaction.</string>
+    <string name="history_tutorial3">You can change your satisfaction at any time by clicking on another smiley face. You can\'t unselect your rating, you can only select a new rating.</string>
+
     <!-- Short strings -->
     <string name="app_name">Sensapp</string>
     <string name="activity_one_title">Breathe</string>

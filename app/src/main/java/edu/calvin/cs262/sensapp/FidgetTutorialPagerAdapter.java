@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
- * PagerAdapter is a FragmentStatePagerAdapter for a number of faces of a cube to be paged through
+ * FidgetTutorialPagerAdapter is a FragmentStatePagerAdapter for the pages of the Fidget Cube tutorial
  */
 public class FidgetTutorialPagerAdapter extends FragmentStatePagerAdapter {
     private int numPages;
@@ -19,7 +19,7 @@ public class FidgetTutorialPagerAdapter extends FragmentStatePagerAdapter {
      * Construct a PagerAdapter
      *
      * @param fm FragmentManager
-     * @param numPages int of number of faces on cube
+     * @param numPages int of number of pages in tutorial
      * @param app_context Current Context
      */
     public FidgetTutorialPagerAdapter(FragmentManager fm, int numPages, Context app_context) {

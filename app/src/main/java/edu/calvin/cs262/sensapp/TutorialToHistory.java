@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+/**
+ * A Tutorial page that tells the user they can go to History to rate their satisfaction.
+ */
 public class TutorialToHistory extends Fragment {
     @Nullable
     @Override
