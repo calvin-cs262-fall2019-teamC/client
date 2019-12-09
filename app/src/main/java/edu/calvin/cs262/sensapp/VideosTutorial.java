@@ -2,11 +2,13 @@ package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
 public class VideosTutorial extends AppCompatActivity {
@@ -32,6 +34,11 @@ public class VideosTutorial extends AppCompatActivity {
      * @param view The current View object (the "Done" button).
      */
     public void launchActivity(View view) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("videos_tutorial", false);
+        editor.apply();
+
         Log.d("VideosTutorial", "activity launching VideosActivity");
         Intent intent = new Intent(context, BreatheActivity.class);
         startActivity(intent);

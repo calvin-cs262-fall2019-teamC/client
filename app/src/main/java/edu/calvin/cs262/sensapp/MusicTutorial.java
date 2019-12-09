@@ -2,11 +2,13 @@ package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
 public class MusicTutorial extends AppCompatActivity {
@@ -32,6 +34,11 @@ public class MusicTutorial extends AppCompatActivity {
      * @param view The current View object (the fidget cube activity button).
      */
     public void launchActivity(View view) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("sounds_tutorial", false);
+        editor.apply();
+
         Log.d("MusicTutorial", "activity launching MusicActivity");
         Intent intent = new Intent(context, MusicActivity.class);
         startActivity(intent);

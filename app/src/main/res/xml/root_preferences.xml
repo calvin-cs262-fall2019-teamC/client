@@ -14,21 +14,49 @@
   ~ limitations under the License.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="vibrate"
+        android:title="Vibration" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="history_preference"
         android:title="Log satisfaction after activity" />
 
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="dark_preference"
-        android:title="Dark mode" />
+<!--    commented out because Dark mode is not implemented currently-->
+<!--    <CheckBoxPreference-->
+<!--        android:defaultValue="false"-->
+<!--        android:key="dark_preference"-->
+<!--        android:title="Dark mode" />-->
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="vibrate"
-        android:title="Vibration" />
+    <PreferenceCategory
+        app:key="tutorials_category"
+        app:title="Tutorials">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="videos_tutorial"
+            android:title="Show tutorial for Videos" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="fidget_tutorial"
+            android:title="Show tutorial for Fidget Cube" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="sounds_tutorial"
+            android:title="Show tutorial for Sounds" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="animals_tutorial"
+            android:title="Show tutorial for Animals" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
