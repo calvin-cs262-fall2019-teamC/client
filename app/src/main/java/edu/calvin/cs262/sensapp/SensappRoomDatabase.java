@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 /**
  * Class to store the Sensapp database
  */
-@Database(entities = {Activity.class, Favorite.class, History.class}, version = 2, exportSchema = false)
+@Database(entities = {Activity.class, Favorite.class, History.class}, version = 3, exportSchema = false)
 public abstract class SensappRoomDatabase extends RoomDatabase {
 
     public abstract ActivityDao activityDao();
