@@ -101,11 +101,11 @@ public class HistoriesListAdapter
                     title = mContext.getResources().getString(R.string.activity_two_title);
                 } else if (activity_name.equals(
                         mContext.getResources().getString(R.string.activity_three_title))) {
-                    image = mContext.getResources().getDrawable(R.drawable.bubbles);
+                    image = mContext.getResources().getDrawable(R.drawable.bubbles_coming_soon);
                     title = mContext.getResources().getString(R.string.activity_three_title);
                 } else if (activity_name.equals(
                         mContext.getResources().getString(R.string.activity_four_title))) {
-                    image = mContext.getResources().getDrawable(R.drawable.stories);
+                    image = mContext.getResources().getDrawable(R.drawable.stories_coming_soon);
                     title = mContext.getResources().getString(R.string.activity_four_title);
                 } else if (activity_name.equals(
                         mContext.getResources().getString(R.string.activity_five_title))) {

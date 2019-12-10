@@ -282,9 +282,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (tag.equals(getString(R.string.activity_two_title))) {
             launchFidgetCubeActivity(view);
         } else if (tag.equals(getString(R.string.activity_three_title))) {
-            launchBubblesActivity(view);
+            launchInformation(view);  // Coming soon
         } else if (tag.equals(getString(R.string.activity_four_title))) {
-            launchStoriesActivity(view);
+            launchInformation(view);  // Coming soon
         } else if (tag.equals(getString(R.string.activity_five_title))) {
             launchAnimalsActivity(view);
         } else if (tag.equals(getString(R.string.activity_six_title))) {
