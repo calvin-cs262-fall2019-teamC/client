@@ -77,12 +77,12 @@ public class FavoritesListAdapter
                             mContext.getResources().getString(R.string.activity_two_title));
                 } else if (activity_name.equals(
                         mContext.getResources().getString(R.string.activity_three_title))) {
-                    holder.favoriteItemView.setImageResource(R.drawable.bubbles);
+                    holder.favoriteItemView.setImageResource(R.drawable.bubbles_coming_soon);
                     holder.favoriteItemView.setTag(
                             mContext.getResources().getString(R.string.activity_three_title));
                 } else if (activity_name.equals(
                         mContext.getResources().getString(R.string.activity_four_title))) {
-                    holder.favoriteItemView.setImageResource(R.drawable.stories);
+                    holder.favoriteItemView.setImageResource(R.drawable.stories_coming_soon);
                     holder.favoriteItemView.setTag(
                             mContext.getResources().getString(R.string.activity_four_title));
                 } else if (activity_name.equals(

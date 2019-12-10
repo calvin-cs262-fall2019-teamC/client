@@ -380,9 +380,10 @@
                         android:layout_height="120dp"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_button_description"
-                        android:onClick="launchBubblesActivity"
+                        android:tag="@string/activity_three_title"
+                        android:onClick="launchInformation"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/bubbles" />
+                        app:srcCompat="@drawable/bubbles_coming_soon" />
 
                     <ImageButton
                         android:id="@+id/info_three_button"
@@ -458,9 +459,10 @@
                         android:layout_height="120dp"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/activity_button_description"
-                        android:onClick="launchStoriesActivity"
+                        android:tag="@string/activity_four_title"
+                        android:onClick="launchInformation"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/stories" />
+                        app:srcCompat="@drawable/stories_coming_soon" />
 
                     <ImageButton
                         android:id="@+id/info_four_button"

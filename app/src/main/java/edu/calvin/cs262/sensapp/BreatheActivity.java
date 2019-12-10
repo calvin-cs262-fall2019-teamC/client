@@ -152,7 +152,7 @@ public class BreatheActivity extends AppCompatActivity {
         audioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                audioPlayer.reset();
+                audioPlayer.release();
                 chooseAudio();
                 audioPlayer.start();
             }
