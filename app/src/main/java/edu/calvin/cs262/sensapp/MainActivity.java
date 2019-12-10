@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -133,8 +135,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the breathe activity button).
      */
     public void launchBreatheActivity(View view) {
-        Log.d("MainActivity", "activity launching BreatheActivity :)");
-        Intent intent = new Intent(this, BreatheActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean videos_tutorial = prefs.getBoolean("videos_tutorial", true);
+        Intent intent;
+        if (videos_tutorial) {
+            intent = new Intent(this, VideosTutorial.class);
+        }
+        else {
+            intent = new Intent(this, BreatheActivity.class);
+        }
         startActivity(intent);
     }
 
@@ -174,7 +183,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the music activity button).
      */
     public void launchMusicActivity(View view) {
-        Intent intent = new Intent(this, MusicActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean videos_tutorial = prefs.getBoolean("sounds_tutorial", true);
+        Intent intent;
+        if (videos_tutorial) {
+            intent = new Intent(this, MusicTutorial.class);
+        }
+        else {
+            intent = new Intent(this, MusicActivity.class);
+        }
         startActivity(intent);
     }
 
@@ -184,8 +201,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the fidget cube activity button).
      */
     public void launchFidgetCubeActivity(View view) {
-        Log.d("MainActivity", "activity launching FidgetCubeActivity");
-        Intent intent = new Intent(this, FidgetCubeActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean videos_tutorial = prefs.getBoolean("fidget_tutorial", true);
+        Intent intent;
+        if (videos_tutorial) {
+            intent = new Intent(this, FidgetCubeTutorial.class);
+        }
+        else {
+            intent = new Intent(this, FidgetCubeActivity.class);
+        }
         startActivity(intent);
     }
 
