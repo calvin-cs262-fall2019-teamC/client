@@ -4,15 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -131,8 +135,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the breathe activity button).
      */
     public void launchBreatheActivity(View view) {
-        Log.d("MainActivity", "activity launching BreatheActivity :)");
-        Intent intent = new Intent(this, BreatheActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean videos_tutorial = prefs.getBoolean("videos_tutorial", true);
+        Intent intent;
+        if (videos_tutorial) {
+            intent = new Intent(this, VideosTutorial.class);
+        }
+        else {
+            intent = new Intent(this, BreatheActivity.class);
+        }
         startActivity(intent);
     }
 
@@ -172,7 +183,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the music activity button).
      */
     public void launchMusicActivity(View view) {
-        Intent intent = new Intent(this, MusicActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean videos_tutorial = prefs.getBoolean("sounds_tutorial", true);
+        Intent intent;
+        if (videos_tutorial) {
+            intent = new Intent(this, MusicTutorial.class);
+        }
+        else {
+            intent = new Intent(this, MusicActivity.class);
+        }
         startActivity(intent);
     }
 
@@ -182,8 +201,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the fidget cube activity button).
      */
     public void launchFidgetCubeActivity(View view) {
-        Log.d("MainActivity", "activity launching FidgetCubeActivity");
-        Intent intent = new Intent(this, FidgetCubeActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean videos_tutorial = prefs.getBoolean("fidget_tutorial", true);
+        Intent intent;
+        if (videos_tutorial) {
+            intent = new Intent(this, FidgetCubeTutorial.class);
+        }
+        else {
+            intent = new Intent(this, FidgetCubeActivity.class);
+        }
         startActivity(intent);
     }
 
@@ -200,14 +226,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Records the current activity as favorited.
+     * Records the current activity as favorited and updates the heart icon
      *
-     * @param view The current View object (the favorite heart button).
+     * @param view The current View object (the favorite heart button, must be an ImageButton)
      */
-    public void favoriteActivity(final View view) {
-        Toast toast = Toast.makeText(context, view.getTag().toString() +
-                " Toggled from Favorites", Toast.LENGTH_SHORT);
-        toast.show();
+    public void favoriteActivity(View view) {
+
+        // Cast clicked View to ImageButton
+        final ImageButton button = (ImageButton) view;
+
+        // Initialize the necessary Drawables
+        final Drawable heartBorder = context.getResources().getDrawable(R.drawable.ic_favorite_border);
+        final Drawable heartFull = context.getResources().getDrawable(R.drawable.ic_favorite_pink);
 
         // Insert and get data using Database Async way
         // From https://stackoverflow.com/questions/44167111/
@@ -220,17 +250,19 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 // Get the ID of the Activity selected
                 int id = SensappRoomDatabase.getDatabase(context).activityDao()
-                        .getActivityIdByName(view.getTag().toString());
+                        .getActivityIdByName(button.getTag().toString());
 
                 if (SensappRoomDatabase.getDatabase(context)
                         .favoriteDao().getFavoriteById(id) == null) {
                     // Add Activity to Favorites
                     SensappRoomDatabase.getDatabase(context).favoriteDao().insert(new Favorite(id));
+                    button.setImageDrawable(heartFull);
                 } else {
                     // Remove Activity to Favorites
                     SensappRoomDatabase.getDatabase(context).favoriteDao().deleteFavorite(
                             SensappRoomDatabase.getDatabase(context)
                                     .favoriteDao().getFavoriteById(id));
+                    button.setImageDrawable(heartBorder);
                 }
             }
         });
@@ -250,9 +282,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (tag.equals(getString(R.string.activity_two_title))) {
             launchFidgetCubeActivity(view);
         } else if (tag.equals(getString(R.string.activity_three_title))) {
-            launchBubblesActivity(view);
+            launchInformation(view);  // Coming soon
         } else if (tag.equals(getString(R.string.activity_four_title))) {
-            launchStoriesActivity(view);
+            launchInformation(view);  // Coming soon
         } else if (tag.equals(getString(R.string.activity_five_title))) {
             launchAnimalsActivity(view);
         } else if (tag.equals(getString(R.string.activity_six_title))) {

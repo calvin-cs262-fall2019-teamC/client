@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.calvin.cs262.sensapp">
 
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -14,7 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".VideosTutorial"
+            android:label="Videos Tutorial"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.sensapp.MainActivity" />
+        </activity>
+        <activity android:name=".FidgetCubeTutorial"
+            android:label="Fidget Cube Tutorial"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.sensapp.MainActivity" />
+        </activity>
+        <activity android:name=".MusicTutorial"
+            android:label="Sounds Tutorial"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.sensapp.MainActivity" />
+        </activity>
+        <activity android:name=".HistoryTutorial"
+            android:label="History Tutorial"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.sensapp.MainActivity" />
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -66,7 +92,8 @@
         <activity
             android:name=".MusicActivity"
             android:label="@string/activity_six_title"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.calvin.cs262.sensapp.MainActivity" />

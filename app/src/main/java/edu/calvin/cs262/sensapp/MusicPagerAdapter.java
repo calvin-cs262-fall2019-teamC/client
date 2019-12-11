@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 public class MusicPagerAdapter extends FragmentStatePagerAdapter {
     private int mNumTabs;
     private Context context;
+    private MusicCategoryFragment currentItem;
 
     /**
      * Construct MusicPagerAdapter
@@ -54,7 +55,17 @@ public class MusicPagerAdapter extends FragmentStatePagerAdapter {
                 throw new RuntimeException("ERROR: unknown tab clicked in Music Activity: " + position);
         }
         tabOfSounds.setArguments(fragment_data);
+        currentItem = tabOfSounds;
         return tabOfSounds;
+    }
+
+    /**
+     * Get the currently selected tab
+     *
+     * @return the currently selected MusicCategoryFragment
+     */
+    public MusicCategoryFragment getCurrentItem() {
+        return currentItem;
     }
 
     /**

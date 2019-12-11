@@ -2,9 +2,11 @@ package edu.calvin.cs262.sensapp;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.VideoView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
@@ -36,6 +38,9 @@ public class BreatheActivity extends AppCompatActivity {
     //remember which video played last
     public int previousVideo;
 
+    //for creating History records once Activity is used for 5 or more seconds
+    private HistoryManager hist_manager;
+
 
     /**
      * Creates the breathe activity in which the user will be guided to breathe deeply.
@@ -45,8 +50,11 @@ public class BreatheActivity extends AppCompatActivity {
      *
      * @param savedInstanceState The Bundle of information which initializes the breathe activity.
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hist_manager = new HistoryManager(getString(R.string.activity_one_title),
+                getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breathe);
 
@@ -144,7 +152,7 @@ public class BreatheActivity extends AppCompatActivity {
         audioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                audioPlayer.reset();
+                audioPlayer.release();
                 chooseAudio();
                 audioPlayer.start();
             }
@@ -209,9 +217,13 @@ public class BreatheActivity extends AppCompatActivity {
     /**
      * When app is exited or focus is lost somehow, onPause() is called.
      * When this happens, the music should stop.
+     * Creates a History record of this activity if it was open for 5 or more seconds
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
     public void onPause() {
         super.onPause();
+        hist_manager.createRecord();
         if (audioPlayer.isPlaying())
             audioPlayer.stop();
     }

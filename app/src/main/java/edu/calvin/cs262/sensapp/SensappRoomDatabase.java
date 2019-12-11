@@ -2,17 +2,21 @@ package edu.calvin.cs262.sensapp;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.time.LocalDateTime;
+
 /**
  * Class to store the Sensapp database
  */
-@Database(entities = {Activity.class, Favorite.class, History.class}, version = 1, exportSchema = false)
+@Database(entities = {Activity.class, Favorite.class, History.class}, version = 3, exportSchema = false)
 public abstract class SensappRoomDatabase extends RoomDatabase {
 
     public abstract ActivityDao activityDao();
@@ -55,10 +59,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
         private final ActivityDao mActivityDao;
         private final FavoriteDao mFavoriteDao;
         private final HistoryDao mHistoryDao;
-        int[] historyActivityIds = {1, 4, 6};
-        String[] startTimes = {"2006-06-27 08:00:00", "2013-10-01 08:34:22", "2019-11-02 6:50:19"};
-        String[] endTimes = {"2006-06-27 08:30:00", "2013-10-01 08:36:33", "2019-11-02 6:53:42"};
-        Integer[] satisfactions = {2, null, 5};
 
         /**
          * Construct PopulateDbAsync Task
@@ -75,6 +75,7 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
          *
          * @return null
          */
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected Void doInBackground(final Void... params) {
 
@@ -92,16 +93,6 @@ public abstract class SensappRoomDatabase extends RoomDatabase {
                 for (int i = 0; i <= activityTitles.length - 1; i++) {
                     Activity activity = new Activity(0, activityTitles[i]);
                     mActivityDao.insert(activity);
-                }
-            }
-
-            // If we have no histories, then create the initial list of histories
-            if (mHistoryDao.getAnyHistory().length < 1) {
-                for (int i = 0; i <= historyActivityIds.length - 1; i++) {
-                    History history = new History(
-                            historyActivityIds[i], startTimes[i], endTimes[i], satisfactions[i]
-                    );
-                    mHistoryDao.insert(history);
                 }
             }
 

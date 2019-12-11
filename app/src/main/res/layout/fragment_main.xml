@@ -37,18 +37,6 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/info_one_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/circle_button"
-                        android:contentDescription="@string/info_button_description"
-                        android:onClick="launchInformation"
-                        android:src="@drawable/ic_info"
-                        android:tag="@string/activity_one_title" />
-
-                    <ImageButton
                         android:id="@+id/activity_one_button"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
@@ -57,6 +45,19 @@
                         android:onClick="launchBreatheActivity"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/breathe" />
+
+                    <ImageButton
+                        android:id="@+id/info_one_button"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/white_question"
+                        android:tag="@string/activity_one_title" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -73,7 +74,7 @@
 
                     <TextView
                         android:id="@+id/activity_one_title"
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="30dp"
                         android:gravity="start|center_vertical"
                         android:paddingStart="2dp"
@@ -84,14 +85,20 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+                    <!--
+                    Transparent color:
+                    https://stackoverflow.com/questions/1492554/set-transparent-background-of-an-imageview-on-android
+                    -->
+
                     <ImageButton
                         android:id="@+id/activity_one_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
+                        android:background="@android:color/transparent"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_one_title" />
 
                 </LinearLayout>
@@ -129,14 +136,15 @@
 
                     <ImageButton
                         android:id="@+id/info_two_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="6dp"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
-                        android:src="@drawable/ic_info"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/white_question"
                         android:tag="@string/activity_two_title" />
                 </LinearLayout>
 
@@ -149,7 +157,7 @@
 
                     <TextView
                         android:id="@+id/activity_two_title"
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="30dp"
                         android:gravity="start|center_vertical"
                         android:paddingStart="2dp"
@@ -164,171 +172,12 @@
                         android:id="@+id/activity_two_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
+                        android:background="@android:color/transparent"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_two_title" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/row_two"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/activity_three"
-                android:layout_width="170dp"
-                android:layout_height="200dp"
-                android:orientation="vertical"
-                android:paddingStart="20dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
-                android:paddingEnd="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp">
-
-                <LinearLayout
-                    android:id="@+id/info_activity_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/info_three_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/circle_button"
-                        android:contentDescription="@string/info_button_description"
-                        android:onClick="launchInformation"
-                        android:src="@drawable/ic_info"
-                        android:tag="@string/activity_three_title" />
-
-                    <ImageButton
-                        android:id="@+id/activity_three_button"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@string/activity_button_description"
-                        android:onClick="launchBubblesActivity"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/bubbles" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/title_favorite_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/activity_three_title"
-                        android:layout_width="100dp"
-                        android:layout_height="30dp"
-                        android:gravity="start|center_vertical"
-                        android:paddingStart="2dp"
-                        android:paddingLeft="2dp"
-                        android:paddingEnd="0dp"
-                        android:paddingRight="0dp"
-                        android:text="@string/activity_three_title"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <ImageButton
-                        android:id="@+id/activity_three_favorite"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
-                        android:contentDescription="@string/favorite_button_description"
-                        android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
-                        android:tag="@string/activity_three_title" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/activity_four"
-                android:layout_width="170dp"
-                android:layout_height="200dp"
-                android:orientation="vertical"
-                android:paddingStart="20dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
-                android:paddingEnd="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp">
-
-                <LinearLayout
-                    android:id="@+id/info_activity_four"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/activity_four_button"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@string/activity_button_description"
-                        android:onClick="launchStoriesActivity"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/stories" />
-
-                    <ImageButton
-                        android:id="@+id/info_four_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/circle_button"
-                        android:contentDescription="@string/info_button_description"
-                        android:onClick="launchInformation"
-                        android:src="@drawable/ic_info"
-                        android:tag="@string/activity_four_title" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/title_favorite_four"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/activity_four_title"
-                        android:layout_width="100dp"
-                        android:layout_height="30dp"
-                        android:gravity="start|center_vertical"
-                        android:paddingStart="2dp"
-                        android:paddingLeft="2dp"
-                        android:paddingEnd="0dp"
-                        android:paddingRight="0dp"
-                        android:text="@string/activity_four_title"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <ImageButton
-                        android:id="@+id/activity_four_favorite"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
-                        android:contentDescription="@string/favorite_button_description"
-                        android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
-                        android:tag="@string/activity_four_title" />
 
                 </LinearLayout>
 
@@ -362,18 +211,6 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/info_five_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/circle_button"
-                        android:contentDescription="@string/info_button_description"
-                        android:onClick="launchInformation"
-                        android:src="@drawable/ic_info"
-                        android:tag="@string/activity_five_title" />
-
-                    <ImageButton
                         android:id="@+id/activity_five_button"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
@@ -382,6 +219,19 @@
                         android:onClick="launchAnimalsActivity"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/animals" />
+
+                    <ImageButton
+                        android:id="@+id/info_five_button"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/white_question"
+                        android:tag="@string/activity_five_title" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -393,7 +243,7 @@
 
                     <TextView
                         android:id="@+id/activity_five_title"
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="30dp"
                         android:gravity="start|center_vertical"
                         android:paddingStart="2dp"
@@ -408,10 +258,11 @@
                         android:id="@+id/activity_five_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
+                        android:background="@android:color/transparent"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_five_title" />
 
                 </LinearLayout>
@@ -449,14 +300,15 @@
 
                     <ImageButton
                         android:id="@+id/info_six_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="6dp"
                         android:background="@drawable/circle_button"
                         android:contentDescription="@string/info_button_description"
                         android:onClick="launchInformation"
-                        android:src="@drawable/ic_info"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/white_question"
                         android:tag="@string/activity_six_title" />
                 </LinearLayout>
 
@@ -469,7 +321,7 @@
 
                     <TextView
                         android:id="@+id/activity_six_title"
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="30dp"
                         android:gravity="start|center_vertical"
                         android:paddingStart="2dp"
@@ -484,11 +336,178 @@
                         android:id="@+id/activity_six_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/circle_button"
+                        android:background="@android:color/transparent"
                         android:contentDescription="@string/favorite_button_description"
                         android:onClick="favoriteActivity"
-                        android:src="@drawable/ic_favorite"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_favorite_border"
                         android:tag="@string/activity_six_title" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/activity_three"
+                android:layout_width="170dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:id="@+id/info_activity_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/activity_three_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:tag="@string/activity_three_title"
+                        android:onClick="launchInformation"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/bubbles_coming_soon" />
+
+                    <ImageButton
+                        android:id="@+id/info_three_button"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/white_question"
+                        android:tag="@string/activity_three_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_three_title"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_three_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_three_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_favorite_border"
+                        android:tag="@string/activity_three_title" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_four"
+                android:layout_width="170dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:id="@+id/info_activity_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/activity_four_button"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/activity_button_description"
+                        android:tag="@string/activity_four_title"
+                        android:onClick="launchInformation"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/stories_coming_soon" />
+
+                    <ImageButton
+                        android:id="@+id/info_four_button"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/circle_button"
+                        android:contentDescription="@string/info_button_description"
+                        android:onClick="launchInformation"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/white_question"
+                        android:tag="@string/activity_four_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_favorite_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_four_title"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:text="@string/activity_four_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/activity_four_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/favorite_button_description"
+                        android:onClick="favoriteActivity"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_favorite_border"
+                        android:tag="@string/activity_four_title" />
 
                 </LinearLayout>
 

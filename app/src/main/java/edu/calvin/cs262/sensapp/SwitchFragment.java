@@ -6,7 +6,8 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,5 +94,15 @@ public class SwitchFragment extends Fragment implements View.OnClickListener {
             switchImage.setBackgroundResource(R.drawable.switch_animation_on);
             SwitchAnimation = (AnimationDrawable) switchImage.getBackground();
         }
+    }
+
+    /**
+     * release MediaPlayer resources
+     */
+    @Override
+    public void onPause() {
+        super.onPause();
+        switchDownPlayer.release();
+        switchUpPlayer.release();
     }
 }
