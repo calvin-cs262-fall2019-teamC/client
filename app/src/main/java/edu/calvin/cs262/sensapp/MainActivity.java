@@ -173,7 +173,15 @@ public class MainActivity extends AppCompatActivity {
      * @param view The current View object (the animals activity button).
      */
     public void launchAnimalsActivity(View view) {
-        Intent intent = new Intent(this, AnimalsActivity.class);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean animals_tutorial = prefs.getBoolean("animals_tutorial", true);
+        Intent intent;
+        if (animals_tutorial) {
+            intent = new Intent(this, AnimalsTutorial.class);
+        }
+        else {
+            intent = new Intent(this, AnimalsActivity.class);
+        }
         startActivity(intent);
     }
 
