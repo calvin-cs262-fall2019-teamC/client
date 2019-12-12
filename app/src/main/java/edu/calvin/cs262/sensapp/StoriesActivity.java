@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDateTime;
+
 /**
  * This is another class that is unfinished and unimplemented
  * When done, this class will create an activity in which
@@ -40,5 +42,15 @@ public class StoriesActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         hist_manager.createRecord();
+    }
+
+    /**
+     * Restart the timer when Activity is restarted
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        hist_manager.startTime = LocalDateTime.now();
     }
 }

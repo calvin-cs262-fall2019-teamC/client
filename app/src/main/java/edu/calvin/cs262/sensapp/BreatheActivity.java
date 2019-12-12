@@ -9,6 +9,7 @@ import android.widget.VideoView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDateTime;
 import java.util.Random;
 
 /**
@@ -228,4 +229,13 @@ public class BreatheActivity extends AppCompatActivity {
             audioPlayer.stop();
     }
 
+    /**
+     * Restart the timer when Activity is restarted
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        hist_manager.startTime = LocalDateTime.now();
+    }
 }
