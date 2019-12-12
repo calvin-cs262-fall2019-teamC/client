@@ -39,7 +39,7 @@ public class VideosTutorial extends AppCompatActivity {
         editor.putBoolean("videos_tutorial", false);
         editor.apply();
 
-        Log.d("VideosTutorial", "activity launching VideosActivity");
+        // Log.d("VideosTutorial", "activity launching VideosActivity");
         Intent intent = new Intent(context, BreatheActivity.class);
         startActivity(intent);
     }

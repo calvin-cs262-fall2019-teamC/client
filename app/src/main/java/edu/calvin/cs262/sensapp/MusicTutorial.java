@@ -46,7 +46,7 @@ public class MusicTutorial extends AppCompatActivity {
         editor.putBoolean("sounds_tutorial", false);
         editor.apply();
 
-        Log.d("MusicTutorial", "activity launching MusicActivity");
+        // Log.d("MusicTutorial", "activity launching MusicActivity");
         Intent intent = new Intent(context, MusicActivity.class);
         startActivity(intent);
     }
